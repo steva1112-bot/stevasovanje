@@ -1565,7 +1565,7 @@
         </div>
         <div class="book-nav">
           <button class="book-btn" id="kuba-prev" onclick="kubaPrev()">&#8592; Prethodna</button>
-          <span class="book-counter" id="kuba-counter" style="display:none"></span>
+          
           <button class="book-btn" id="kuba-next" onclick="kubaNext()">Sledeća &#8594;</button>
         </div>
       </div>
@@ -1693,7 +1693,7 @@
   });
   var sl = c.querySelectorAll('.book-page-slide');
   if (sl.length > 1) sl[1].classList.add('right-visible');
-  kubaUpdateCounter();
+  setTimeout(kubaUpdateCounter, 50);
 }
 
   
@@ -1702,14 +1702,13 @@ function kubaUpdateCounter() {
   var total = slides.length;
   var cur = Array.from(slides).findIndex(function(s){return s.classList.contains('active');});
   var num = cur < 0 ? 1 : cur + 1;
-  var inner = document.getElementById('kuba-gcounter');
-  if (inner) inner.textContent = num + ' / ' + total;
+  // Outer counter ispod knjige
   var outer = document.getElementById('kuba-counter-outer');
   if (!outer) {
     outer = document.createElement('div');
     outer.id = 'kuba-counter-outer';
-    outer.style.cssText = 'text-align:center;padding:0.6rem 0 0.4rem;color:rgba(200,169,110,0.8);font-family:Lora,Georgia,serif;font-size:0.85rem;letter-spacing:2px;';
-    var reader = document.querySelector('.book-reader');
+    outer.style.cssText = 'text-align:center;padding:0.6rem 0 0.2rem;color:rgba(200,169,110,0.75);font-family:Lora,Georgia,serif;font-size:0.85rem;letter-spacing:2px;';
+    var reader = document.querySelector('#page-kuba .book-reader');
     if (reader && reader.parentNode) reader.parentNode.insertBefore(outer, reader.nextSibling);
   }
   outer.textContent = num + ' / ' + total;
