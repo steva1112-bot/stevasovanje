@@ -1107,118 +1107,30 @@
   }
   </style>
 <style id="kuba-book-css">
-/* ===== DESKTOP: otvorena knjiga, dve stranice ===== */
-@media (min-width: 768px) {
-  #page-kuba .dest-body { max-width: 1200px; width: 98%; margin: 0 auto; }
-  .book-reader {
-    background: #182035;
-    border: 1px solid #c8a96e;
-    border-radius: 6px;
-    box-shadow: -10px 12px 50px rgba(0,0,0,0.75), 10px 12px 50px rgba(0,0,0,0.75);
-    position: relative;
-    overflow: hidden;
-  }
-  .book-reader::before {
-    content: '';
-    position: absolute;
-    left: calc(50% - 1px);
-    top: 0; bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, rgba(106,73,32,0.5) 0%, #c8a96e 25%, #ead48a 50%, #c8a96e 75%, rgba(106,73,32,0.5) 100%);
-    box-shadow: 0 0 10px rgba(200,169,110,0.2);
-    z-index: 10;
-    pointer-events: none;
-  }
-  .book-reader::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.13) 0%, transparent 7%), linear-gradient(to left, rgba(0,0,0,0.13) 0%, transparent 7%);
-    pointer-events: none;
-    z-index: 1;
-  }
-  .book-pages {
-    display: flex !important;
-    flex-direction: row !important;
-    height: 580px;
-    overflow: hidden;
-    position: relative;
-  }
-  .book-page-slide {
-    display: none !important;
-    flex: 0 0 50%;
-    width: 50%;
-    max-width: 50%;
-    height: 580px;
-    padding: 2.8rem 3.2rem 5rem;
-    box-sizing: border-box;
-    overflow: hidden;
-    position: relative;
-    z-index: 3;
-  }
-  .book-page-slide.active { display: flex !important; flex-direction: column; }
-  .book-page-slide.right-visible { display: flex !important; flex-direction: column; }
-  .book-page-text {
-    color: #d4bc8a;
-    font-family: 'Lora', Georgia, serif;
-    font-size: 0.95rem;
-    line-height: 1.92;
-    white-space: pre-line;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    margin: 0;
-    flex: 1;
-    overflow: hidden;
-  }
-  .book-nav {
-    position: absolute !important;
-    bottom: 1.2rem;
-    left: 0; right: 0;
-    display: flex !important;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2.5rem;
-    z-index: 20;
-  }
-  .book-page-nav-btn {
-    background: transparent;
-    border: 1px solid rgba(200,169,110,0.55);
-    color: #c8a96e;
-    padding: 0.3rem 1.1rem;
-    font-size: 0.73rem;
-    letter-spacing: 1.5px;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .book-page-nav-btn:hover { background: rgba(200,169,110,0.1); border-color: #c8a96e; }
-  #kuba-gcounter { color: rgba(200,169,110,0.65); font-size: 0.73rem; letter-spacing: 1px; }
+@media(min-width:768px){
+  #page-kuba .dest-body{max-width:1180px;width:96%;margin:0 auto;}
+  .book-reader{background:#182035;border:1px solid #c8a96e;border-radius:6px;box-shadow:-10px 12px 50px rgba(0,0,0,.75),10px 12px 50px rgba(0,0,0,.75);position:relative;overflow:hidden;}
+  .book-reader::before{content:'';position:absolute;left:calc(50% - 1px);top:0;bottom:0;width:2px;background:linear-gradient(180deg,rgba(106,73,32,.5),#c8a96e 25%,#ead48a 50%,#c8a96e 75%,rgba(106,73,32,.5));z-index:10;pointer-events:none;}
+  .book-reader::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.13) 0%,transparent 7%),linear-gradient(to left,rgba(0,0,0,.13) 0%,transparent 7%);pointer-events:none;z-index:1;}
+  .book-pages{display:flex!important;flex-direction:row!important;height:700px;overflow:hidden;position:relative;}
+  .book-page-slide{display:none!important;flex:0 0 50%;width:50%;max-width:50%;height:700px;padding:2.8rem 3.2rem 5rem;box-sizing:border-box;overflow:hidden;position:relative;z-index:3;}
+  .book-page-slide.active{display:flex!important;flex-direction:column;}
+  .book-page-slide.right-visible{display:flex!important;flex-direction:column;}
+  .book-page-text{color:#d4bc8a;font-family:'Lora',Georgia,serif;font-size:0.92rem;line-height:1.9;white-space:pre-line;word-break:break-word;margin:0 0 0.8rem 0;}
+  .book-nav{position:absolute!important;bottom:1.2rem;left:0;right:0;display:flex!important;justify-content:space-between;align-items:center;padding:0 2.5rem;z-index:20;}
+  .book-page-nav-btn{background:transparent;border:1px solid rgba(200,169,110,.55);color:#c8a96e;padding:.3rem 1.1rem;font-size:.73rem;letter-spacing:1.5px;border-radius:2px;cursor:pointer;}
+  .book-page-nav-btn:hover{background:rgba(200,169,110,.1);}
+  #kuba-gcounter{color:rgba(200,169,110,.65);font-size:.73rem;letter-spacing:1px;}
 }
-/* ===== MOBILNI: jedna strana ===== */
-@media (max-width: 767px) {
-  .book-reader {
-    background: #182035;
-    border: 1px solid rgba(200,169,110,0.45);
-    border-radius: 8px;
-    padding: 2rem 1.6rem 5rem;
-    box-shadow: 0 8px 35px rgba(0,0,0,0.55);
-    position: relative;
-  }
-  .book-page-slide { display: none !important; }
-  .book-page-slide.active { display: block !important; }
-  .book-page-slide.right-visible { display: none !important; }
-  .book-page-text {
-    color: #d4bc8a;
-    font-family: 'Lora', Georgia, serif;
-    font-size: 1.05rem;
-    line-height: 1.92;
-    white-space: pre-line;
-    word-break: break-word;
-    margin: 0;
-  }
-  .book-nav { position: absolute !important; bottom: 1rem; left: 0; right: 0; display: flex !important; justify-content: space-between; padding: 0 1.5rem; z-index: 5; }
-  .book-page-nav-btn { border: 1px solid rgba(200,169,110,0.55); color: #c8a96e; background: transparent; padding: 0.35rem 1rem; font-size: 0.75rem; border-radius: 3px; cursor: pointer; }
-  #kuba-gcounter { color: rgba(200,169,110,0.65); font-size: 0.75rem; }
+@media(max-width:767px){
+  .book-reader{background:#182035;border:1px solid rgba(200,169,110,.45);border-radius:8px;padding:2rem 1.6rem 5rem;box-shadow:0 8px 35px rgba(0,0,0,.55);position:relative;}
+  .book-page-slide{display:none!important;}
+  .book-page-slide.active{display:block!important;}
+  .book-page-slide.right-visible{display:none!important;}
+  .book-page-text{color:#d4bc8a;font-family:'Lora',Georgia,serif;font-size:1.05rem;line-height:1.9;white-space:pre-line;word-break:break-word;margin:0 0 1rem 0;}
+  .book-nav{position:absolute!important;bottom:1rem;left:0;right:0;display:flex!important;justify-content:space-between;padding:0 1.5rem;z-index:5;}
+  .book-page-nav-btn{border:1px solid rgba(200,169,110,.55);color:#c8a96e;background:transparent;padding:.35rem 1rem;font-size:.75rem;border-radius:3px;cursor:pointer;}
+  #kuba-gcounter{color:rgba(200,169,110,.65);font-size:.75rem;}
 }
 </style>
 </head>
@@ -1471,63 +1383,161 @@
 
   <script>
   var KUBA_PARA = [
-"✦  K U B A\nPutopis s kraja sveta\n\nDecembar 2017.\n\n'Morate ostati u Havani minimum deset dana —\nda osetite Havanu, i da Havana oseti vas.'\n\n─────────────────────\nP R O L O G\nKafić na Vidikovcu\n─────────────────────\n\nPostoje putovanja koja planirate godinama. Gledate slike, čitate putopise, obećavate sebi da ćete jednog dana otići tamo. I onda život nekako uvek ubaci nešto preče.\n\nA postoje i ona druga putovanja — ona koja počnu potpuno spontano, uz kafu i neku usputnu rečenicu koja u tom trenutku zvuči kao šala.",
+  "✦  K U B A\nPutopis s kraja sveta — Decembar 2017.",
 
-"Sve počinje u jednom beogradskom kafiću, negde u februaru 2017. Napolju zima, unutra toplo, a na zidovima fotografije koje me gledaju kao nemi poziv — plaže, palme, more boje tirkiza. Kuba. Ime koje sam godinama nosio u sebi kao neku tihu opsesiju.\n\nSedim sa drugarom. Klasičan balkanski razgovor, bez početka i bez kraja. Tapete na zidu kafića na Vidikovcu, oblepljene egzotičnim plažama, nekako su skrenule razgovor tamo gde je i trebalo da završi.\n\n— Bi li išao na Kubu?\n\nIskreno, očekivao sam odgovor tipa: 'Ma vazi, kad dobijemo na lotou.' Ali drugar samo sleže ramenima i kaže:\n\n— A što da ne.",
+  "─────────────────────\nP R O L O G  ·  Kafić na Vidikovcu\n─────────────────────",
 
-"Ćutali smo nekoliko sekundi.\n\nObojica smo shvatili da smo upravo izgovorili nešto što možda i nije šala. Tako je, otprilike, počela cela priča — tiha, postepena, punjena istraživanjem, čitanjem blogova i putopisa, gledanjem videa i skupljanjem novčanica.\n\nMoja životna želja bila je da rođendan proslavim na Kubi. Taj datum, početak decembra, savršeno se poklapao sa kubanskom zimom: bez uragana, bez kiše, sa prijatnom temperaturom koja u Beogradu ne postoji ni u junu.\n\nKartu kupujemo krajem oktobra — 590 evra sa presedanjem u Parizu. Kod nas bismo rekli: skupo. Tamo ćemo shvatiti da je to bila najpovoljnija investicija u životu.\n\nOnog trenutka kada kliknete 'kupite kartu', putovanje prestane da bude ideja. Postane stvarno. Jer više nema nazad.",
+  "Postoje putovanja koja planirate godinama. Gledate slike, čitate putopise, obećavate sebi da ćete jednog dana otići tamo. I onda život nekako uvek ubaci nešto preče.\n\nA postoje i ona druga putovanja — ona koja počnu potpuno spontano, uz kafu i neku usputnu rečenicu koja u tom trenutku zvuči kao šala.",
 
-"─────────────────────\nPoglavlje I\nŠarl de Gol i jedanaest sati iznad okeana\n─────────────────────\n\nŠesti decembar. Dan polaska. Uzbuđenje je takvo da jedva može da stane u prtljag. Odlazimo ka aerodromu 'Nikola Tesla' sa onim nervoznim veseljem koje prati svaki odlazak u nepoznato.\n\nZa mene, ovo je bio prvi prekookeanski let — sve ranije iskustvo svodilo se na ATR, mali propelerski avion do Tivta, koji mi se uvek činio kao da pilot vozi autobus kroz oblake.\n\nPariz nas dočekuje onako kako Pariz jedino i može — grandiozno i indiferentno. Šarl de Gol aerodrom je grad za sebe: beskrajni hodnici, reke putnika sa svih strana sveta, table na svim jezicima.",
+  "Sve počinje u jednom beogradskom kafiću, negde u februaru 2017. Napolju zima, unutra toplo, a na zidovima fotografije koje me gledaju kao nemi poziv — plaže, palme, more boje tirkiza. Kuba. Ime koje sam godinama nosio u sebi kao neku tihu opsesiju.\n\nSedim sa drugarom. Klasičan balkanski razgovor, bez početka i bez kraja. Tapete na zidu kafića na Vidikovcu, oblepljene egzotičnim plažama, nekako su skrenule razgovor tamo gde je i trebalo da završi.",
 
-"Dok čekamo presedanje, pronalazimo Sony PlayStation konzolu namenjenu putnicima — sitnica koja pretvara čekanje u fudbalski turnir.\n\nSledi ukrcavanje. Jedanaest sati iznad Atlantika.\n\nU početku gledate filmove. Posle nekog vremena pokušavate da spavate. Posle toga gledate mapu leta svakih deset minuta da vidite da li ste bar malo bliže.\n\nA onda kapetan kaže:\n\n— Poštovani putnici, uskoro sletamo u Havanu.\n\nTada shvatite da ste stvarno prešli okean. I da nema više tapeta na zidu.",
+  "— Bi li išao na Kubu?\n\nIskreno, očekivao sam odgovor tipa: 'Ma vazi, kad dobijemo na lotou.' Ali drugar samo sleže ramenima i kaže:\n\n— A što da ne.",
 
-"Sleteli smo u Havanu oko šest popodne po njihovom vremenu — Havana je šest sati iza Beograda, što znači da je moje telo mislilo da je ponoć, ali sunce je još uvek napolju imalo neke planove.\n\nPrva stvar koja te udari kada izađeš sa aerodroma je temperatura. Iz stvarne beogradske zime — one sive, mokre, u kojoj svi hodaju nagnuti napred — pravo na prijatnih 25 stepeni. Vazduh je bio gust, topao, blago slankast. Kao da ste otvorili vrata saune, samo lepše.\n\nU tom trenutku sam pomislio:\n\n— Ako je ovo njihova zima, ja bih mogao ovde ozbiljno da razmislim o preseljenju.",
+  "Ćutali smo nekoliko sekundi. Obojica smo shvatili da smo upravo izgovorili nešto što možda i nije šala. Tako je, otprilike, počela cela priča — tiha, postepena, punjena istraživanjem, čitanjem blogova i putopisa, gledanjem videa i skupljanjem novčanica.\n\nMoja životna želja bila je da rođendan proslavim na Kubi. Taj datum, početak decembra, savršeno se poklapao sa kubanskom zimom: bez uragana, bez kiše, sa prijatnom temperaturom koja u Beogradu ne postoji ni u junu.",
 
-"─────────────────────\nPoglavlje II\nPrva noć — taksisti, baka Marija i miris Havane\n─────────────────────\n\nNaravno, kao na svakom aerodromu na svetu, odmah su nas dočekali taksisti. Samo što su ovi kubanski nekako — posebno motivisani. Svaki ima taksi. Ali ima i stan koji izdaje. I brata koji ima još bolji stan. I prijatelja koji pravi najbolje cigare na Kubi. Sve to u roku od trideset sekundi.\n\nSrećom, znao sam osnovno pravilo — vožnja do centra ne bi trebalo da košta više od 25 dolara. Posle malo pregovaranja dobili smo tu cenu. Mala pobeda za prvi dan.",
+  "Kartu kupujemo krajem oktobra — 590 evra sa presedanjem u Parizu. Kod nas bismo rekli: skupo. Tamo ćemo shvatiti da je to bila najpovoljnija investicija u životu.\n\nOnog trenutka kada kliknete 'kupite kartu', putovanje prestane da bude ideja. Postane stvarno. I tada vas malo uhvati panika — ne ona loša, nego ona vrsta uzbuđenja koja se prerušava u paniku jer telo ne zna kako bi je drugačije nazvalo. Jer više nema nazad.",
 
-"Taksista, naravno, ima i predlog za smeštaj. Obilazimo dva mesta koja nam se ne sviđaju, a onda — treća sreća — nailazimo na baku Mariju.\n\nNjen stan se nalazi na Calle Habana, ulici koja seče staru Havanu poput naše Čika Ljubine. Smeštaj koji tamo nude zove se casa particular — doslovno: privatna kuća. Živite zajedno sa vlasnicima, vi u jednoj sobi, oni u drugoj. Vlasnici plaćaju porez državi — često i do devedeset posto prihoda.\n\nDogovaramo cenu od trideset dolara po noći.\n\nBaka Marija nas je dočekala kao da smo joj unuci koji su se vratili iz vojske. Odmah je ponudila kafu i čaj. Donela veliku zaledenu flašu vode.",
+  "─────────────────────\nPoglavlje I\nŠarl de Gol i jedanaest sati iznad okeana\n─────────────────────",
 
-"Na Kubi je flaširana voda skupa za lokalno stanovništvo, pa mnogi prokuvaju vodu pa je zamrznu — da bude bakteriološki ispravna. Problem je jedino što ta voda, i pored svih tih procesa, ima karakter. I miris. I ukus.\n\nPosle prvog gutljaja pogledali smo se i u isto vreme rekli:\n\n— Ajde ipak da nađemo prodavnicu.\n\nPrva noć u Havani. Nisam očekivao Las Vegas. Ali nisam ni očekivao ovako slabu uličnu rasvetu. Mrak koji podseća na restrikcije struje iz devedesetih, polumračne ulice, zgrade koje kao da čuvaju neku tajnu.\n\nI taj miris.",
+  "Šesti decembar. Dan polaska. Uzbuđenje je takvo da jedva može da stane u prtljag. Odlazimo ka aerodromu 'Nikola Tesla' sa onim nervoznim veseljem koje prati svaki odlazak u nepoznato.\n\nZa mene, ovo je bio prvi prekookeanski let — sve ranije iskustvo svodilo se na ATR, mali propelerski avion do Tivta, koji mi se uvek činio kao da pilot vozi autobus kroz oblake.",
 
-"Miris Havane — to je nešto što se ne može objasniti, samo doživeti. Nešto kao onaj stari šifonjer od orahovine kod babe na selu, pomešan sa vlagom, memlom i mirisom ulice oprane onom istom vodom sa karakterom. Starina i vlažnost i nešto sasvim posebno — što ćemo celog putovanja zvati jednostavno: miris Havane.\n\nU mraku, jedina svetla tačka je El Capitolio. Kupola visoka devedeset dva metra, prkosno sjajnija od svih okolnih zgrada. Nekadašnje sedište kubanskog parlamenta, građeno po uzoru na Belu kuću u Vašingtonu — samo četiri metra viša, kao tihi politički revanšizam koji traje decenijama.\n\nTe noći je puno lakše bilo naći flašu ruma nego flašu vode.",
+  "Pariz nas dočekuje onako kako Pariz jedino i može — grandiozno i indiferentno. Šarl de Gol aerodrom je grad za sebe: beskrajni hodnici, reke putnika sa svih strana sveta, table na svim jezicima. Dok čekamo presedanje, pronalazimo Sony PlayStation konzolu namenjenu putnicima — sitnica koja pretvara čekanje u fudbalski turnir.",
 
-"Na kraju smo pronašli vodu kroz mali prozor jedne kuće koji je služio kao improvizovana prodavnica. Naravno da su nas odrali. Ali umorni i iscrpljeni, nismo pitali za cenu.\n\nKupili smo dve flaše, vratili se u smeštaj i večerali ono što smo poneli iz Srbije.\n\nPlazma keks.\nSmoki.\nDva Balkanca na Karibima.\nGastronomski vrhunac.\n\nTe večeri smo zaspali gotovo momentalno. I dok sam tonuo u san, pomislio sam:\n\n— Dobroo… ovo bi mogla da bude jako dobra priča.\n\nAli nisam imao pojma koliko.",
+  "Sledi ukrcavanje. Jedanaest sati iznad Atlantika.\n\nU početku gledate filmove. Posle nekog vremena pokušavate da spavate. Posle toga gledate mapu leta svakih deset minuta da vidite da li ste bar malo bliže. Posle toga počnete da se pitate koliko to uopšte 10.000 kilometara izgleda kad ga prelete u vazduhu.",
 
-"─────────────────────\nPoglavlje III\nJutarnji sokovi i razočaranje u kafiću\n─────────────────────\n\nNovo jutro. Bogat doručak u trpezariji bake Marije — jaja, neka vrsta šunke, paradajz, ananas i, pre svega, sveže ceđeni sok od guajave.\n\nTaj sok. Ni pre ni posle nisam znao šta je guajava, ali taj ukus — voćan, aromatičan, nepoznat, savršen — pamtim kao jedan od najlepših prvih zalogaja u životu. Kubancima je to voće kao šljiva kod nas — raste svuda i niko ga ne slavi.\n\nPosle doručka: šorts, majica, sunčano decembarsko jutro i šetnja Havanom.",
+  "A onda kapetan kaže:\n\n— Poštovani putnici, uskoro sletamo u Havanu.\n\nTada shvatite da ste stvarno prešli okean. I da nema više tapeta na zidu.",
 
-"Ono što je noć skrivala, dan razotkriva. I to bez milosti. Zgrade koje su nekada bile veličanstvene sada izgledaju kao da su godinama čekale obnovu koja nikad nije stigla. Boje su izbledele ili sasvim otpale. Ograde na terasama se drže na silu. I ipak — sve to ima neku čudnu lepotu, onaj specifični šarm zapuštenog koji je nekad sjajio.\n\nHavana je kao jedna stara, umorna operska diva koja nije izgubila sav ponos, ali je odavno izgubila teret za lepe haljine.\n\nOdlučujemo da svratimo u Café El Escorial na Trgu Plaza Vieja. Naručujemo kafu.\n\nPola sata čekanja.\n\nU tom čekanju ne progovaramo ni reč. Da sam mogao, vratio bih se sutradan kući.",
+  "Sleteli smo u Havanu oko šest popodne po njihovom vremenu — Havana je šest sati iza Beograda, što znači da je moje telo mislilo da je ponoć, ali sunce je još uvek napolju imalo neke planove.\n\nPrva stvar koja te udari kada izađeš sa aerodroma je temperatura. Iz stvarne beogradske zime — one sive, mokre, u kojoj svi hodaju nagnuti napred — pravo na prijatnih 25 stepeni. Vazduh je bio gust, topao, blago slankast. Kao da ste otvorili vrata saune, samo lepše.",
 
-"I onda — ni od kuda — čovek koji seda za naš sto i na čistom maternjem jeziku kaže:\n\n— Momci, kako ste mi. Dobrodošli u Havanu.\n\nZaprepašćenje. Nismo razgovarali. Nije mogao da čuje odakle smo.\n\n— Ne čudite se. Prepoznajem lica sa našeg podneblja.\n\nTaj čovek — koga ću od tog trenutka zvati Brat Kubanski, i dan danas je tako memorisan u mom telefonu — promenio je sve. Seo je za naš sto i otvorio sasvim drugu priču o Havani. Čovek koji je pre deset godina potraži daleku zemlju, i koji je toliko zavoleo Kubu da se vraća dva puta godišnje po mesec dana.",
+  "U tom trenutku sam pomislio:\n\n— Ako je ovo njihova zima, ja bih mogao ovde ozbiljno da razmislim o preseljenju.",
 
-"Pošto je kafa postala puno prijatnija, iznosimo mu plan — da obiđemo celo ostrvo, po dva-tri dana po mestu.\n\n— Pogrešno!\n\nUzviknuo je. Toplo, ali odlučno.\n\n— Morate ostati u Havani minimum deset dana. Da osetite Havanu i da Havana oseti vas. Da je prihvatite i da ona prihvati vas.\n\nU tom trenutku nisam znao šta to znači. Tek kasnije mi je bilo jasno zašto je to istinito. I desilo se tačno tako.\n\n─────────────────────\nPoglavlje IV\nKabrioleti, Malecón i Antony sa balkona\n─────────────────────",
+  "─────────────────────\nPoglavlje II\nPrva noć — taksisti, baka Marija i miris Havane\n─────────────────────",
 
-"Brat Kubanski nas upoznaje sa još nekoliko naših sunarodnika i Havana dobija sasvim novi smisao. Nalazi nam i bolji smeštaj — za dvadeset dolara, na još boljoj lokaciji.\n\nZatim dolazi ono što sam priželjkivao: obilazak Havane u pravom stilu.\n\nKabriolet Ševrolet, godište 1952. Hrom sjaji pod decembarskim suncem, motor gunđa kao stari lav koji još uvek ima snage. Za četrdeset dolara dobijamo dva sata vožnje umesto jednog.\n\nHavana se deli na tri dela: Stara Havana sa kolonijalnom arhitekturom; Vedado, moderniji deo — nešto kao naš Novi Beograd; i Miramar, luksuzniji kvart uz more — naše Dedinje.",
+  "Naravno, kao na svakom aerodromu na svetu, odmah su nas dočekali taksisti. Samo što su ovi kubanski nekako — posebno motivisani. Svaki ima taksi. Ali ima i stan koji izdaje. I brata koji ima još bolji stan. I rođaka koji vodi restoran. I prijatelja koji pravi najbolje cigare na Kubi. Sve to u roku od trideset sekundi od kad ste izašli kroz vrata aerodroma.\n\nSrećom, znao sam osnovno pravilo — vožnja do centra ne bi trebalo da košta više od 25 dolara. Posle malo pregovaranja dobili smo tu cenu. Mala pobeda za prvi dan.",
 
-"Vozimo se uz šetalište Malecón — betonski nasip koji deli grad od mora, mesto susreta, razgovora i tihih posmatranja zalaska sunca.\n\nRučak u restoranu u koji turisti ne dolaze — a to je u Havani uvek siguran znak da će hrana biti odlična i jeftina. Crni pirinač, juka, pržene banane i riba Pargo. Uz pivo i limunadu, račun za četvoricu — četrdeset dolara. Bogatiji smo za jedno od najlepših ručkova u životu.\n\n✦\n\nPoslednje jutro kod bake Marije. Izašao sam na balkon da popušim jutarnju cigaretu. Havana se polako budila ispod mene.",
+  "Taksista, naravno, ima i predlog za smeštaj. Obilazimo dva mesta u starom delu grada koja nam se ne sviđaju, a onda — treća sreća — nailazimo na baku Mariju.\n\nNjen stan se nalazi na Calle Habana, ulici koja seče staru Havanu poput naše Čika Ljubine. Smeštaj koji tamo nude zove se casa particular — doslovno: privatna kuća. Živite zajedno sa vlasnicima, vi u jednoj sobi, oni u drugoj. Svaka casa ima tablu na ulazu i vlasnici plaćaju porez državi — često i do devedeset posto prihoda. Dogovaramo cenu od trideset dolara po noći.",
 
-"Sa balkona, neko mi je mahnuo i na španskom poželeo dobro jutro. Odgovarao sam jedino što sam umeo:\n\n— Buenos días.\n\nA on će meni, bez oklevanja, bez akcenta — na čistom srpskom:\n\n— Kako si brate?\n\nOstao sam da stojim sa cigaretom između prstiju, potpuno zanemen. Zvao se Antony. Prezivao se Vučić, vukao poreklo iz Crne Gore, a roditelje mu je Amerika progutala pre četrdesetak godina. Doputovao iz Argentine s drugarom od malena, planirao da ostane svega pet-sedam dana.\n\nPrijateljstva koja nastaju na tuđim balkonima, uz jutarnju cigaretu i Havanu koja se budi ispod vas, često su i najdugotrajnija.",
+  "Baka Marija nas je dočekala kao da smo joj unuci koji su se vratili iz vojske. Odmah je ponudila kafu i čaj. Donela veliku zaledenu flašu vode.\n\nNa Kubi je flaširana voda skupa za lokalno stanovništvo, pa mnogi prokuvaju vodu pa je zamrznu — da bude bakteriološki ispravna. Problem je jedino što ta voda, i pored svih tih procesa, ima karakter. I miris. I ukus.",
 
-"─────────────────────\nPoglavlje V\nHotel Nacional, Fabrica i Maria\n─────────────────────\n\nHotel Nacional. Fasada iz 1930-ih, palme ispred ulaza, pogled na Malecón i more iza njega. Simbol Havane.\n\nKoračam kroz hodnik i pokušavam da zamislim Franka Sinatru kako prolazi ovuda — cigara u uglu usta, kostim skrojen na meru. U bašti sedim na istu stolicu na kojoj je sedeo Winston Čerčil i naručujem kafu — istu onu vrstu koju je ovde pila Ava Gardner.\n\nU ovom hotelu je 1946. održan čuveni sastanak američke mafije — organizovao ga je Lucky Luciano. Taj skup je decenijama posle nadahnjivao pisce i reditelje — kubanski deo Kopoline Kume vukao je koren odavde.",
+  "Posle prvog gutljaja pogledali smo se i u isto vreme rekli:\n\n— Ajde ipak da nađemo prodavnicu.",
 
-"Brat Kubanski naručuje bend da zasvira njegovu omiljenu — Mal agueña Salerosa. Prava ljubavna pesma, retka na Kubi — jer većina nosi u sebi revoluciju, zastave, ideju. Ova nosi samo čoveka i ženu. Sviraju je sporo, kao da znaju da je vreme danas naše.\n\n✦\n\nTuk-tukom stižemo u Fabriku. Fabrica de Arte Cubano — napuštena fabrika ulja pretvorena u nešto što se teško opisuje jednom rečju: diskoteka, koncertna dvorana, umetnička galerija, bar i restoran — sve pod jednim krovom.\n\nTe prve noći upoznajem Mariu. Od te noći, mišljenje o Kubi mi se menja drastično. Za četrdeset osam sati sam — iz podruma stigao liftom na peti sprat.",
+  "Prva noć u Havani. Nisam očekivao Las Vegas. Ali nisam ni očekivao ovako slabu uličnu rasvetu. Mrak koji podseća na restrikcije struje iz devedesetih, polumračne ulice, zgrade koje kao da čuvaju neku tajnu. I taj miris.\n\nMiris Havane — to je nešto što se ne može objasniti, samo doživeti. Nešto kao onaj stari šifonjer od orahovine kod babe na selu, pun njenih stvari, pomešan sa vlagom, memlom i mirisom ulice oprane onom istom vodom sa karakterom. Starina i vlažnost i nešto sasvim posebno, neobjašnjivo — što ćemo celog putovanja zvati jednostavno: miris Havane.",
 
-"─────────────────────\nPoglavlje VI–VIII\nPlaža, sajam i Viñales\n─────────────────────\n\nPlayža Santa Maria. Beli pesak, palme koje se ljuljaju u blagom povetarcu, tirkizno more koje ne zna za decembar.\n\nTu, na plaži, počinjem dublje da razmišljam o paradoksu ove zemlje.\n\nDoktor zarađuje četrdeset dolara mesečno. Policajac trideset. A taksista za jednu vožnju uzme lekarovu mesečnu platu. Korupcija je svuda, sitne prevare normalne — a ona ustrajnost kojom vas vuku za rukav na ulici nije bahatost. To je borba za preživljavanje.\n\nTo putovanje mi je puno toga promenilo. Ono osnovno — da složim u glavi šta mi je zaista važno u životu.",
+  "U mraku, jedina svetla tačka je El Capitolio. Kupola visoka devedeset dva metra, blago osvetljena sa svih strana, prkosno sjajnija od svih okolnih zgrada. Nekadašnje sedište kubanskog parlamenta, građeno po uzoru na Belu kuću u Vašingtonu — samo četiri metra viša i impozantnija, kao tihi politički revanšizam koji traje decenijama.\n\nTe noći je puno lakše bilo naći flašu ruma nego flašu vode. Na kraju smo je pronašli kroz mali prozor jedne kuće koji je služio kao improvizovana prodavnica. Naravno da su nas odrali. Ali umorni i iscrpljeni, nismo pitali za cenu.",
 
-"Viñales. Dolina usred brdovitog terena, dva i po sata vožnje od Havane. Zeleni Ford Fairlane, godište 1955, kreće prema dolini. Pre nego što krenemo, Miguel mora da sipa gorivo — ali ne na pumpi. Sa trećeg sprata spuštaju se dve kante benzina na kanap.\n\nKusturica bi bio zadovoljan.\n\nVidikovac Mirador Los Jazmines — panoramski pogled na dolinu i karakteristične mogotes: zaobljena brda koja kao džinovski mekani lonci stoje posuti po ravnici. Fotografije ne uspevaju da prenesu ovu sliku. Neke stvari ostaju samo u sećanju.\n\nFarma duvana — ceo proces od sadnje do ručnog savijanja cigara. Svaki uzgajivač 90% svog prinosa daje državi.",
+  "Kupili smo dve flaše, vratili se u smeštaj i večerali ono što smo poneli iz Srbije.\n\nPlazma keks. Smoki. Dva Balkanca na Karibima. Gastronomski vrhunac.\n\nTe večeri smo zaspali gotovo momentalno. I dok sam tonuo u san pomislio sam:\n\n— Dobroo… ovo bi mogla da bude jako dobra priča.\n\nAli nisam imao pojma koliko.",
 
-"─────────────────────\nPoglavlje IX\nTrinidad — grad koji je stao u vremenu\n─────────────────────\n\nPosle deset punih, gusto živelih dana u Havani — dolazi vreme da krenemo.\n\nTrinidad nije običan kubanski grad. To je mesto koje je UNESCO proglasio za svetsku baštinu — kolonijalni dragulj sa kaldrmisanim ulicama, pastelnim fasadama i crkvenim tornjevima. Osnovan još 1514. godine, izgleda kao da čitav vek nekadašnje imperijalne slave nije otišao nigde, samo se malo zaprašio.\n\nPlayža Ancon. Beli pesak koji prži tabane. Tirkizna voda boje koje ne postoji na paleti.\n\nTapeta s kafića na Vidikovcu. Konačno, uživo.",
+  "─────────────────────\nPoglavlje III\nJutarnji sokovi i razočaranje u kafiću\n─────────────────────",
 
-"─────────────────────\nPoglavlje X–XI\nŠuma, vodopad i šest sati sedla\n─────────────────────\n\nCelodnevni izlet u nacionalni park. Vojni kamion, prefarban za turiste — ali ispod farbe još uvek se nazire maskirna boja. Istorija nije daleko.\n\nŠetnja kroz brdovitu šumu, po vlazi i vrućini koje su u kombinaciji teže od samog uspona.\n\nI onda ga čujemo pre nego što ga vidimo.\n\nVodopad. Voda pada s planine dugim belim mlazom, raspršuje se u sitnu kišu. Stena oko njega zelena od mahovina. Vazduh odjednom čist i hladan. Skačem u vodu bez razmišljanja. To rashlađenje — jedno od najlepših osećanja tog putovanja.",
+  "Novo jutro. Bogat doručak u trpezariji bake Marije — jaja, neka vrsta šunke, paradajz, ananas i, pre svega, sveže ceđeni sok od guajave.\n\nTaj sok. Ni pre ni posle nisam znao šta je guajava, ali taj ukus — voćan, aromatičan, nepoznat, savršen — pamtim kao jedan od najlepših prvih zalogaja u životu. Kao što sve čarolije vremenom gube sjaj, i guajava je tu podlegla sudbini ponavljanja: na svakom ćošku džem, čokoladice, pite od guajave. Kubancima je to voće kao šljiva kod nas — raste svuda i niko ga ne slavi.",
 
-"Jahanje. Moj konj se zove Negrito — crni, mali, čvrstih nogu — i sluša svaku komandu bez pregovora. Jahali smo seoskim putevima, uzbrdo i nizbrdo, pa čak i prelaskom reke u gaz, gde je voda dopirala do konjskih kolena, a ja sam jednom rukom držao uzde, a drugom telefon visoko nad glavom.\n\nKonačan povratak — posle šest sati u sedlu. A zadnjica — neću da lažem — crvena i užarena kao kod majmuna babuna.\n\nAli ne žalim ni sekunde. Postoje boli koje su zapravo priče koje nećeš zaboraviti.\n\n─────────────────────\nPoglavlje XII\nBeatriz, tetka i slika koja je čekala\n─────────────────────",
+  "Posle doručka, napokon: šorts, majica, sunčano decembarsko jutro i šetnja Havanom.\n\nOno što je noć skrivala, dan razotkriva. I to bez milosti. Zgrade koje su nekada bile veličanstvene sada izgledaju kao da su godinama čekale neku obnovu koja nikad nije stigla. Boje su izbledele ili sasvim otpale. Ograde na terasama i stepenicama se drže na silu. Rubnjaci nedostaju. I ipak — sve to ima neku čudnu lepotu, onaj specifični šarm zapuštenog koji je nekad sjajio.\n\nRekao bih da je Havana kao jedna stara, umorna operska diva koja nije izgubila sav ponos, ali je odavno izgubila teret za lepe haljine.",
 
-"U parku Trinidada, na klupi, mahnula mi je jedna devojka. Prešao sam — kao da sam čekao taj poziv celo veče. Zove se Beatriz.\n\nUz mnogo gestikulacije i osmeh koji ne treba prevoditi, objašnjava da sam joj simpatičan i da bi volela da izađemo sutradan. I onda, ni sekunde posle, pojavljuje se i tetka.\n\nNa Kubi, da bi mlada žena mogla slobodno da boravi van svog mesta, neko mora da za nju garantuje. Tetka je bila i čuvar i oslonac u isti mah — i ta uloga joj je sedela prirodno.\n\nTe noći, Beatriz mi je ispričala svoju priču — o selu, o teškom odrastanju, o životu koji se meri kilogramima šećerne trske. Možda je svačija priča istinita.",
+  "Odlučujemo da svratimo u Café El Escorial, na preporučenom Trgu Plaza Vieja. Kafić je u ugaonoj zgradi, ima visoke prozore i onaj specifičan miris pečene kafe koji hvata čak i kada prođete ispred.\n\nNaručujemo kafu.\n\nPola sata čekanja.\n\nU tom čekanju, ne progovaramo ni reč. U mojoj glavi se vrti sve što sam video i ne mogu da složim slike u nešto što bi imalo smisla. To nije bila Kuba o kojoj sam čitao. Nije bila zemlja mojih maštarija. Da sam mogao, vratio bih se sutradan kući.",
 
-"U jednoj maloj galeriji naletim na sliku: Kubanka sa šeširom, tompus u uglu usta, pogled koji ne traži ništa i sve govori. Cena — sedamdeset dolara.\n\nPregovori. Autor ne popušta. Odustajem.\n\nNa Feriji u Havani — ista ta slika, ista cena. Moj inat i dvadeset dolara na kraju pobede.\n\nNekad stvari dođu baš onda kad ih ne očekuješ.\n\n─────────────────────\nEpilog\nAerodrom, januar, Beograd\n─────────────────────",
+  "I onda — ni od kuda — čovek koji seda za naš sto i na čistom maternjem jeziku kaže:\n\n— Momci, kako ste mi. Dobrodošli u Havanu.\n\nZaprepašćenje. Nismo razgovarali. Nije mogao da čuje odakle smo. A ipak:\n\n— Ne čudite se. Prepoznajem lica sa našeg podneblja.",
 
-"Aerodrom Jose Martí. Jutro, pečat u pasoš i red koji se polako pomera prema izlazu. Prtljag teži više nego kad smo dolazili — slika, cigare, giljotina, magneti. I nešto što nema težinu, ali zauzima više mesta od svega ostalog.\n\nTri nedelje. Petnaest dana u Havani, šest u Trinidadu, jedna jahana reka i jedno neotvoreno more, jedna noć koja je trajala do svitanja, jedna slika kupljena iz inata. Jedan Brat Kubanski koji je promenio celo putovanje. Jedan Antony sa balkona. Jedna Beatriz s tetkom.",
+  "Taj čovek — koga ću od tog trenutka zvati Brat Kubanski, i dan danas je tako memorisan u mom telefonu — promenio je sve. Seo je za naš sto i otvorio sasvim drugu priču o Havani.\n\nČovek koji je pre deset godina morao da potraži daleku zemlju da bi pobegao od nekih problema kod kuće. I koji je toliko zavoleo Kubu da se, i pošto su se problemi rešili, vraća dva puta godišnje po mesec dana. Zna Havanu u mali prst.",
 
-"Kuba te ne pita kakav si bio pre nego što si došao. Ona te uzme onakvog kakav jesi, malo te protrese, malo očisti — i vrati te drukčijeg. Ono što si mislio da je važno, izgleda manje važno.\n\nLekar tamo zarađuje četrdeset dolara mesečno. Paradoks koji boli — ali tamo ga žive svaki dan, sa onim kubanskim sleganjem ramena koje nije ravnodušnost nego neka starija mudrost: ako ne možeš da promeniš sistem, barem možeš da se nasmeješ pre nego što kreneš na posao.\n\nSlika sada visi na zidu spavaće sobe. Kubanka s tompusom, pogled koji ne traži ništa. Svako jutro me pogleda pre nego što pogledam u telefon.\n\nTo je jedina kubanska lekcija koja mi neće izbledeti.\n\n✦\n\nKubo — vratiću se."
+  "Pošto je kafa postala puno prijatnija, iznosimo mu plan koji smo mesecima sastavljali — da obiđemo celo ostrvo, po dva-tri dana po mestu.\n\n— Pogrešno!\n\nUzviknuo je. Toplo, ali odlučno.\n\n— Morate ostati u Havani minimum deset dana. Da osetite Havanu i da Havana oseti vas. Da je prihvatite i da ona prihvati vas.\n\nU tom trenutku nisam znao šta to znači. Tek kasnije mi je bilo jasno zašto je to istinito. I desilo se tačno tako.",
+
+  "─────────────────────\nPoglavlje IV\nNovi prijatelji, stari kabrioleti i Havana iz ptičije perspektive\n─────────────────────",
+
+  "Brat Kubanski nas upoznaje sa još nekoliko naših sunarodnika i Havana dobija sasvim novi smisao. Nalazi nam i bolji smeštaj — kod svog prijatelja, za dvadeset dolara, na još boljoj lokaciji. Baki Mariji plaćamo dogovorene tri noći i dajemo kaparu za novi stan.\n\nSledećeg jutra nas vodi u Hotel Iberostar Havana Central — jer svaki hotel ima pristupnu tačku za internet. Kuba i internet su skoro mitska kombinacija: pokrivenost je mala, a pristup se kupuje putem kartica 'greb-greb' koje važe jedan, dva ili tri sata. Brzina? Kao dial-up iz devedesetih, onaj koji se čuo kroz fiksni telefon.",
+
+  "Kuba spada u jednu od najsigurnijih zemalja sveta — zbog režima koji vlada tamo dugo. Havana je grad od dva miliona stanovnika, a u žargonu tamo kažu da milion radi za policiju, vojsku, tajnu službu i slične institucije. Možda preterano, ali jasno šta žele da kažu.\n\nS obzirom da Kuba veliki deo budžeta puni od turista, postarali su se da je turista tamo Bog. Ima više prava od bilo kog građanina Kube. Žalosno, ali je tako.",
+
+  "Zatim dolazi ono što sam priželjkivao: obilazak Havane u pravom stilu.\n\nKabriolet Ševrolet, godište 1952. Hrom sjaji pod decembarskim suncem, motor gunđa kao stari lav koji još uvek ima snage. Pregovorom Brata Kubanskog, za četrdeset dolara dobijamo dva sata vožnje umesto jednog — i krećemo da upoznajemo grad koji nigde ne žuri.",
+
+  "Havana se deli na tri dela: Stara Havana sa kolonijalnom arhitekturom iz španskog doba; Vedado, moderniji deo sa širim bulevarima, hotelima i neboderima — nešto kao naš Novi Beograd; i Miramar, luksuzniji kvart gde su smeštene ambasade i vile imućnijih Kubanaca, tik uz more — naše Dedinje ili Senjak.\n\nObilazimo autom Nacionalni muzej, Operu, Pozorište, Hotel Nacional, vozamo se uz šetalište Malecón — betonski nasip koji deli grad od mora, mesto susreta, razgovora i tihih posmatranja zalaska sunca. Kockice u glavi se polako slažu.",
+
+  "Ručak nas čeka u restoranu u koji turisti ne dolaze — a to je u Havani uvek siguran znak da će hrana biti odlična i jeftina. Crni pirinač, juka, salate, pržene banane i riba Pargo, poznatija kao crveni lubin. Uz pivo i limunadu, račun za četvoricu — četrdeset dolara. Bogatiji smo za jedno od najlepših ručkova u životu.",
+
+  "─────────────────────\nAntony sa balkona\n─────────────────────",
+
+  "Poslednje jutro kod bake Marije. Probudio sam se pre alarma — onako kako se budiš kad znaš da nećeš još dugo biti na nekom mestu. Kroz žaluzine je prožimala ona meka, tropska svetlost što nema ništa zajedničko sa beogradskim decembrom.\n\nIzašao sam na balkon da popušim jutarnju cigaretu. Havana se polako budila ispod mene — ulica još polumrtva, negde daleko lavež nekog psa, miris kafe koji se probijao kroz prozore susednih kuća.",
+
+  "Sa balkona našeg sprata, neko mi je mahnuo i na španskom poželeo dobro jutro. Odgovarao sam jedino što sam umeo:\n\n— Buenos días.\n\nA on će meni, bez oklevanja, bez akcenta, bez ikakvog upozorenja — na čistom srpskom:\n\n— Kako si brate?\n\nOstao sam da stojim sa cigaretom između prstiju, potpuno zanemen.",
+
+  "Zvao se Antony. Prezivao se Vučić, vukao poreklo iz Bara, iz Crne Gore. Roditelje mu je Amerika progutala pre četrdesetak godina. Govori srpski sa nekim čudnim zaostatkom — kao princ na pola puta između Beograda i Njujorka. Doputovao iz Argentine s drugarom od malena, planirao da ostane svega pet do sedam dana. Baka Marija mu je pomenula da su gore smešteni neki Balkanci.\n\nPrijateljstva se šire nekako neočekivano — a ona koja nastaju na tuđim balkonima, uz jutarnju cigaretu i Havanu koja se budi ispod vas, često su i najdugotrajnija.",
+
+  "─────────────────────\nPoglavlje V\nNoć u Fabrici i jedna devojka po imenu Maria\n─────────────────────",
+
+  "Vraćamo se u smeštaj da malo odmorimo i planiramo da ispitamo noćni život Havane.\n\nRum smo kupili za tri dolara u lokalnoj prodavnici. Prave ga od šećerne trske koja raste na svakom ćošku ostrva, pa je i jeftin i dobar. Otvaramo flašu na terasi sa iščekivanjem — i odmah razočaranje. Nema tu onog 'mornarskog' ukusa. Ovo je jača stvar — negde između rakije i polustarog konjaka, neočekivanog karaktera. Ali Kuba nije rum iz flaše. Kuba je rum u koktelima, a kubanski kokteli su drugačija priča.",
+
+  "Tuk-tukom stižemo u Fabriku. Fabrica de Arte Cubano — napuštena fabrika ulja pretvorena u nešto što se teško opisuje jednom rečju. Diskoteka, koncertna dvorana, umetnička galerija, bar i restoran — sve u jednom ogromnom prostoru. Na ulazu dobijate karticu na kojoj lupaju pečate za svako piće; pri izlasku se plaća zbir.\n\nDolaze i turisti i domaći. Muzika je drugačija svake večeri. Preoduševljeni smo toliko da naredne tri večeri odlazimo bez razmišljanja.",
+
+  "Te prve noći, pred kraj žurke, upoznajem Mariu — prelepu Kubanku čiji osmeh pleni i toj noći daje posebnu čar.\n\nOd te noći, mišljenje o Kubi mi se menja drastično. Iz onog tihog razočaranja i misli o povratku kući — za četrdeset osam sati sam, kako bi se reklo, iz podruma stigao liftom na peti sprat.",
+
+  "─────────────────────\nPoglavlje VI\nPlayža Santa Maria i jedna lekcija o vrednosti\n─────────────────────",
+
+  "Novo jutro donosi novu Havanu. Prihvatam je polako, a ona prihvata mene sve brže.\n\nPlayža Santa Maria udaljena je dvadesetak kilometara od centra. Beli pesak, palme koje se ljuljaju u blagom povetarcu, tirkizno more koje ne zna za decembar. Kupamo se, ispijamo koktele, probijamo sveži kokos. Muzičari prolaze i sviraju za bakšiš.",
+
+  "Tu, na plaži, prvi put počinjem dublje da razmišljam o paradoksu ove zemlje. Doktor zarađuje četrdeset dolara mesečno. Policajac trideset. A taksista za jednu vožnju od sat-dva uzme lekarovu mesečnu platu.\n\nIz tog razloga je korupcija svuda, sitne prevare normalne, a ona ustrajnost kojom vas vuku za rukav na ulici — nije bahatost, to je borba za preživljavanje.\n\nTo putovanje mi je puno toga promenilo. Ono osnovno: da složim u glavi šta mi je zaista važno u životu.",
+
+  "─────────────────────\nPoglavlje VII\nViñales — dolina duvana i zeleni Ford iz 1955.\n─────────────────────",
+
+  "Viñales. Dolina usred brdovitog terena, dva i po sata vožnje od Havane, gde se uzgaja duvan od kojeg nastaje kubanska cigara.\n\nPre nego što krenemo prema dolini, vodič Miguel mora da sipa gorivo — ali ne na pumpi. Odlazimo u neki deo Havane koji mi je tada izgledao kao ratna zona: ogolele fasade, pukotine, zgrade koje kao da stoje snagom inercije. Sa trećeg sprata spuštaju se dve kante benzina na kanap. Kusturica bi bio zadovoljan.",
+
+  "Zeleni Ford Fairlane, godište 1955, napunjen gorivom, kreće prema dolini.\n\nPut je sam po sebi prizor: prolazimo kroz sela čije su kućice jarkih pastelnih boja, svaka sa tremom ili malom terasom ispred i stolicom za ljuljanje. Kao u kaubojskim filmovima iz detinjstva.\n\nDolazimo na vidikovac Mirador Los Jazmines — panoramski pogled na dolinu Viñales i karakteristične formacije zvane mogotes: zaobljena brda koja kao džinovski mekani lonci stoje posuti po ravnici. Fotografije ne uspevaju da prenesu ovu sliku. Neke stvari ostaju samo u sećanju.",
+
+  "Farma duvana. Domaćin nas vodi kroz ceo proces — od sadnje do ručnog savijanja cigara. Postoje tri vrste: Cohiba od najvišeg, najboljeg lista; Montecristo od centralnog lista; i Romeo y Julieta, od najnižeg lista, najblaži.\n\nSvaki manji uzgajivač 90% svog prinosa daje državi, a ostatak zadržava za sebe. Zbog visoke cene, skoro isti procenat Kubanaca nikad nije probao cigaretu. Suludo!\n\nCueva del Indio — pećina kroz koju se vozi čamcem. Hladan vazduh unutra kao lek posle vruće dolinske šetnje. Voda mirna i tamna, stalagmiti koji s plafona vise kao zaleđene suze.",
+
+  "─────────────────────\nPoglavlje VIII\nTvrđave i pozajmljenih sto dolara\n─────────────────────",
+
+  "Uz jutarnju kafu, braća nam predlažu izlet koji nisam očekivao: tvrđave na ostrvčetu s druge strane luke.\n\nSpuštamo se do luke. Trajekt — mali, iznuren brod koji izgleda kao da je preživeo revoluciju i još par oluja — prevozi isključivo lokalno stanovništvo. Karta se plaća u kubanskim pezosima, onim pravim, narodnim. Cena karte — otprilike kao dvadeset dinara.",
+
+  "Na drugoj obali nas dočekuje veliki uspon. Castillo de los Tres Reyes del Morro: tvrđava koja čuva ulaz u havansku luku još od šesnaestog veka.\n\nSa tog mesta se pruža pogled na celu Havanu odjednom — kao razglednica koja je previše lepa da bude stvarna.\n\nSvako veče u devet, vojnici oblače španske uniforme iz osamnaestog veka i top ispaljuje hitac koji odzvanja lukom i starim gradom. Bio je to nekad signal da se zatvara ulaz u luku od pirata. Danas je to tradicija. Ali zvuk je ostao isti.",
+
+  "Uveče se ponovo nalazimo s Antonyjem. Problem je praktičan: nema gotovine, a kao američki državljanin ne može da primi novac ni putem bankovne kartice. Blokiran.\n\nOdlučujemo da mu pozajmimo sto dolara. Iz skromnog budžeta koji smo počeli pažljivo da čuvamo. Logika je prosta i balkanska: ako ima obraza, vratiće. Ako nema — naučili smo nešto o ljudima.\n\nAntony se našao u čudu. Drugar s kojim je doputovao nije ponudio ništa. A dva Balkanca koje je upoznao pre svega nekoliko dana pružila su mu ruku bez oklevanja. Postali smo pravi prijatelji.",
+
+  "─────────────────────\nPoglavlje IX\nTrinidad — grad koji je stao u vremenu\n─────────────────────",
+
+  "Posle deset punih, gusto živelih dana u Havani — dolazi vreme da krenemo. Sledeća tačka: Trinidad, grad tri stotine i petnaest kilometara prema jugu.\n\nTrinidad nije običan kubanski grad. To je mesto koje je UNESCO proglasio za svetsku baštinu — kolonijalni dragulj sa kaldrmisanim ulicama, pastelnim fasadama i crkvenim tornjevima koji dominiraju siluetom. Osnovan još 1514. godine, izgledao je kao da čitav vek nekadašnje imperijalne slave nije otišao nigde, samo se malo zaprašio.",
+
+  "Stižemo u predvečerje i pronalazimo smeštaj — žuta kuća s ogromnom terasom na krovu. Porodična atmosfera: muž, žena, deca, baba — svi tu, svi prisutni.\n\nSutrašnje jutro donosi ono zbog čega smo i krenuli: prave Karibe. Plaža Ancon — beli pesak koji prži tabane, tirkizna voda boje koje ne postoji na paleti, palme u savršenom redosledu.\n\nTapeta s kafića na Vidikovcu. Konačno, uživo.\n\nU baru naručujemo Piña Coladu — prava stvar, na pravom mestu.",
+
+  "─────────────────────\nPoglavlje X\nDisco Ayala i pokretna picerija\n─────────────────────",
+
+  "Noćni život Trinidada počinje na centralnom trgu. Svako veče, bez oglasa i bez najave, tu se skupi pola grada: igrači, svirači, deca, stariji, turisti koji ne znaju kuda da gledaju jer je svuda nešto vredno gledanja. Folklor koji nije scenska postavka nego obična večerašnja navika.\n\nKad se program na trgu privede kraju, cela gomila kreće u istom pravcu. Sledeća destinacija: Disco Ayala. Diskoteka u pravoj prirodnoj pećini ispod brda.",
+
+  "Unutra: stalaktiti koji vise s kamenog plafona, laseri koji se odbijaju od mokrog kamena, muzika koja odjekuje drukčije nego igde. Temperatura unutra je nekoliko stepeni niža. Posle vreline i dosta koktela, taj hladni vazduh udari kao efekat.\n\nKuća ne može da se nađe. Sve ulice su iste — šarene, pastelne, kaldrmisane. Lutamo. Grad koji je danju bio savršen lavirint, noću je još doslednije lavirint.\n\nUsput nailazimo na pokretnu piceriju. Metalno bure na kolicima, loži se na drva. Neko sklepano, genijalno, balkanski preduzetničko rešenje. Nađosmo Bucka usred Trinidada.",
+
+  "─────────────────────\nPoglavlje XI\nVojni kamion, šuma i vodopad\n─────────────────────",
+
+  "Celodnevni izlet u nacionalni park. Prevoz kasni. Kuba ne počinje na vreme — to je do sada utvrđena činjenica. Posle pola sata čekanja, kraj parka, zatvara vojni kamion. Prefarban za turiste, ali ispod te farbe još uvek se nazire ona vojnička maskirna boja. Istorija nije daleko.\n\nKrećemo u brda. Šetnja kroz brdovitu šumu, po vlazi i vrućini koje su u kombinaciji teže od samog uspona. Šuma je gusta, neprozirna, glasna od ptica i insekata.",
+
+  "I onda ga čujemo pre nego što ga vidimo. Vodopad. Voda ne pada sa neke litice — ovde ona pada s planine, dugim, belim mlazom koji udara u bazen ispod i raspršuje se u sitnu kišu. Stena oko njega zelena od mahovina. Vazduh odjednom čist i hladan. Skačem u vodu bez razmišljanja, koliko god bila hladna.\n\nTo rashlađenje — jedno od najlepših osećanja tog putovanja.",
+
+  "─────────────────────\nPoglavlje XII\nNegrito i šest sati sedla\n─────────────────────",
+
+  "Jahanje. Negde postoji fotografija na kojoj imam možda četiri godine i ujak me drži na konju. Toga se ne sećam. Klinkački, teorijski — jahao sam. Praktično — nikad.\n\nDolazi kubanski kauboj — veliki šešir, kožne čizme, tri konja koja stoje mirno kao da su od bronze. Obuka počinje i završava za nekih pet minuta. Uzde levo, ideš levo. Uzde desno, ideš desno. Uzde ka sebi, staješ. Kao džojstik, samo živ i težak tristo kilograma.",
+
+  "Moj konj se zove Negrito — crni, mali, čvrstih nogu — i sluša svaku komandu bez pregovora, bez oklevanja. Od prvog trenutka sam mu verovao. Postoji nešto u tome kad životinja prihvati tebe i ti prihvatiš nju: nečujno dogovaranje bez reči.\n\nJahali smo nekom zacrtanom putanjom — seoskim putevima, uzbrdo i nizbrdo, pa čak i prelaskom reke u gaz, gde je voda dopirala do konjskih kolena i gde sam jednom rukom držao uzde a drugom telefon visoko nad glavom.",
+
+  "Konačan povratak — posle šest sati u sedlu. Jedva sam čekao tuš. A zadnjica — neću da lažem — crvena i užarena od sedla, kao kod majmuna babuna. Ali ne žalim ni sekunde. Postoje boli koje su zapravo priče koje nećeš zaboraviti.\n\nUveče, kao po navici, ritam Trinidada: park, pivo, internet. Ali ovog puta nisam gledao u telefon. Seo sam na klupu malo dalje od signala, zapalio Cohibu, ispijao hladno pivo i gledao u ništa posebno — u nebo koje se gasilo iznad kaldrme, u prolaznike.",
+
+  "─────────────────────\nPoglavlje XIII\nBeatriz i tetka\n─────────────────────",
+
+  "Posle nekoliko minuta, devojka mi je mahnula da im se pridružim. Prešao sam na drugu klupu — kao da sam čekao taj poziv celo veče. Offline prevodilac već otvoren. Zove se Beatriz. Uz mnogo gestikulacije i osmeh koji ne treba prevoditi, objašnjava da sam joj simpatičan i da bi volela da izađemo sutradan.\n\nI onda, ni sekunde posle, pojavljuje se i tetka.",
+
+  "Na Kubi, da bi mlada žena mogla slobodno da boravi van svog mesta, neko mora da za nju garantuje — i ako nešto krene naopako, odgovornost pada na domaćina. Tetka je, dakle, bila i čuvar i oslonac u isti mah, i ta uloga joj je sedela prirodno.\n\nŠetali smo, razgovarali offline prevodom, smejali se vremenskim rasponima između rečenica. Tetka nas je dopratila do kuće i na brzinskom španskom se obratila Beatriz i otišla. Ton je bio jasan: budi pametna, i vidi da si na vreme kući.",
+
+  "Na terasi kuće te noći napravio sam koktel od onog istog ruma koji smo nosili još iz Havane.\n\nOna mi je ispričala svoju priču — o selu, o teškom odrastanju, o životu koji se meri kilogramima šećerne trske i kilometrima bez perspektive. Svaka devojka na Kubi, u svakom razgovoru, ima svoju tešku priču. Možda je svačija istinita. Možda je život tamo takav da ni laž više nije potrebna — jer sama stvarnost već zvuči neverovatno.",
+
+  "U jednoj galeriji naletim na sliku: Kubanka sa šeširom, tompus u uglu usta, pogled koji ne traži ništa i nešto govori sve. Nema na svetu fotografije koja bolje objašnjava Kubu od te jedne slike. Cena — sedamdeset dolara.\n\nPočinju pregovori. Vlasnik galerije poziva i samog autora na razgovor — i taj čovek dolazi, seda, gleda u mene, i neće ni da čuje. Odustajem.",
+
+  "I u glavi, za ceo put nazad, samo jedna misao: glupane, na svakakve si gluposti bacio pare u životu, a ta slika — Kubanke s tompusom, pogled koji ne traži ništa — bila je idealna da visi na zidu. Kajanje tokom celog puta. Ali nema nazad. To je pravilo putovanja: ono što ostaviš tamo, ostane zauvek tamo.\n\nNa Feriji u Havani — ista ta slika. Sedamdeset dolara, ista cena. Pristaje na četrdeset, ali meni moj inat ne da — nudim dvadeset. Neće ni da čuje. Odlazim. Šetam se u blizini, perifernim vidom gledam i čekam. Zna on. Naravno da me zove. Pristaje.\n\nNekad stvari dođu baš onda kad ih ne očekuješ.",
+
+  "─────────────────────\nEpilog\nAerodrom, januar, Beograd\n─────────────────────",
+
+  "Aerodrom Jose Martí. Jutro, pečat u pasoš i red koji se polako pomera prema izlazu. Prtljag teži više nego kad smo dolazili — slika, cigare, giljotina, magneti. I nešto što nema težinu ali zauzima više mesta od svega ostalog.\n\nTri nedelje. Petnaest dana u Havani, šest u Trinidadu, jedna jahana reka i jedno neotvoreno more, jedna noć koja je trajala do svitanja, jedna slika kupljena iz inata i jedna ostavljena u galeriji. Jedan Brat Kubanski koji je promenio celo putovanje. Jedan Antony sa balkona. Jedna Beatriz s tetkom. Jedan Mirko koji švercuje cigare i zna gde se kuca na prozor u četiri ujutru.",
+
+  "Kuba te ne pita kakav si bio pre nego što si došao. Ona te uzme onakvog kakav jesi, malo te protrese, malo očisti — i vrati te drukčijeg. Ne dramatično, ne najedanput. Samo malo jasnije. Ono što si mislio da je važno, izgleda manje važno. Ono što si gurao u drugi plan, nekako izbiće na vrh.",
+
+  "Lekar tamo zarađuje četrdeset dolara mesečno. Taksista za jednu vožnju uzme više od toga. Paradoks koji boli — ali tamo ga žive svaki dan, bez naricanja, sa onim kubanskim sleganjem ramena koje nije ravnodušnost nego neka starija mudrost: ako ne možeš da promeniš sistem, barem možeš da se nasmeješ pre nego što kreneš na posao.\n\nNaučiš da sporost nije lenjost i da se bogatstvo ne meri u nekretninama.",
+
+  "Slika sada visi na zidu spavaće sobe. Kubanka s tompusom, pogled koji ne traži ništa. Svako jutro me pogleda pre nego što pogledam u telefon.\n\nTo je jedina kubanska lekcija koja mi neće izbledeti: da postoje mesta gde život nije udoban, ali je živ — potpuno, glasno, do zore, sa rumom u ruci i muzikom koja dolazi ni od kud.\n\nBeograd me dočekao sivim decembrom. Stajao sam na aerodromu s prtljagom punim cigara i jednom rečenicom u glavi koja nije htela da ode.\n\n✦\n\nKubo — vratiću se."
 ];
 
   var KUBA_IMGS = [
@@ -1655,6 +1665,10 @@
     var ai = sl.findIndex(function(s) { return s.classList.contains('active'); });
     if(ai >= 0 && ai + 1 < sl.length) sl[ai + 1].classList.add('right-visible');
   })();
+  var sl=Array.from(document.querySelectorAll('#kuba-pages .book-page-slide'));
+  sl.forEach(function(s){s.classList.remove('right-visible');});
+  var ai=sl.findIndex(function(s){return s.classList.contains('active');});
+  if(ai>=0&&ai+1<sl.length)sl[ai+1].classList.add('right-visible');
 }
 
   function kubaPrev() { kubaShowPage(-1); }
