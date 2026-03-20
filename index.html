@@ -1107,7 +1107,11 @@
   }
   </style>
 <style id="kuba-book-css">
-@media (min-width: 768px) {
+/* === CROSS-BROWSER: Chrome, Firefox, Safari, Opera, Edge, iPhone === */
+* { -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* === DESKTOP: otvorena knjiga, dve stranice === */
+@media screen and (min-width: 768px) {
   #page-kuba .dest-body {
     max-width: 1260px;
     width: 97%;
@@ -1116,7 +1120,9 @@
   .book-reader {
     background: #182035;
     border: 1px solid #c8a96e;
+    -webkit-border-radius: 6px;
     border-radius: 6px;
+    -webkit-box-shadow: -12px 14px 60px rgba(0,0,0,.8), 12px 14px 60px rgba(0,0,0,.8);
     box-shadow: -12px 14px 60px rgba(0,0,0,.8), 12px 14px 60px rgba(0,0,0,.8);
     position: relative;
     overflow: hidden;
@@ -1127,6 +1133,7 @@
     left: calc(50% - 1px);
     top: 0; bottom: 0;
     width: 2px;
+    background: -webkit-linear-gradient(top, rgba(106,73,32,.5), #c8a96e 25%, #ead48a 50%, #c8a96e 75%, rgba(106,73,32,.5));
     background: linear-gradient(180deg, rgba(106,73,32,.5), #c8a96e 25%, #ead48a 50%, #c8a96e 75%, rgba(106,73,32,.5));
     z-index: 10;
     pointer-events: none;
@@ -1134,7 +1141,10 @@
   .book-reader::after {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background:
+      -webkit-linear-gradient(left, rgba(0,0,0,.12) 0%, transparent 6%),
+      -webkit-linear-gradient(right, rgba(0,0,0,.12) 0%, transparent 6%);
     background:
       linear-gradient(to right, rgba(0,0,0,.12) 0%, transparent 6%),
       linear-gradient(to left, rgba(0,0,0,.12) 0%, transparent 6%);
@@ -1142,14 +1152,24 @@
     z-index: 1;
   }
   .book-pages {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex !important;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row !important;
-    align-items: stretch !important;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
     overflow: hidden;
     position: relative;
+    min-height: 800px;
   }
   .book-page-slide {
     display: none !important;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     width: 50%;
     min-height: 800px;
@@ -1160,31 +1180,52 @@
     z-index: 3;
   }
   .book-page-slide.active {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
   .book-page-slide.right-visible {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
   .book-page-text {
     color: #d4bc8a;
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
     font-size: 0.96rem;
     line-height: 2.0;
     white-space: pre-line;
-    word-break: break-word;
+    word-wrap: break-word;
     overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
     margin: 0;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
-    overflow: hidden;
+    overflow: visible;
   }
   .book-nav {
     position: absolute !important;
     bottom: 1.3rem;
     left: 0; right: 0;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     padding: 0 3rem;
     z-index: 20;
@@ -1196,56 +1237,107 @@
     padding: .32rem 1.2rem;
     font-size: .73rem;
     letter-spacing: 1.5px;
+    -webkit-border-radius: 2px;
     border-radius: 2px;
     cursor: pointer;
+    -webkit-transition: all .2s;
     transition: all .2s;
+    -webkit-appearance: none;
+    appearance: none;
   }
-  .book-page-nav-btn:hover { background: rgba(200,169,110,.1); }
+  .book-page-nav-btn:hover {
+    background: rgba(200,169,110,.1);
+    border-color: #c8a96e;
+  }
   #kuba-gcounter {
     color: rgba(200,169,110,.65);
     font-size: .73rem;
     letter-spacing: 1px;
   }
 }
-@media (max-width: 767px) {
+
+/* === MOBILNI (iPhone, Android): jedna strana, čitljivo === */
+@media screen and (max-width: 767px) {
+  #page-kuba .dest-body {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
   .book-reader {
     background: #182035;
     border: 1px solid rgba(200,169,110,.45);
-    border-radius: 8px;
-    padding: 2.2rem 1.8rem 5.5rem;
-    box-shadow: 0 8px 35px rgba(0,0,0,.55);
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
     position: relative;
-  }
-  .book-page-slide { display: none !important; }
-  .book-page-slide.active { display: block !important; }
-  .book-page-slide.right-visible { display: none !important; }
-  .book-page-text {
-    color: #d4bc8a;
-    font-family: 'Lora', Georgia, serif;
-    font-size: 1.08rem;
-    line-height: 2.0;
-    white-space: pre-line;
-    word-break: break-word;
+    overflow: visible;
     margin: 0;
   }
+  .book-pages {
+    display: block !important;
+    overflow: visible;
+  }
+  .book-page-slide {
+    display: none !important;
+    overflow: visible;
+  }
+  .book-page-slide.active {
+    display: block !important;
+    padding: 2.2rem 1.6rem 5.5rem;
+    min-height: auto;
+    overflow: visible;
+  }
+  .book-page-slide.right-visible {
+    display: none !important;
+  }
+  .book-page-text {
+    color: #d4bc8a;
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
+    font-size: 1.08rem;
+    line-height: 1.95;
+    white-space: pre-line;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    margin: 0;
+    overflow: visible;
+    /* iPhone text rendering */
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
   .book-nav {
-    position: absolute !important;
-    bottom: 1rem; left: 0; right: 0;
+    position: relative !important;
+    display: -webkit-box !important;
     display: flex !important;
+    -webkit-box-pack: justify;
     justify-content: space-between;
-    padding: 0 1.5rem;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 1rem 1.5rem 1.5rem;
     z-index: 5;
+    margin-top: 1rem;
   }
   .book-page-nav-btn {
     border: 1px solid rgba(200,169,110,.55);
     color: #c8a96e;
     background: transparent;
-    padding: .4rem 1rem;
-    font-size: .78rem;
+    padding: .5rem 1.2rem;
+    font-size: .82rem;
+    -webkit-border-radius: 3px;
     border-radius: 3px;
     cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    /* iPhone tap highlight */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
-  #kuba-gcounter { color: rgba(200,169,110,.65); font-size: .78rem; }
+  #kuba-gcounter {
+    color: rgba(200,169,110,.65);
+    font-size: .82rem;
+  }
 }
 </style>
 </head>
@@ -1593,14 +1685,12 @@
       slide.className = 'book-page-slide' + (idx === 0 ? ' active' : '');
       var p = document.createElement('p');
       p.className = 'book-page-text';
-      p.style.whiteSpace = 'pre-line';
       p.textContent = text;
       slide.appendChild(p);
       container.appendChild(slide);
     });
     var counter = document.getElementById('kuba-gcounter');
     if (counter) counter.textContent = '1 / ' + paras.length;
-    // right-visible na drugi slide
     var slides = container.querySelectorAll('.book-page-slide');
     if (slides.length > 1) slides[1].classList.add('right-visible');
   }
@@ -1636,15 +1726,15 @@
   function kubaShowPage(dir) {
     var slides = Array.from(document.querySelectorAll('#kuba-pages .book-page-slide'));
     var total = slides.length;
-    if (total === 0) return;
-    var cur = slides.findIndex(function(s) { return s.classList.contains('active'); });
+    if (!total) return;
+    var cur = slides.findIndex(function(s){ return s.classList.contains('active'); });
     var next = cur + dir;
     if (next < 0 || next >= total) return;
-    slides.forEach(function(s) { s.classList.remove('active', 'right-visible'); });
+    slides.forEach(function(s){ s.classList.remove('active','right-visible'); });
     slides[next].classList.add('active');
-    if (next + 1 < total) slides[next + 1].classList.add('right-visible');
+    if (next + 1 < total) slides[next+1].classList.add('right-visible');
     var counter = document.getElementById('kuba-gcounter');
-    if (counter) counter.textContent = (next + 1) + ' / ' + total;
+    if (counter) counter.textContent = (next+1) + ' / ' + total;
   }
 
   function kubaPrev() { kubaShowPage(-1); }
