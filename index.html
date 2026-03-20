@@ -1341,7 +1341,8 @@
 }
 </style>
 
-<!-- build:1774045712320 -->
+
+<!-- build:1774046442231 -->
 </head>
 <body>
 
@@ -1682,6 +1683,7 @@
   function kubaRenderParaFromArray(p){kubaRenderPara(p);}
 
   function kubaRenderPara(paras){
+  if(!paras||!paras.length)return;
   var c=document.getElementById('kuba-pages');if(!c)return;
   c.innerHTML='';
   paras.forEach(function(text,idx){
@@ -1766,7 +1768,7 @@ function kubaShowPage(dir){
       t.onclick = (function(idx) { return function() { kubaGI = idx; setTimeout(function(){ kubaRenderGallery(); }, 100); }; })(i);
       container.appendChild(t);
     });
-    kubaRenderPara();
+    kubaRenderPara(KUBA_PARA);
     kubaRenderGallery();
   }
   </script>
