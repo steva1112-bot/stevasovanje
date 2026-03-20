@@ -1676,7 +1676,7 @@
     }
   }
 
-  function kubaRenderParaFromArray(paras) { kubaRenderPara(paras); }
+  function kubaRenderParaFromArray(paras){kubaRenderPara(paras);}
 
   function kubaRenderPara(paras) {
   var c = document.getElementById('kuba-pages');
@@ -1691,13 +1691,32 @@
     slide.appendChild(p);
     c.appendChild(slide);
   });
-  var counter = document.getElementById('kuba-gcounter');
-  if (counter) counter.textContent = '1 / ' + paras.length;
   var sl = c.querySelectorAll('.book-page-slide');
   if (sl.length > 1) sl[1].classList.add('right-visible');
+  kubaUpdateCounter();
 }
 
-  function kubaShowPage(dir) {
+  
+function kubaUpdateCounter() {
+  var slides = document.querySelectorAll('#kuba-pages .book-page-slide');
+  var total = slides.length;
+  var cur = Array.from(slides).findIndex(function(s){ return s.classList.contains('active'); });
+  var num = cur + 1;
+  // Stari counter unutar knjige
+  var inner = document.getElementById('kuba-gcounter');
+  if (inner) inner.textContent = num + ' / ' + total;
+  // Novi counter ispod knjige
+  var outer = document.getElementById('kuba-counter-outer');
+  if (!outer) {
+    outer = document.createElement('div');
+    outer.id = 'kuba-counter-outer';
+    outer.style.cssText = 'text-align:center;padding:0.7rem 0 0.2rem;color:rgba(200,169,110,0.8);font-family:Lora,Georgia,serif;font-size:0.85rem;letter-spacing:2px;';
+    var reader = document.querySelector('.book-reader');
+    if (reader && reader.parentNode) reader.parentNode.insertBefore(outer, reader.nextSibling);
+  }
+  outer.textContent = num + ' / ' + total;
+}
+function kubaShowPage(dir) {
   var slides = Array.from(document.querySelectorAll('#kuba-pages .book-page-slide'));
   var total = slides.length;
   if (!total) return;
@@ -1707,8 +1726,7 @@
   slides.forEach(function(s){ s.classList.remove('active','right-visible'); });
   slides[next].classList.add('active');
   if (next+1 < total) slides[next+1].classList.add('right-visible');
-  var counter = document.getElementById('kuba-gcounter');
-  if (counter) counter.textContent = (next+1) + ' / ' + total;
+  kubaUpdateCounter();
 }
 
   function kubaPrev() { kubaShowPage(-1); }
