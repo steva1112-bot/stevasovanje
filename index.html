@@ -1565,7 +1565,7 @@
         </div>
         <div class="book-nav">
           <button class="book-btn" id="kuba-prev" onclick="kubaPrev()">&#8592; Prethodna</button>
-          <span class="book-counter" id="kuba-counter">1 / 3</span>
+          <span class="book-counter" id="kuba-counter" style="display:none"></span>
           <button class="book-btn" id="kuba-next" onclick="kubaNext()">Sledeća &#8594;</button>
         </div>
       </div>
@@ -1700,17 +1700,15 @@
 function kubaUpdateCounter() {
   var slides = document.querySelectorAll('#kuba-pages .book-page-slide');
   var total = slides.length;
-  var cur = Array.from(slides).findIndex(function(s){ return s.classList.contains('active'); });
-  var num = cur + 1;
-  // Stari counter unutar knjige
+  var cur = Array.from(slides).findIndex(function(s){return s.classList.contains('active');});
+  var num = cur < 0 ? 1 : cur + 1;
   var inner = document.getElementById('kuba-gcounter');
   if (inner) inner.textContent = num + ' / ' + total;
-  // Novi counter ispod knjige
   var outer = document.getElementById('kuba-counter-outer');
   if (!outer) {
     outer = document.createElement('div');
     outer.id = 'kuba-counter-outer';
-    outer.style.cssText = 'text-align:center;padding:0.7rem 0 0.2rem;color:rgba(200,169,110,0.8);font-family:Lora,Georgia,serif;font-size:0.85rem;letter-spacing:2px;';
+    outer.style.cssText = 'text-align:center;padding:0.6rem 0 0.4rem;color:rgba(200,169,110,0.8);font-family:Lora,Georgia,serif;font-size:0.85rem;letter-spacing:2px;';
     var reader = document.querySelector('.book-reader');
     if (reader && reader.parentNode) reader.parentNode.insertBefore(outer, reader.nextSibling);
   }
@@ -1771,7 +1769,7 @@ function kubaShowPage(dir) {
       var t = document.createElement('img');
       t.src = im.src;
       t.className = 'photo-thumb' + (i === 0 ? ' active' : '');
-      t.onclick = (function(idx) { return function() { kubaGI = idx; kubaRenderGallery(); }; })(i);
+      t.onclick = (function(idx) { return function() { kubaGI = idx; setTimeout(function(){ kubaRenderGallery(); }, 100); }; })(i);
       container.appendChild(t);
     });
     kubaRenderPara();
