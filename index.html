@@ -781,7 +781,7 @@
       position: relative;
     }
     .book-pages {
-      min-height: 520px;
+      min-height: 720px;
       overflow: hidden;
       position: relative;
     }
@@ -1108,12 +1108,16 @@
   </style>
 <style id="kuba-book-css">
 @media (min-width: 768px) {
-  #page-kuba .dest-body { max-width: 1200px; width: 96%; margin: 0 auto; }
+  #page-kuba .dest-body {
+    max-width: 1260px;
+    width: 97%;
+    margin: 0 auto;
+  }
   .book-reader {
     background: #182035;
     border: 1px solid #c8a96e;
     border-radius: 6px;
-    box-shadow: -10px 12px 50px rgba(0,0,0,.75), 10px 12px 50px rgba(0,0,0,.75);
+    box-shadow: -12px 14px 60px rgba(0,0,0,.8), 12px 14px 60px rgba(0,0,0,.8);
     position: relative;
     overflow: hidden;
   }
@@ -1131,14 +1135,16 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,.12) 0%, transparent 6%), linear-gradient(to left, rgba(0,0,0,.12) 0%, transparent 6%);
+    background:
+      linear-gradient(to right, rgba(0,0,0,.12) 0%, transparent 6%),
+      linear-gradient(to left, rgba(0,0,0,.12) 0%, transparent 6%);
     pointer-events: none;
     z-index: 1;
   }
   .book-pages {
     display: flex !important;
     flex-direction: row !important;
-    min-height: 720px;
+    align-items: stretch !important;
     overflow: hidden;
     position: relative;
   }
@@ -1146,29 +1152,36 @@
     display: none !important;
     flex: 0 0 50%;
     width: 50%;
-    min-height: 720px;
-    padding: 3rem 3.5rem 5.5rem;
+    min-height: 800px;
+    padding: 3rem 3.8rem 5.5rem;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     z-index: 3;
   }
-  .book-page-slide.active { display: flex !important; flex-direction: column; }
-  .book-page-slide.right-visible { display: flex !important; flex-direction: column; }
+  .book-page-slide.active {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .book-page-slide.right-visible {
+    display: flex !important;
+    flex-direction: column;
+  }
   .book-page-text {
     color: #d4bc8a;
     font-family: 'Lora', Georgia, serif;
-    font-size: 0.95rem;
-    line-height: 1.95;
+    font-size: 0.96rem;
+    line-height: 2.0;
     white-space: pre-line;
     word-break: break-word;
+    overflow-wrap: break-word;
     margin: 0;
     flex: 1;
     overflow: hidden;
   }
   .book-nav {
     position: absolute !important;
-    bottom: 1.2rem;
+    bottom: 1.3rem;
     left: 0; right: 0;
     display: flex !important;
     justify-content: space-between;
@@ -1188,14 +1201,18 @@
     transition: all .2s;
   }
   .book-page-nav-btn:hover { background: rgba(200,169,110,.1); }
-  #kuba-gcounter { color: rgba(200,169,110,.65); font-size: .73rem; letter-spacing: 1px; }
+  #kuba-gcounter {
+    color: rgba(200,169,110,.65);
+    font-size: .73rem;
+    letter-spacing: 1px;
+  }
 }
 @media (max-width: 767px) {
   .book-reader {
     background: #182035;
     border: 1px solid rgba(200,169,110,.45);
     border-radius: 8px;
-    padding: 2rem 1.6rem 5rem;
+    padding: 2.2rem 1.8rem 5.5rem;
     box-shadow: 0 8px 35px rgba(0,0,0,.55);
     position: relative;
   }
@@ -1205,15 +1222,30 @@
   .book-page-text {
     color: #d4bc8a;
     font-family: 'Lora', Georgia, serif;
-    font-size: 1.05rem;
-    line-height: 1.95;
+    font-size: 1.08rem;
+    line-height: 2.0;
     white-space: pre-line;
     word-break: break-word;
     margin: 0;
   }
-  .book-nav { position: absolute !important; bottom: 1rem; left: 0; right: 0; display: flex !important; justify-content: space-between; padding: 0 1.5rem; z-index: 5; }
-  .book-page-nav-btn { border: 1px solid rgba(200,169,110,.55); color: #c8a96e; background: transparent; padding: .35rem 1rem; font-size: .75rem; border-radius: 3px; cursor: pointer; }
-  #kuba-gcounter { color: rgba(200,169,110,.65); font-size: .75rem; }
+  .book-nav {
+    position: absolute !important;
+    bottom: 1rem; left: 0; right: 0;
+    display: flex !important;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 5;
+  }
+  .book-page-nav-btn {
+    border: 1px solid rgba(200,169,110,.55);
+    color: #c8a96e;
+    background: transparent;
+    padding: .4rem 1rem;
+    font-size: .78rem;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  #kuba-gcounter { color: rgba(200,169,110,.65); font-size: .78rem; }
 }
 </style>
 </head>
