@@ -1,4 +1,4 @@
-/* Amsterdam fix v8 */
+/* Amsterdam fix v7 */
 (function(){
   var s=document.createElement('style');
   s.textContent=[
@@ -12,16 +12,12 @@
   ].join('');
   document.head.appendChild(s);
   window.amstCharsPerPage=function(){return window.innerWidth>=768?1100:500;};
-
-  /* Patch amstUpdateCounter to also populate counter-outer */
   window.amstUpdateCounter=function(){
     var sl=Array.from(document.querySelectorAll('#amsterdam-pages .book-page-slide'));
     var tot=sl.length;if(!tot)return;
     var cur=sl.findIndex(function(s){return s.classList.contains('active');});
     var txt=(cur+1)+' / '+tot;
-    var c=document.getElementById('amsterdam-counter');
-    if(c)c.textContent=txt;
-    var co=document.getElementById('amsterdam-counter-outer');
-    if(co)co.textContent=txt;
+    var c=document.getElementById('amsterdam-counter');if(c)c.textContent=txt;
+    var co=document.getElementById('amsterdam-counter-outer');if(co)co.textContent=txt;
   };
 })();
