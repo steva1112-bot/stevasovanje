@@ -1859,6 +1859,7 @@ function kubaShowPage(dir){
           <button class="book-btn" onclick="amstNext()">Sledeća →</button>
         </div>
       </div>
+      <div id="amsterdam-counter-outer"></div>
       <h3 class="dest-gallery-title" data-key="gallery">Galerija</h3>
       <div class="photo-book" id="amsterdam-gallery"></div>
     </div>
@@ -1928,7 +1929,7 @@ function kubaShowPage(dir){
   function amstCharsPerPage(){return window.innerWidth>=768?500:400;}
   function amstBuildPages(paragraphs){var pages=[];var cur='';for(var i=0;i<paragraphs.length;i++){var p=paragraphs[i];if(cur.length>0&&cur.length+p.length+2>amstCharsPerPage()){pages.push(cur);cur='';}cur=cur.length>0?cur+'\n\n'+p:p;}if(cur.length>0)pages.push(cur);return pages;}
   function amstRenderPara(text){return text.split('\n\n').map(function(para){if(!para.trim())return '';return '<p class="book-page-text">'+para.replace(/\n/g,'<br>')+'</p>';}).join('');}
-  function amstUpdateCounter(){var sl=Array.from(document.querySelectorAll('#amsterdam-pages .book-page-slide'));var tot=sl.length;if(!tot)return;var cur=sl.findIndex(function(s){return s.classList.contains('active');});var c=document.getElementById('amsterdam-counter');if(c)c.textContent=(cur+1)+' / '+tot;}
+  function amstUpdateCounter(){var sl=Array.from(document.querySelectorAll('#amsterdam-pages .book-page-slide'));var tot=sl.length;if(!tot)return;var cur=sl.findIndex(function(s){return s.classList.contains('active');});var txt=(cur+1)+' / '+tot;var c=document.getElementById('amsterdam-counter');if(c)c.textContent=txt;var co=document.getElementById('amsterdam-counter-outer');if(co)co.textContent=txt;}
   function amstShowPage(dir){var sl=Array.from(document.querySelectorAll('#amsterdam-pages .book-page-slide'));var tot=sl.length;if(!tot)return;var cur=sl.findIndex(function(s){return s.classList.contains('active');});var nx=cur+dir;if(nx<0||nx>=tot)return;sl.forEach(function(s){s.classList.remove('active');s.classList.remove('right-visible');});sl[nx].classList.add('active');if(nx+1<tot)sl[nx+1].classList.add('right-visible');amstUpdateCounter();}
   function amstPrev(){amstShowPage(-1);}
   function amstNext(){amstShowPage(1);}
@@ -2531,7 +2532,7 @@ function kubaShowPage(dir){
   });
 })();
 </script>
-<script src="amsterdam-fix.js?v=6"></script>
+<script src="amsterdam-fix.js?v=7"></script>
 </body>
 <!-- v3 -->
 </html>
