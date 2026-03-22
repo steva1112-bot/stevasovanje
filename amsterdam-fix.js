@@ -1,4 +1,4 @@
-/* Amsterdam fix v7 */
+/* Amsterdam fix v9 - MutationObserver za counter */
 (function(){
   var s=document.createElement('style');
   s.textContent=[
@@ -8,16 +8,37 @@
     '#amsterdam-pages .book-page-slide.right-visible{display:block!important;opacity:1!important;animation:none!important;}',
     '#amsterdam-counter-outer{text-align:center;font-size:0.85rem;color:rgba(200,169,110,0.8);letter-spacing:0.15em;padding:0.6rem 0 0.2rem;font-family:Lora,Georgia,serif;}',
     '#page-nocno-nebo .book-nav .book-counter{display:none!important;}',
-    '@media(max-width:767px){#amsterdam-pages{display:block!important;min-height:unset!important;overflow:visible!important;}#amsterdam-pages .book-page-slide{width:100%!important;flex:none!important;min-height:unset!important;padding:1.5rem 1.2rem 3rem!important;}#amsterdam-pages .book-page-slide.right-visible{display:none!important;}}'
+    '@media(max-width:767px){#amsterdam-pages{display:block!important;min-height:unset!important;overflow:visible!important;}',
+    '#amsterdam-pages .book-page-slide{width:100%!important;flex:none!important;min-height:unset!important;padding:1.5rem 1.2rem 3rem!important;}',
+    '#amsterdam-pages .book-page-slide.right-visible{display:none!important;}}'
   ].join('');
   document.head.appendChild(s);
+
   window.amstCharsPerPage=function(){return window.innerWidth>=768?1100:500;};
-  window.amstUpdateCounter=function(){
-    var sl=Array.from(document.querySelectorAll('#amsterdam-pages .book-page-slide'));
-    var tot=sl.length;if(!tot)return;
-    var cur=sl.findIndex(function(s){return s.classList.contains('active');});
-    var txt=(cur+1)+' / '+tot;
-    var c=document.getElementById('amsterdam-counter');if(c)c.textContent=txt;
-    var co=document.getElementById('amsterdam-counter-outer');if(co)co.textContent=txt;
-  };
+
+  /* Override amstUpdateCounter to also fill counter-outer */
+  function patchCounter(){
+    window.amstUpdateCounter=function(){
+      var sl=Array.from(document.querySelectorAll('#amsterdam-pages .book-page-slide'));
+      var tot=sl.length;if(!tot)return;
+      var cur=sl.findIndex(function(s){return s.classList.contains('active');});
+      var txt=(cur+1)+' / '+tot;
+      var c=document.getElementById('amsterdam-counter');if(c)c.textContent=txt;
+      var co=document.getElementById('amsterdam-counter-outer');if(co)co.textContent=txt;
+    };
+  }
+
+  /* Patch immediately and also when Amsterdam page becomes active */
+  patchCounter();
+  var obs=new MutationObserver(function(){
+    var page=document.getElementById('page-nocno-nebo');
+    if(page&&page.classList.contains('active')){
+      patchCounter();
+      setTimeout(function(){
+        var sl=document.querySelectorAll('#amsterdam-pages .book-page-slide');
+        if(sl.length>0)window.amstUpdateCounter();
+      },100);
+    }
+  });
+  obs.observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});
 })();
