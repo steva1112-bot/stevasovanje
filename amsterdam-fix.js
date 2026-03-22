@@ -1,4 +1,4 @@
-/* Amsterdam fix v3 - mirrors Kuba CSS */
+/* Amsterdam fix v4 - opacity fix for right-visible */
 (function(){
   var s=document.createElement('style');
   s.textContent=[
@@ -17,9 +17,19 @@
       'padding:3rem 3.8rem 5.5rem!important;',
       'box-sizing:border-box!important;',
       'display:none!important;',
+      'opacity:1!important;',
+      'animation:none!important;',
     '}',
-    '#amsterdam-pages .book-page-slide.active{display:block!important;}',
-    '#amsterdam-pages .book-page-slide.right-visible{display:block!important;}',
+    '#amsterdam-pages .book-page-slide.active{',
+      'display:block!important;',
+      'opacity:1!important;',
+      'animation:none!important;',
+    '}',
+    '#amsterdam-pages .book-page-slide.right-visible{',
+      'display:block!important;',
+      'opacity:1!important;',
+      'animation:none!important;',
+    '}',
     '@media(max-width:767px){',
       '#amsterdam-pages{display:block!important;min-height:400px!important;}',
       '#amsterdam-pages .book-page-slide{width:100%!important;flex:none!important;min-height:400px!important;}',
