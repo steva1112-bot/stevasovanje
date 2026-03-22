@@ -1850,14 +1850,17 @@ function kubaShowPage(dir){
         <h2 class="dest-title">Amsterdam</h2>
       </div>
     </div>
-    <div class="dest-body">
-      <p class="dest-text placeholder" id="text-nocno-nebo">Tekst o destinaciji Amsterdam biće dodat uskoro...</p>
-      <h3 class="dest-gallery-title">Galerija</h3>
-      <div class="dest-gallery-grid" id="gallery-nocno-nebo">
-        <div class="dest-placeholder-gallery" style="grid-column: 1/-1;">
-          Slike galerije za Amsterdam biće dodate uskoro...
+    <div class="dest-body" id="body-nocno-nebo">
+      <div class="book-reader">
+        <div class="book-pages" id="amsterdam-pages"></div>
+        <div class="book-nav">
+          <button class="book-btn" onclick="amsterdamPrev()">← Prethodna</button>
+          <span class="book-counter" id="amsterdam-counter"></span>
+          <button class="book-btn" onclick="amsterdamNext()">Sledeća →</button>
         </div>
       </div>
+      <h3 class="dest-gallery-title" data-key="gallery">Galerija</h3>
+      <div class="photo-book" id="amsterdam-gallery"></div>
     </div>
   </div>
 
