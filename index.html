@@ -1105,6 +1105,20 @@
     .book-page-nav-btn { border: 1px solid rgba(200,169,110,0.6); color: #c8a96e; background: transparent; padding: 0.35rem 0.9rem; font-size: 0.75rem; border-radius: 3px; }
     #kuba-gcounter { color: rgba(200,169,110,0.7); font-size: 0.75rem; }
   }
+
+  @media (min-width: 768px) {
+    #page-nocno-nebo .dest-body { max-width: 1080px; width: 94%; margin: 0 auto; }
+    #amsterdam-pages { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+    #amsterdam-pages .book-page-left { padding: 2.5rem 2rem 2.5rem 3rem; border-right: 2px solid rgba(201,168,76,0.3); }
+    #amsterdam-pages .book-page-right { padding: 2.5rem 3rem 2.5rem 2rem; }
+    #amsterdam-pages .book-page-slide { display: none; }
+    #amsterdam-pages .book-page-slide.active,
+    #amsterdam-pages .book-page-slide.right-visible { display: block; }
+  }
+  @media (max-width: 767px) {
+    #amsterdam-pages { min-height: 500px; }
+  }
+
   </style>
 <style id="kuba-book-css">
 /* === CROSS-BROWSER: Chrome, Firefox, Safari, Opera, Edge, iPhone === */
@@ -1885,7 +1899,114 @@ function kubaShowPage(dir){
       document.body.style.overflow = 'hidden';
     }
 
-    function openPage(pageId) {
+  
+  // ===== AMSTERDAM BOOK READER =====
+  const _amstTextSr = [
+    "Amsterdam – dan između dva sveta
+
+Postoje gradovi u koje dolazite sa planom. I postoje oni u koje vas život nekako usput nanese, bez najave. Amsterdam je za mene bio upravo to – međustanica između jedne daleke priče i povratka kući. Ali međustanice, kad ih ne planirate previše, često ostave najdublje tragove.",
+    "Birali smo najkraću vezu ka Beogradu. Racionalno, štedljivo, odgovorno. A onda nas je nešto povuklo – onaj glas koji ne govori rečima – da napravimo mali zaokret. Jedan dan. Jedan grad. Šta može da se dogodi?",
+    "Sleteli smo oko šest ujutru. Nebo nije bilo plavo. Vazduh nije bio topao. Umor od dugog leta – onaj koji sedi u kostima, ne u očima – još uvek je bio tu. Grad nas nije dočekao raširenih ruku. Amsterdam ne radi tako. Dočekao nas je tiho, uzdržano, kao starac koji zna mnogo toga, ali ništa ne govori dok ga sami ne upitate.",
+    "Voz sa aerodroma uveo nas je u njegov ritam bez upozorenja. Kanali. Bicikli. Fasade koje se nagibaju jedna prema drugoj kao da šapuću. Prvi utisak? Mlak. Možda zbog sive svetlosti koja izjednačava sve kontraste. Možda zbog toga što sam još uvek bio negde između Havane i kuće, a Amsterdam nije bio ni jedno ni drugo.",
+    "Imali smo vodiča. Prijatelja iz kraja koji tamo živi godinama, koji je trebalo da nas provede kroz lavirinte ovog grada. Njegova uputstva stigla su kao poruka koja ne završava – presedanja, brojni tramvaji, kanal koji treba preći, ulica koja nema ime na mapi. U nekom trenutku, doneli smo odluku koja je spasila dan: pustili smo ga. Ponekad je lutanje iskrenije od vođenih tura.",
+    "Šetali smo bez žurbe. Bez plana. Trgovi, stare zgrade čije se fasade ogledaju u vodi, kanali koji seku grad kao vene kroz telo. Sve je bilo tu – razglednica koju si video stotinu puta. Ali živeti razglednici s druge strane – to je nešto drugo. Kao da gledate sliku koju poznajete, ali još uvek ne razumete.",
+    "A onda smo uradili nešto što je u Amsterdamu gotovo ritual.
+
+Ušli smo u jedan mali shop. Nalik prodavnici naočara – police, izbori, nijanse zelenila i smeđeg. Sve deluje savršeno obično, dok ne shvatite da birate drugačiju vrstu iskustva. Nazivam ih, s lakoćom i bez mnogo ceremonije, tabu imenom „smešne cigarete“ – mada bi Amsterdamci, pretpostavljam, imali primedbu na tu formulaciju.",
+    "Izabrali smo „happy medium“. Šta god to značilo u tom svetu.
+
+U početku – ništa. Samo ukus, pomalo stran, pomalo zemljast. Hodali smo dalje. I onda, negde između jednog mosta i drugog, neko je okrenuo prekidač.
+
+Grad je počeo da diše kroz mene.",
+    "Mirisi su se promenili – kafa iz kafića iza ugla više nije bila samo kafa, bila je cela priča o jutru nekog čoveka koga nikada neću upoznati. Peciva iz pekare nosila su toplinu koja je imala boju. Zvuci su se približili – bicikl koji je bio daleko delovao je kao da prolazi tik pored mene, a glasovi koji su govorili jezicima koje ne razumem nekako su imali savršen smisao.",
+    "I lica.
+
+Svako ko bi prošao pored mene nosio je u sebi nekoga koga sam već video. Komšije. Poznanike. Davne simpatije. Ljude sa beogradske pijace u rano jutro. Kao da je ceo moj život izašao na ulice Amsterdama i odlučio da se ponovo predstavi – u novim oblicima, novim kaputima, novim hodnicima.
+
+Slike su se smenjivale sve brže. U jednom trenutku pomislio sam: „Izgoreće mi mozak.“",
+    "Sklonili smo se u mali park. Sedeli na travi koja je bila savršeno zelena – ili mi se to samo činilo. Tišina je bila potrebna.
+
+Izvadio sam bananu. Poneo sam je još sa kubanske pijace, kao neku vrstu talismana, i zaboravio u rancu. I nikada u životu – nikada – nisam osetio takav ukus. Kao da sam prvi put u životu jeo voće. Kao da su sve prethodne banane bile samo proba, a ova – premijera.",
+    "Ali mir nije dugo trajao.
+
+Misli su počele da se granaju. Švercer tompusa, kojih ima više nego što zakon kaže. Giljotina za sečenje, zamotana u dnu ranca. I slika Kubanke – za koju sam pomislio da mi je Trinidad već oduzeo, nekad davno. U mojoj glavi – već sam bio na ispitivanju. Carinarnica je imala fluorescentno svetlo, a ja nisam imao objašnjenja.",
+    "Držao sam se za saputnika kao za jedinu sigurnu tačku. Njegova jarka skijaška jakna bila je svetionik. Dokle god je vidim, znam gde sam.
+
+Grad koji mi je ujutru delovao ravnodušno, sada je postao previše. Previše zvukova. Previše lica. Previše svega.",
+    "Kuća Ane Frank, Red Light District, Vondelpark – sve sam to video, prohodao, doživeo, ali u nekom paralelnom svetu koji je bio moj i ničiji drugi. U jednom trenutku sam pomislio: kad bih samo mogao da ovo zapišem i naknadno pročitam, kad prođe magija. I naravno – posle nekog vremena, zaboravio sam dosta. Za to postoje Google i Vikipedija, za one zainteresovane. Jedva sam čekao aerodrom. Povratak u poznato.",
+    "A onda, polako, sve je počelo da jenjava.
+
+Kao kada skinete 3D naočare u bioskopu – slika ostaje ista, ali magija nestaje. Samo što je ovde film bio stvaran. I ja sam bio istovremeno i glavni lik i statista.
+
+Na aerodromu sam bio icrpljen na način koji ne dolazi samo od dugog puta, već od iskustva koje ne možete sasvim da objasnite.",
+    "Ukrcavanje. Let. Tišina.
+
+I onda – Beograd.
+
+Grad koji ne morate da razumete. Grad koji vas jednostavno poznaje. Koji ne traži objašnjenja. Koji ne pita odakle ste stigli ili šta ste radili između dva preleta.
+
+Amsterdam je ostao iza – u sekundarnoj boji kanala, u mirisu kafe koja nije bila samo kafa, u licu nekog prolaznika koji je izgledao kao neko koga ste davno voleli."
+  ];
+
+  let _amstPages = [], _amstPage = 0;
+
+  function amsterdamCharsPerPage() { return window.innerWidth >= 768 ? 1400 : 900; }
+
+  function amsterdamBuildPages(paras) {
+    const pages = []; let cur = '';
+    for (const p of paras) {
+      if (cur.length + p.length + 2 > amsterdamCharsPerPage() && cur.length > 0) {
+        pages.push(cur.trim()); cur = '';
+      }
+      cur += (cur ? '\n\n' : '') + p;
+    }
+    if (cur.trim()) pages.push(cur.trim());
+    return pages;
+  }
+
+  function amsterdamRenderPara(text) {
+    return text.split('\n\n').map(para => {
+      if (!para.trim()) return '';
+      return '<p class="book-page-text">' + para.replace(/\n/g, '<br>') + '</p>';
+    }).join('');
+  }
+
+  function amsterdamShowPage(n) {
+    const container = document.getElementById('amsterdam-pages');
+    if (!container || !_amstPages.length) return;
+    const isDesktop = window.innerWidth >= 768;
+    const step = isDesktop ? 2 : 1;
+    _amstPage = Math.max(0, Math.min(n, _amstPages.length - 1));
+    if (isDesktop && _amstPage % 2 !== 0) _amstPage--;
+    container.innerHTML = '';
+    const left = document.createElement('div');
+    left.className = 'book-page-slide active book-page-left';
+    left.innerHTML = amsterdamRenderPara(_amstPages[_amstPage] || '');
+    container.appendChild(left);
+    if (isDesktop && _amstPages[_amstPage + 1]) {
+      const right = document.createElement('div');
+      right.className = 'book-page-slide right-visible book-page-right';
+      right.innerHTML = amsterdamRenderPara(_amstPages[_amstPage + 1]);
+      container.appendChild(right);
+    }
+    const counter = document.getElementById('amsterdam-counter');
+    if (counter) {
+      const total = isDesktop ? Math.ceil(_amstPages.length / 2) : _amstPages.length;
+      const cur = isDesktop ? Math.floor(_amstPage / 2) + 1 : _amstPage + 1;
+      counter.textContent = cur + ' / ' + total;
+    }
+  }
+
+  function amsterdamPrev() { amsterdamShowPage(_amstPage - (window.innerWidth >= 768 ? 2 : 1)); }
+  function amsterdamNext() { amsterdamShowPage(_amstPage + (window.innerWidth >= 768 ? 2 : 1)); }
+
+  function amsterdamSetup() {
+    _amstPages = amsterdamBuildPages(_amstTextSr);
+    _amstPage = 0;
+    amsterdamShowPage(0);
+  }
+
+  function openPage(pageId) {
       const page = document.getElementById('page-' + pageId);
       if (!page) return;
       // Set hero image from gallery
@@ -1897,6 +2018,7 @@ function kubaShowPage(dir){
       document.body.style.overflow = 'hidden';
       page.scrollTop = 0;
       if (pageId === 'kuba') { setTimeout(kubaSetup, 80); }
+      if (pageId === 'nocno-nebo') { setTimeout(amsterdamSetup, 80); }
     }
 
     function closePage() {
