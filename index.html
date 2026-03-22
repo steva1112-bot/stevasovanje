@@ -1108,6 +1108,14 @@
 
   @media (min-width: 768px) {
     #page-nocno-nebo .dest-body { max-width: 1080px; width: 94%; margin: 0 auto; }
+    #amsterdam-pages { height: 800px; overflow: hidden; display: flex !important; flex-direction: row !important; }
+    #amsterdam-pages .book-page-slide { flex: 0 0 50%; width: 50%; height: 800px; overflow: hidden !important; padding: 3rem 3.8rem 5.5rem; box-sizing: border-box; position: relative; z-index: 3; display: none !important; }
+    #amsterdam-pages .book-page-slide.active { display: block !important; }
+    #amsterdam-pages .book-page-slide.right-visible { display: block !important; }
+  }
+  @media (max-width: 767px) {
+    #amsterdam-pages { min-height: 500px; overflow: hidden; }
+    #amsterdam-pages .book-page-slide { overflow: hidden !important; }
   }
 
   </style>
