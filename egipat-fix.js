@@ -1,28 +1,35 @@
-// Egipat navigacija fix
 (function() {
   function init() {
-    var slides = document.querySelectorAll('#egipat-pages .book-page-slide');
+    var container = document.getElementById('egipat-pages');
     var counter = document.getElementById('egipat-counter');
     var prevBtn = document.getElementById('egipat-prev');
     var nextBtn = document.getElementById('egipat-next');
+    if (!container) return;
+
+    var slides = container.querySelectorAll('.book-page-slide');
+    var total = slides.length;
     var current = 0;
 
-    if (!slides.length) return;
+    // Remove active class from all - navigation via translateX
+    slides.forEach(function(s) { s.classList.remove('active'); });
 
-    function showPage(n) {
-      slides.forEach(function(s, i) { s.classList.toggle('active', i === n); });
-      if (counter) counter.textContent = (n + 1) + ' / ' + slides.length;
+    // Set flex layout identical to amsterdam
+    container.style.transition = 'transform 0.4s ease';
+
+    function show(n) {
+      container.style.transform = 'translateX(-' + (n * 100) + '%)';
+      current = n;
+      if (counter) counter.textContent = (n + 1) + ' / ' + total;
       if (prevBtn) prevBtn.disabled = (n === 0);
-      if (nextBtn) nextBtn.disabled = (n === slides.length - 1);
+      if (nextBtn) nextBtn.disabled = (n >= total - 1);
     }
 
     window.egipatCurrentPage = 0;
-    window.egipatShowPage = showPage;
-    window.egipatNext = function() { if (current < slides.length - 1) showPage(++current); };
-    window.egipatPrev = function() { if (current > 0) showPage(--current); };
-    window.egipatSetup = function() { current = 0; showPage(0); };
+    window.egipatNext = function() { if (current < total - 1) show(current + 1); };
+    window.egipatPrev = function() { if (current > 0) show(current - 1); };
+    window.egipatSetup = function() { show(0); };
 
-    // Patch the egipat card onclick
+    // Patch egipat card onclick
     var card = document.querySelector('[onclick*="openPage(\'egipat\')"]');
     if (card) {
       var orig = card.getAttribute('onclick');
@@ -31,12 +38,9 @@
       }
     }
 
-    showPage(0);
+    show(0);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
