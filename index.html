@@ -1564,7 +1564,16 @@
       </div>
     </div>
     <div class="dest-body">
-      <p class="dest-text placeholder" id="text-egipat">Tekst o destinaciji Egipat biće dodat uskoro...</p>
+      <div class="book-reader">
+        <div class="book-pages" id="egipat-pages">
+          <p class="book-page-text" id="egipat-para-text"></p>
+        </div>
+        <div class="book-nav">
+          <button class="book-btn" id="egipat-prev" onclick="egipatPrev()">← Prethodna</button>
+          <span class="book-counter" id="egipat-counter"></span>
+          <button class="book-btn" id="egipat-next" onclick="egipatNext()">Sledeća →</button>
+        </div>
+      </div>
       <h3 class="dest-gallery-title">Galerija</h3>
       <div class="dest-gallery-grid" id="gallery-egipat">
         <div class="dest-placeholder-gallery" style="grid-column: 1/-1;">
@@ -2533,6 +2542,7 @@ function kubaShowPage(dir){
 })();
 </script>
 <script src="amsterdam-fix.js?v=8"></script>
+  <script src="egipat-book.js?v=1"></script>
 </body>
 <!-- v3 -->
 </html>
