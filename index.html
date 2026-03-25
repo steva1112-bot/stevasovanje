@@ -2018,6 +2018,40 @@ function kubaShowPage(dir){
   function amstShowPage(dir){var sl=Array.from(document.querySelectorAll('#amsterdam-pages .book-page-slide'));var tot=sl.length;if(!tot)return;var cur=sl.findIndex(function(s){return s.classList.contains('active');});var nx=cur+dir;if(nx<0||nx>=tot)return;sl.forEach(function(s){s.classList.remove('active');s.classList.remove('right-visible');});sl[nx].classList.add('active');if(nx+1<tot)sl[nx+1].classList.add('right-visible');amstUpdateCounter();}
   function amstPrev(){amstShowPage(-1);}
   function amstNext(){amstShowPage(1);}
+
+    // ===== EGIPAT NAVIGACIJA =====
+    let egipatCurrentPage = 0;
+
+    function egipatShowPage(n) {
+      const slides = document.querySelectorAll('#egipat-pages .book-page-slide');
+      slides.forEach((p, i) => { p.classList.toggle('active', i === n); });
+      const counter = document.getElementById('egipat-counter');
+      if (counter) counter.textContent = (n + 1) + ' / ' + slides.length;
+      const prevBtn = document.getElementById('egipat-prev');
+      const nextBtn = document.getElementById('egipat-next');
+      if (prevBtn) prevBtn.disabled = (n === 0);
+      if (nextBtn) nextBtn.disabled = (n === slides.length - 1);
+    }
+
+    function egipatNext() {
+      const slides = document.querySelectorAll('#egipat-pages .book-page-slide');
+      if (egipatCurrentPage < slides.length - 1) {
+        egipatCurrentPage++;
+        egipatShowPage(egipatCurrentPage);
+      }
+    }
+
+    function egipatPrev() {
+      if (egipatCurrentPage > 0) {
+        egipatCurrentPage--;
+        egipatShowPage(egipatCurrentPage);
+      }
+    }
+
+    function egipatSetup() {
+      egipatCurrentPage = 0;
+      egipatShowPage(0);
+    }
   function amstSetup(){var paragraphs=window._amstTextSr||_amstTextSr||[];var pages=amstBuildPages(paragraphs);var container=document.getElementById('amsterdam-pages');if(!container)return;container.innerHTML='';for(var i=0;i<pages.length;i++){var slide=document.createElement('div');slide.className='book-page-slide';slide.innerHTML=amstRenderPara(pages[i]);container.appendChild(slide);}if(container.children.length>0){container.children[0].classList.add('active');if(container.children.length>1)container.children[1].classList.add('right-visible');}amstUpdateCounter();}
 
   function amstCharsPerPage(){return window.innerWidth>=768?1400:900;}
@@ -2100,6 +2134,7 @@ function kubaShowPage(dir){
       page.scrollTop = 0;
       if (pageId === 'kuba') { setTimeout(kubaSetup, 80); }
       if (pageId === 'nocno-nebo') { setTimeout(amstSetup, 80); }
+      if (pageId === 'egipat') { setTimeout(egipatSetup, 80); }
     }
 
     function closePage() {
