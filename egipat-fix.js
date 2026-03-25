@@ -1,4 +1,4 @@
-(function() {
+žščžžžž(function() {
   function init() {
     var container = document.getElementById('egipat-pages');
     var counter = document.getElementById('egipat-counter');
