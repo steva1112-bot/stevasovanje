@@ -1,4 +1,4 @@
-/* Amsterdam fix v9 - MutationObserver za counter */
+—šć—žčžč—šđ—čššččćč—ćč—čž—šččŽžččž—ćčžščšćć———ššš—čžč—ššššćšš—žšš—ššžščššš—čšžščžžčžšššžšščšćčščš—ščć——ćčšččšššž—š—ššč—čššđž—ššćčšđččšžžšš—čščšćž—ž—čš—žćžščš—žč—/* Amsterdam fix v9 - MutationObserver za counter */
 (function(){
   var s=document.createElement('style');
   s.textContent=[
