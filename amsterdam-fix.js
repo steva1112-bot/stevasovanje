@@ -128,14 +128,4 @@
   window.egipatPrev=function(){};
 
   // Watch for egipat page becoming active
-  var obs=new MutationObserver(function(){
-    var ep=document.getElementById('page-egipat');
-    if(ep&&ep.classList.contains('active')){
-      var c=document.getElementById('egipat-pages');
-      if(c&&c.children.length===0)setupEgipat();
-      else if(c&&c.children[0]&&c.children[0].querySelector('p.book-page-text')===null)setupEgipat();
-      else if(c&&c.getAttribute('data-built')!=='1'){c.setAttribute('data-built','1');setupEgipat();}
-    }
-  });
-  obs.observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});
-})();
+  var obs=new MutationObserver(function(){var ep=document.getElementById('page-egipat');if(ep&&ep.classList.contains('active'))se();}).observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});})();
