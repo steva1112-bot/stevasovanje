@@ -127,18 +127,13 @@ if(typeof _origAmstShow==='function'){
 // Patch kuba navigaciju za scroll + headings
 var _oKN=window.kubaNext,_oKP=window.kubaPrev;
 if(typeof _oKN==='function'){
-  window.kubaNext=function(){_oKN();window.scrollBookTop('kuba');setTimeout(function(){window.applyBookHeadings('kuba-pages');},200);};
-  window.kubaPrev=function(){_oKP();window.scrollBookTop('kuba');setTimeout(function(){window.applyBookHeadings('kuba-pages');},200);};
+  window.kubaNext=function(){_oKN();window.scrollBookTop('kuba');};
+  window.kubaPrev=function(){_oKP();window.scrollBookTop('kuba');};
 }
 
 // Observer za dodavanje headings kad se stranice ucitaju
 new MutationObserver(function(){
-  ['kuba','nocno-nebo'].forEach(function(id){
-    var p=document.getElementById('page-'+id);
-    if(p&&p.classList.contains('active')){
-      setTimeout(function(){window.applyBookHeadings(id==='kuba'?'kuba-pages':'amsterdam-pages');},300);
-    }
-  });
+  // headings applied once via MutationObserver above
 }).observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});
 
 // Patch openPage za scroll na mobilnom
