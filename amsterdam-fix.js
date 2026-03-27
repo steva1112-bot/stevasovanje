@@ -77,7 +77,7 @@
 })();
 
 
-/* ===== GLOBALNI DODACI: poglavlja, scroll, headings ===== */
+/* ===== GLOBALNI DODACI ===== */
 (function(){
 
 // CSS za naslove poglavlja
@@ -87,61 +87,58 @@ cs.textContent=
   '.book-chapter-heading:first-child{margin-top:0!important;}';
 document.head.appendChild(cs);
 
-// Globalna funkcija za detekciju poglavlja
+// Detekcija poglavlja - samo na osnovu pocetka teksta
 window.isChapterHeading=function(t){
-  return /^(I|II|III|IV|V|VI|VII|VIII|IX|X)\./.test(t)||
-         /^Poglavlje\s/.test(t)||
+  return /^[─━―]{3,}/.test(t)||
+         /^Poglavljes/.test(t)||
          /^★/.test(t)||
-         /^[─━―]{3,}/.test(t)||
-         /^[A-ZŠŽĆČĐ][A-ZŠŽĆČĐ\.\s]{2,}$/.test(t);
+         /^(I|II|III|IV|V|VI|VII|VIII|IX|X)./.test(t);
 };
 
-// Scroll na vrh stranice pri otvaranju novog poglavlja
+// Primeni heading klase JEDNOM na sve p u kontejneru - bez DOM mutacija
+function applyHeadingsOnce(containerId){
+  var done='_hdone_'+containerId;
+  if(window[done])return;
+  window[done]=true;
+  document.querySelectorAll('#'+containerId+' .book-page-text').forEach(function(p){
+    if(window.isChapterHeading(p.textContent.trim()))
+      p.classList.add('book-chapter-heading');
+  });
+}
+
+// Scroll na vrh stranice
 window.scrollBookTop=function(pageId){
   setTimeout(function(){
     var p=document.getElementById('page-'+pageId);
     if(!p)return;
-    // Scroll to top of dest-header (hero image area)
     var target=p.querySelector('.dest-header')||p.querySelector('.book-reader')||p;
     target.scrollIntoView({behavior:'smooth',block:'start'});
   },200);
 };
 
-// Dodaj heading klase - pametno splitovanje poglavlje + tekst
-window.applyBookHeadings=function(containerId){
-  var ps=document.querySelectorAll('#'+containerId+' .book-page-text');
-  ps.forEach(function(p){
-    var text=p.textContent.trim();
-    var isChapter=/^[─━―]{3,}/.test(text)||window.isChapterHeading(text);
-    if(isChapter)p.classList.add('book-chapter-heading');
-    else p.classList.remove('book-chapter-heading');
-  });
-}
-
-// Patch amstShowPage za scroll
+// Patch amstShowPage za scroll (bez heading poziva)
 var _origAmstShow=window.amstShowPage;
 if(typeof _origAmstShow==='function'){
   window.amstShowPage=function(n){_origAmstShow(n);window.scrollBookTop('nocno-nebo');};
 }
 
-// Patch kuba navigaciju za scroll + headings
+// Patch kuba nav - SAMO scroll, bez ikakvih heading poziva
 var _oKN=window.kubaNext,_oKP=window.kubaPrev;
 if(typeof _oKN==='function'){
   window.kubaNext=function(){_oKN();window.scrollBookTop('kuba');};
   window.kubaPrev=function(){_oKP();window.scrollBookTop('kuba');};
 }
 
-// Observer za dodavanje headings kad se stranice ucitaju
-new MutationObserver(function(){
-  // headings applied once via MutationObserver above
-}).observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});
-
-// Patch openPage za scroll na mobilnom
+// Patch openPage - scroll + headings jednom pri otvaranju
 var _oOP=window.openPage;
 if(typeof _oOP==='function'){
   window.openPage=function(id){
     _oOP(id);
     window.scrollBookTop(id);
+    // Primeni headings jednom - razliciti containers za razlicite stranice
+    var containerMap={kuba:'kuba-pages','nocno-nebo':'amsterdam-pages',egipat:'egipat-pages'};
+    var cid=containerMap[id];
+    if(cid)setTimeout(function(){applyHeadingsOnce(cid);},500);
   };
 }
 
