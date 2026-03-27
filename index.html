@@ -1707,8 +1707,15 @@
   paras.forEach(function(text,idx){
     var s=document.createElement('div');
     s.className='book-page-slide'+(idx===0?' active':'');
-    var p=document.createElement('p');p.className='book-page-text';if(window.isChapterHeading&&window.isChapterHeading(text.trim()))p.classList.add('book-chapter-heading');p.textContent=text;
-    s.appendChild(p);c.appendChild(s);
+    var p=document.createElement('p');// Split chapter header from body text
+    var chMatch=text.match(/^([─―]{3,}[\s\S]*?[─―]{3,})\n?([\s\S]*)$/);
+    if(chMatch&&chMatch[2].trim().length>0){
+      p.className='book-page-text book-chapter-heading';p.textContent=chMatch[1].trim();s.appendChild(p);
+      chMatch[2].trim().split(/\n{2,}/).forEach(function(part){if(!part.trim())return;var bp=document.createElement('p');bp.className='book-page-text';bp.textContent=part.trim();s.appendChild(bp);});
+    } else {
+      p.className='book-page-text';p.textContent=text;s.appendChild(p);
+    }
+    c.appendChild(s);
   });
   var sl=c.querySelectorAll('.book-page-slide');
   if(sl.length>1)sl[1].classList.add('right-visible');
@@ -2542,7 +2549,7 @@ function kubaShowPage(dir){
   });
 })();
 </script>
-<script src="amsterdam-fix.js?v=25"></script>
+<script src="amsterdam-fix.js?v=26"></script>
   <script src="egipat-book.js?v=1"></script>
 </body>
 <!-- v3 -->
