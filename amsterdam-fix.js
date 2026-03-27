@@ -101,10 +101,9 @@ window.scrollBookTop=function(pageId){
   setTimeout(function(){
     var p=document.getElementById('page-'+pageId);
     if(!p)return;
-    // Find book-reader inside the page for most accurate scroll target
-    var reader=p.querySelector('.book-reader')||p;
-    var top=reader.getBoundingClientRect().top+window.scrollY-60;
-    window.scrollTo({top:top,behavior:'smooth'});
+    // Scroll to top of dest-header (hero image area)
+    var target=p.querySelector('.dest-header')||p.querySelector('.book-reader')||p;
+    target.scrollIntoView({behavior:'smooth',block:'start'});
   },200);
 };
 
