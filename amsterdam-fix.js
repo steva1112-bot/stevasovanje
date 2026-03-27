@@ -101,13 +101,11 @@ window.scrollBookTop=function(pageId){
   setTimeout(function(){
     var p=document.getElementById('page-'+pageId);
     if(!p)return;
-    var rect=p.getBoundingClientRect();
-    if(rect.top<-10||rect.top>100){
-      p.scrollIntoView({behavior:'smooth',block:'start'});
-    } else {
-      window.scrollTo({top:window.scrollY+rect.top-60,behavior:'smooth'});
-    }
-  },150);
+    // Find book-reader inside the page for most accurate scroll target
+    var reader=p.querySelector('.book-reader')||p;
+    var top=reader.getBoundingClientRect().top+window.scrollY-60;
+    window.scrollTo({top:top,behavior:'smooth'});
+  },200);
 };
 
 // Dodaj heading klase - pametno splitovanje poglavlje + tekst
