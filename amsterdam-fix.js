@@ -10,10 +10,7 @@
     '#page-nocno-nebo .book-nav .book-counter{display:none!important;}',
     '@media(max-width:767px){#amsterdam-pages{display:block!important;min-height:unset!important;overflow:visible!important;}',
     '#amsterdam-pages .book-page-slide{width:100%!important;flex:none!important;min-height:unset!important;padding:1.5rem 1.2rem 3rem!important;}',
-    '#amsterdam-pages .book-page-slide.right-visible{display:none!important;}}',
-    '#kuba-pages .book-page-slide{display:none!important;}',
-    '#kuba-pages .book-page-slide.active{display:block!important;}',
-    '#kuba-pages .book-page-slide.right-visible{display:block!important;}'
+    '#amsterdam-pages .book-page-slide.right-visible{display:none!important;}}'
   ].join('');
   document.head.appendChild(s);
 
