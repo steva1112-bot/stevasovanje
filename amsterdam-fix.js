@@ -132,7 +132,7 @@
     var ep=document.getElementById('page-egipat');
     if(ep&&ep.classList.contains('active')){
       var c=document.getElementById('egipat-pages');
-      if(c&&c.children.length===0)setupEgipat();
+      if(c&&c.children.length<=1)setupEgipat();
       else if(c&&c.children[0]&&c.children[0].querySelector('p.book-page-text')===null)setupEgipat();
       else if(c&&c.getAttribute('data-built')!=='1'){c.setAttribute('data-built','1');setupEgipat();}
     }
