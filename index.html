@@ -2025,7 +2025,7 @@ function kubaShowPage(dir){
       page.scrollTop = 0;
       if (pageId === 'kuba') { setTimeout(kubaSetup, 80); }
       if (pageId === 'nocno-nebo') { setTimeout(amstSetup, 80); }
-    if (pageId === 'egipat') { setTimeout(egipatSetup, 80); }
+    if (pageId === 'egipat') { setTimeout(function(){if(typeof egipatSetup==='function')egipatSetup();}, 80); }
     }
 
     function closePage() {
@@ -2543,7 +2543,7 @@ function kubaShowPage(dir){
   });
 })();
 </script>
-<script src="amsterdam-fix.js?v=34"></script>
+<script src="amsterdam-fix.js?v=35"></script>
   <script src="egipat-book.js?v=1"></script>
 </body>
 <!-- v3 -->
