@@ -1734,7 +1734,7 @@ function kubaShowPage(dir){
   var sl=Array.from(document.querySelectorAll('#kuba-pages .book-page-slide'));
   var tot=sl.length;if(!tot)return;
   var cur=sl.findIndex(function(s){return s.classList.contains('active');});
-  var nx=cur+dir;if(nx<0||nx>=tot)return;
+  var nx=cur+dir*2;if(nx<0||nx>=tot)return;
   sl.forEach(function(s){s.classList.remove('active','right-visible');});
   sl[nx].classList.add('active');
   if(nx+1<tot)sl[nx+1].classList.add('right-visible');
@@ -2542,7 +2542,7 @@ function kubaShowPage(dir){
   });
 })();
 </script>
-<script src="amsterdam-fix.js?v=30"></script>
+<script src="amsterdam-fix.js?v=31"></script>
   <script src="egipat-book.js?v=1"></script>
 </body>
 <!-- v3 -->
