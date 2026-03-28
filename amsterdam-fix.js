@@ -4,7 +4,7 @@
   s.textContent=[
     '#amsterdam-pages{display:flex!important;flex-direction:row!important;min-height:800px!important;overflow:hidden!important;align-items:stretch!important;}',
     '#amsterdam-pages .book-page-slide{flex:0 0 50%!important;width:50%!important;min-height:800px!important;overflow:visible!important;padding:3rem 3.8rem 5.5rem!important;box-sizing:border-box!important;display:none!important;opacity:1!important;animation:none!important;}',
-    '#amsterdam-pages .book-page-slide.active{display:block!important;opacity:1!important;animation:none!important;}#amsterdam-pages .book-page-slide.right-visible{display:block!important;opacity:1!important;animation:none!important;}',
+    '#amsterdam-pages .book-page-slide.active{display:block!important;opacity:1!important;animation:none!important;}',
     '#amsterdam-pages .book-page-slide.right-visible{display:block!important;opacity:1!important;animation:none!important;}',
     '#amsterdam-counter-outer{text-align:center;font-size:0.85rem;color:rgba(200,169,110,0.8);letter-spacing:0.15em;padding:0.6rem 0 0.2rem;font-family:Lora,Georgia,serif;}',
     '#page-nocno-nebo .book-nav .book-counter{display:none!important;}',
@@ -132,7 +132,7 @@
     var ep=document.getElementById('page-egipat');
     if(ep&&ep.classList.contains('active')){
       var c=document.getElementById('egipat-pages');
-      setupEgipat();
+      if(c)setupEgipat();
       else if(c&&c.children[0]&&c.children[0].querySelector('p.book-page-text')===null)setupEgipat();
       else if(c&&c.getAttribute('data-built')!=='1'){c.setAttribute('data-built','1');setupEgipat();}
     }
