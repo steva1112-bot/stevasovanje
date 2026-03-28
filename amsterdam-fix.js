@@ -64,8 +64,8 @@
                   var ci=document.getElementById('kuba-counter');if(ci)ci.textContent=sp+' / '+tot;
                   if(window.kubaBookPage!==undefined)window.kubaBookPage=ni;
           }
-          window.kubaNext=function(){showSpread(2);};
-          window.kubaPrev=function(){showSpread(-2);};
+          window.kubaNext=function(){showSpread(1);};
+          window.kubaPrev=function(){showSpread(-1);};
     }
     if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fixKubaNav);}
     else{fixKubaNav();}
