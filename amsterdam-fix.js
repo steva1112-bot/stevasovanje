@@ -1,4 +1,4 @@
-/* Amsterdam fix v9 - MutationObserver za counter */
+—šć—žčžč—šđ—čššččćč—ćč—čž—šččŽžččž—ćčžščšćć———ššš—čžč—ššššćšš—žšš—ššžščššš—čšžščžžčžšššžšščšćčščš—ščć——ćčšččšššž—š—ššč—čššđž—ššćčšđččšžžšš—čščšćž—ž—čš—žćžščš—žč—/* Amsterdam fix v9 - MutationObserver za counter */
 (function(){
   var s=document.createElement('style');
   s.textContent=[
@@ -132,10 +132,63 @@
     var ep=document.getElementById('page-egipat');
     if(ep&&ep.classList.contains('active')){
       var c=document.getElementById('egipat-pages');
-      if(c&&!ep.getAttribute("data-eg-done")){ep.setAttribute("data-eg-done","1");setupEgipat();}
+      if(c&&c.children.length===0)setupEgipat();
       else if(c&&c.children[0]&&c.children[0].querySelector('p.book-page-text')===null)setupEgipat();
       else if(c&&c.getAttribute('data-built')!=='1'){c.setAttribute('data-built','1');setupEgipat();}
     }
   });
   obs.observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});
+})();
+
+
+/* ===== FIX: Amsterdam right-visible + Egipat setup ===== */
+(function(){
+
+// 1. Amsterdam right-visible CSS fix
+var s=document.createElement('style');
+s.textContent=
+  '#amsterdam-pages .book-page-slide.right-visible{display:block!important;opacity:1!important;}'+
+  '#egipat-pages .book-page-slide{display:none!important;}'+
+  '#egipat-pages .book-page-slide.active{display:block!important;}'+
+  '#egipat-pages .book-page-slide.right-visible{display:block!important;}';
+document.head.appendChild(s);
+
+// 2. Egipat setup - called once when page opens
+window._egipatDone = false;
+window.runEgipatSetup = function(){
+  if(window._egipatDone) return;
+  window._egipatDone = true;
+  var ep = document.getElementById('page-egipat');
+  if(ep) ep.removeAttribute('data-eg-done');
+  if(typeof setupEgipat === 'function'){
+    setupEgipat();
+  } else if(typeof window.egipatSetup === 'function'){
+    window.egipatSetup();
+  }
+};
+
+// 3. Patch openPage to reset egipat on each open
+var _origOP = window.openPage;
+if(typeof _origOP === 'function'){
+  window.openPage = function(id){
+    try{ _origOP(id); } catch(e){
+      document.querySelectorAll('.dest-page').forEach(function(p){p.classList.remove('active');});
+      var t=document.getElementById('page-'+id);
+      if(t)t.classList.add('active');
+    }
+    if(id==='egipat'){
+      window._egipatDone = false;
+      setTimeout(window.runEgipatSetup, 100);
+    }
+  };
+}
+
+// 4. Watch for egipat page activation via MutationObserver (backup)
+new MutationObserver(function(){
+  var ep = document.getElementById('page-egipat');
+  if(ep && ep.classList.contains('active') && !window._egipatDone){
+    setTimeout(window.runEgipatSetup, 100);
+  }
+}).observe(document.body, {attributes:true, subtree:true, attributeFilter:['class']});
+
 })();
