@@ -1367,7 +1367,15 @@
 
 
 <!-- build:1774111624917 -->
-</head>
+
+<style id="stevasovanje-fix">
+#amsterdam-pages .book-page-slide { display: none !important; }
+#amsterdam-pages .book-page-slide.active { display: block !important; }
+#amsterdam-pages .book-page-slide.right-visible { display: block !important; }
+#egipat-pages .book-page-slide { display: none !important; }
+#egipat-pages .book-page-slide.active { display: block !important; }
+#egipat-pages .book-page-slide.right-visible { display: block !important; }
+</style></head>
 <body>
 
   <!-- NAV -->
@@ -2545,6 +2553,22 @@ function kubaShowPage(dir){
 </script>
 <script src="fix.js?v=1"></script>
   <script src="egipat-book.js?v=1"></script>
-</body>
+
+<script id="stevasovanje-js-fix">
+(function(){
+  var _done=false;
+  function tryEgipat(){
+    if(_done)return; _done=true;
+    if(typeof egipatSetup==='function') egipatSetup();
+  }
+  var _orig=window.openPage;
+  if(typeof _orig==='function'){
+    window.openPage=function(id){
+      _orig(id);
+      if(id==='egipat'){_done=false;setTimeout(tryEgipat,200);}
+    };
+  }
+})();
+</script></body>
 <!-- v3 -->
 </html>
