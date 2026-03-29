@@ -1734,7 +1734,7 @@ function kubaShowPage(dir){
   var sl=Array.from(document.querySelectorAll('#kuba-pages .book-page-slide'));
   var tot=sl.length;if(!tot)return;
   var cur=sl.findIndex(function(s){return s.classList.contains('active');});
-  var nx=cur+dir;if(nx<0||nx>=tot)return;
+  var nx=cur+dir*2;if(nx<0||nx>=tot)return;
   sl.forEach(function(s){s.classList.remove('active','right-visible');});
   sl[nx].classList.add('active');
   if(nx+1<tot)sl[nx+1].classList.add('right-visible');
@@ -2025,6 +2025,7 @@ function kubaShowPage(dir){
       page.scrollTop = 0;
       if (pageId === 'kuba') { setTimeout(kubaSetup, 80); }
       if (pageId === 'nocno-nebo') { setTimeout(amstSetup, 80); }
+    if (pageId === 'egipat') { setTimeout(function(){if(typeof egipatSetup==='function')egipatSetup();},80); }
     }
 
     function closePage() {
