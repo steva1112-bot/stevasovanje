@@ -1,4 +1,4 @@
-—šć—žčžč—šđ—čššččćč—ćč—čž—šččŽžččž—ćčžščšćć———ššš—čžč—ššššćšš—žšš—ššžščššš—čšžščžžčžšššžšščšćčščš—ščć——ćčšččšššž—š—ššč—čššđž—ššćčšđččšžžšš—čščšćž—ž—čš—žćžščš—žč—/* Amsterdam fix v9 - MutationObserver za counter */
+/* Amsterdam fix v9 - MutationObserver za counter */
 (function(){
   var s=document.createElement('style');
   s.textContent=[
@@ -190,5 +190,43 @@ new MutationObserver(function(){
     setTimeout(window.runEgipatSetup, 100);
   }
 }).observe(document.body, {attributes:true, subtree:true, attributeFilter:['class']});
+
+})();
+
+/* ===== FIX: Amsterdam right-visible + Egipat setup ===== */
+(function(){
+var s=document.createElement('style');
+s.textContent=
+  '#amsterdam-pages .book-page-slide.right-visible{display:block!important;opacity:1!important;}'+
+  '#egipat-pages .book-page-slide{display:none!important;}'+
+  '#egipat-pages .book-page-slide.active{display:block!important;}'+
+  '#egipat-pages .book-page-slide.right-visible{display:block!important;}';
+document.head.appendChild(s);
+
+window._egipatDone=false;
+window.runEgipatSetup=function(){
+  if(window._egipatDone)return;
+  window._egipatDone=true;
+  if(typeof setupEgipat==='function')setupEgipat();
+  else if(typeof window.egipatSetup==='function')window.egipatSetup();
+};
+
+var _oOP=window.openPage;
+if(typeof _oOP==='function'){
+  window.openPage=function(id){
+    try{_oOP(id);}catch(e){
+      document.querySelectorAll('.dest-page').forEach(function(p){p.classList.remove('active');});
+      var t=document.getElementById('page-'+id);if(t)t.classList.add('active');
+    }
+    if(id==='egipat'){window._egipatDone=false;setTimeout(window.runEgipatSetup,150);}
+  };
+}
+
+new MutationObserver(function(){
+  var ep=document.getElementById('page-egipat');
+  if(ep&&ep.classList.contains('active')&&!window._egipatDone){
+    setTimeout(window.runEgipatSetup,150);
+  }
+}).observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});
 
 })();
