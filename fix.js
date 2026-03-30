@@ -142,25 +142,45 @@ new MutationObserver(function(){var ep=document.getElementById('page-egipat');if
 })();
 
 
+
 /* ===== SCROLL TO TOP ON NAV ===== */
 (function(){
-function scrollToBookTop(pageId){
-  var page=document.getElementById('page-'+pageId);
-  var reader=page?page.querySelector('.book-reader'):null;
-  if(reader){reader.scrollTop=0;reader.scrollIntoView({behavior:'smooth',block:'start'});}
-  window.scrollTo({top:0,behavior:'smooth'});
+
+function scrollToTop(pageId){
+  // 1. Scroll the book-reader element itself (mobile)
+  var destPage = document.getElementById('page-'+pageId);
+  if(destPage){
+    var reader = destPage.querySelector('.book-reader');
+    if(reader){
+      reader.scrollTop = 0;
+    }
+    // 2. Scroll the dest-page itself
+    destPage.scrollTop = 0;
+    // 3. Scroll dest-page into view from top
+    destPage.scrollIntoView({behavior:'instant', block:'start'});
+  }
+  // 4. Scroll entire window to top
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
-function wrapNav(fnName,pageId){
-  var orig=window[fnName];
-  if(typeof orig!=='function')return;
-  window[fnName]=function(){orig.apply(this,arguments);scrollToBookTop(pageId);};
+
+function wrapNav(fnName, pageId){
+  var orig = window[fnName];
+  if(typeof orig !== 'function') return;
+  window[fnName] = function(){
+    orig.apply(this, arguments);
+    setTimeout(function(){ scrollToTop(pageId); }, 50);
+  };
 }
+
 setTimeout(function(){
-  wrapNav('amstNext','nocno-nebo');
-  wrapNav('amstPrev','nocno-nebo');
-  wrapNav('egipatNext','egipat');
-  wrapNav('egipatPrev','egipat');
-  wrapNav('kubaNext','kuba');
-  wrapNav('kubaPrev','kuba');
-},500);
+  wrapNav('amstNext',   'nocno-nebo');
+  wrapNav('amstPrev',   'nocno-nebo');
+  wrapNav('egipatNext', 'egipat');
+  wrapNav('egipatPrev', 'egipat');
+  wrapNav('kubaNext',   'kuba');
+  wrapNav('kubaPrev',   'kuba');
+}, 600);
+
 })();
