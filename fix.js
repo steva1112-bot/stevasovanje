@@ -140,3 +140,27 @@ new MutationObserver(function(){var ep=document.getElementById('page-egipat');if
   window.amstNext=function(){amstShowPage(1);};
   window.amstPrev=function(){amstShowPage(-1);};
 })();
+
+
+/* ===== SCROLL TO TOP ON NAV ===== */
+(function(){
+function scrollToBookTop(pageId){
+  var page=document.getElementById('page-'+pageId);
+  var reader=page?page.querySelector('.book-reader'):null;
+  if(reader){reader.scrollTop=0;reader.scrollIntoView({behavior:'smooth',block:'start'});}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function wrapNav(fnName,pageId){
+  var orig=window[fnName];
+  if(typeof orig!=='function')return;
+  window[fnName]=function(){orig.apply(this,arguments);scrollToBookTop(pageId);};
+}
+setTimeout(function(){
+  wrapNav('amstNext','nocno-nebo');
+  wrapNav('amstPrev','nocno-nebo');
+  wrapNav('egipatNext','egipat');
+  wrapNav('egipatPrev','egipat');
+  wrapNav('kubaNext','kuba');
+  wrapNav('kubaPrev','kuba');
+},500);
+})();
