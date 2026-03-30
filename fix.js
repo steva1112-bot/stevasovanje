@@ -117,3 +117,26 @@ window.egipatSetup=function(){
 window.egipatNext=function(){};window.egipatPrev=function(){};
 new MutationObserver(function(){var ep=document.getElementById('page-egipat');if(ep&&ep.classList.contains('active')&&!ep.getAttribute('data-eg-done')){ep.setAttribute('data-eg-done','1');window.egipatSetup();}}).observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});
 })();
+
+/* Amsterdam fix: navigate by pairs */
+(function(){
+  function amstShowPage(dir){
+    var sl=Array.from(document.querySelectorAll('#amsterdam-pages .book-page-slide'));
+    var tot=sl.length; if(!tot)return;
+    var cur=sl.findIndex(function(s){return s.classList.contains('active');});
+    if(cur<0)cur=0;
+    var nx=cur+dir*2;
+    if(nx<0)nx=0;
+    if(nx>=tot)return;
+    sl.forEach(function(s,i){
+      s.classList.remove('active','right-visible');
+      if(i===nx)s.classList.add('active');
+      else if(i===nx+1&&nx+1<tot)s.classList.add('right-visible');
+    });
+    var co=document.getElementById('amst-counter-outer');
+    if(co)co.textContent=(Math.floor(nx/2)+1)+' / '+Math.ceil(tot/2);
+  }
+  window.amstShowPage=amstShowPage;
+  window.amstNext=function(){amstShowPage(1);};
+  window.amstPrev=function(){amstShowPage(-1);};
+})();
