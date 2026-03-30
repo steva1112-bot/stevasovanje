@@ -1375,6 +1375,64 @@
 #egipat-pages .book-page-slide { display: none !important; }
 #egipat-pages .book-page-slide.active { display: block !important; }
 #egipat-pages .book-page-slide.right-visible { display: block !important; }
+</style>
+<style id="mobile-opt">
+@media (max-width: 768px) {
+  /* Book pages - single column on mobile */
+  .book-pages-container, #amsterdam-pages, #kuba-pages, #egipat-pages {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .book-page-slide {
+    width: 100% !important;
+    flex: none !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+  .book-page-slide.right-visible {
+    display: none !important;
+  }
+  /* Text sizing */
+  .book-page-text {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    padding: 18px 16px !important;
+  }
+  /* Nav buttons - larger touch targets */
+  .book-nav-btn, .nav-btn, [onclick*="Next"], [onclick*="Prev"],
+  button[onclick*="Next"], button[onclick*="Prev"] {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    font-size: 15px !important;
+    padding: 12px 20px !important;
+  }
+  /* Counter */
+  .book-counter, #kuba-counter-outer, #amst-counter-outer, #egipat-counter-outer {
+    font-size: 13px !important;
+  }
+  /* Book reader height */
+  .book-reader {
+    height: auto !important;
+    min-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+  /* Destination header */
+  .dest-header {
+    min-height: 180px !important;
+  }
+  .dest-title {
+    font-size: 2rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .book-page-text {
+    font-size: 14px !important;
+    padding: 14px 12px !important;
+  }
+  .dest-title {
+    font-size: 1.6rem !important;
+  }
+}
 </style></head>
 <body>
 
