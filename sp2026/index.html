@@ -64,6 +64,8 @@ body.edit .editflag{display:inline-flex;align-items:center;gap:6px}
   /* STANDINGS: hide extra columns -> Mj | Igrač | UKUPNO only, full width, no scroll */
   .col-extra{display:none!important}
   table{min-width:0!important;width:100%!important}
+  .lbl-full{display:none}.lbl-short{display:inline}
+  .col-strel{padding-left:4px!important;padding-right:6px!important}
   thead th{padding:11px 8px 9px;font-size:11px}
   tbody td{padding:11px 8px}
   .rank{width:38px}
@@ -123,9 +125,13 @@ td.tip{text-align:center}
 .tipbox:focus{outline:2px solid var(--pitch);outline-offset:0;border-color:var(--pitch)}
 .tipdash{font-family:var(--display);font-weight:700;color:#94A3B8}
 .golin{width:42px;text-align:center;font-family:var(--display);font-weight:600;font-size:13px;border:1px solid var(--hair);border-radius:7px;padding:5px;background:#FAFBFD}
+.golview{text-align:center}
+.golnum{font-family:var(--display);font-weight:700;font-size:14px;color:#089b60;background:rgba(0,178,107,.12);padding:3px 9px;border-radius:7px;display:inline-block;min-width:24px}
+.golzero{font-family:var(--display);font-weight:600;color:#CBD5E1}
 .pts{font-family:var(--display);font-weight:700;font-size:11px;color:var(--pitch-d);margin-left:5px}
 .foot{text-align:center;font-size:12px;color:var(--muted);margin-top:20px}
 .hide{display:none!important}
+.lbl-short{display:none}.lbl-full{display:inline}
 .modal{position:fixed;inset:0;background:rgba(12,27,42,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
 .modal.show{display:flex}
 .card{background:#fff;border-radius:18px;padding:26px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
@@ -283,10 +289,10 @@ function renderFixtures(){
 function thead(){
   if(curTab==="ukupno"){
     return '<tr><th class="c">Mj.</th><th class="c col-extra">#</th><th>Igrač</th><th class="col-extra">Šampion</th><th class="col-extra">Strelac</th>'+
-      '<th class="c col-extra">Mečevi Σ</th><th class="c col-extra">Strelac Σ</th><th class="c">UKUPNO</th></tr>';
+      '<th class="c col-extra">Mečevi Σ</th><th class="c col-strel"><span class="lbl-full">Strelac Σ</span><span class="lbl-short">⚽</span></th><th class="c">UKUPNO</th></tr>';
   } else {
     const rd=data.rounds[curRound]; const sm=rd.matches.map(shortName);
-    return '<tr><th class="c">#</th><th>Igrač</th>'+(editMode?'<th class="c">Gol</th>':'')+
+    return '<tr><th class="c">#</th><th>Igrač</th><th class="c">⚽ Gol</th>'+
       sm.map(s=>'<th class="c">'+s+'</th>').join('')+'<th class="c">Kolo bodova</th></tr>';
   }
 }
@@ -305,7 +311,7 @@ function renderBoard(){
         '<td><div class="player"><span class="av">'+(p.ime||"?")[0]+'</span>'+p.ime+'</div></td>'+
         '<td class="col-extra"><div class="champ">'+flag(code)+(c.rep||"")+'</div></td>'+
         '<td class="strelac col-extra">'+(c.strelac||"")+'</td>'+
-        '<td class="sub col-extra">'+p._mec+'</td><td class="sub col-extra">'+p._strel+'</td><td class="tot">'+p._uk+'</td>';
+        '<td class="sub col-extra">'+p._mec+'</td><td class="sub col-strel">'+p._strel+'</td><td class="tot">'+p._uk+'</td>';
       tb.appendChild(tr);
     });
   } else {
@@ -320,7 +326,9 @@ function renderBoard(){
           cells+='<td class="tip"><span class="tipwrap"><input class="tipbox" data-pl="'+pid+'" data-mi="'+i+'" data-side="h" value="'+th+'" inputmode="numeric" maxlength="2"><span class="tipdash">–</span><input class="tipbox" data-pl="'+pid+'" data-mi="'+i+'" data-side="a" value="'+ta+'" inputmode="numeric" maxlength="2"></span></td>'; }
         else { const v=(e.tips||[])[i]; const pts=matchPts(v,rd.results[i]); cells+='<td class="tip">'+(v?'<span class="chip">'+v.replace(" - ","–")+'</span>'+(pts?'<span class="pts">+'+pts+'</span>':''):'<span class="chip empty">—</span>')+'</td>'; }
       }
-      const gol=editMode?'<td class="c"><input class="golin" data-pl="'+pid+'" data-gol="1" value="'+(e.golovi||0)+'" inputmode="numeric"></td>':'';
+      const gol=editMode
+        ? '<td class="c"><input class="golin" data-pl="'+pid+'" data-gol="1" value="'+(e.golovi||0)+'" inputmode="numeric"></td>'
+        : '<td class="c golview">'+((+e.golovi||0)>0?'<span class="golnum">'+(+e.golovi)+'</span>':'<span class="golzero">0</span>')+'</td>';
       const tr=document.createElement("tr");
       tr.innerHTML='<td class="num">'+p.br+'</td>'+
         '<td><div class="player"><span class="av">'+(p.ime||"?")[0]+'</span>'+p.ime+'</div></td>'+
