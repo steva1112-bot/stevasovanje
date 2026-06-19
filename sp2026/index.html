@@ -23,144 +23,43 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);-webkit-font-
 .hflag svg{display:block;width:100%;height:100%}
 .bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0 6px}
 .tabs{display:flex;gap:6px;background:#fff;border:1px solid var(--hair);border-radius:12px;padding:4px}
-.tab{font-family:var(--display);font-weight:600;font-size:13px;padding:8px 16px;border-radius:9px;cursor:pointer;color:var(--muted);border:none;background:none}
+.tab{font-family:var(--display);font-weight:600;font-size:13px;padding:8px 16px;border-radius:9px;color:var(--muted);border:none;background:none}
 .tab.active{background:var(--ink);color:#fff}
-.spacer{flex:1}
-.btn{font-family:var(--display);font-weight:600;font-size:13px;padding:9px 15px;border-radius:10px;cursor:pointer;border:1px solid var(--hair);background:#fff;color:var(--ink);display:inline-flex;align-items:center;gap:7px}
-.btn:hover{border-color:#cbd5e1}
-.btn.primary{background:var(--pitch);border-color:var(--pitch);color:#063}
-.editflag{font-family:var(--display);font-weight:600;font-size:12px;color:var(--pitch-d);background:rgba(0,178,107,.12);padding:7px 12px;border-radius:999px;display:none}
-body.edit .editflag{display:inline-flex;align-items:center;gap:6px}
-.hint{font-size:12px;color:var(--muted);margin:6px 2px 0}
-.roundbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 2px}
-.rsel{font-family:var(--display);font-weight:600;font-size:13px;padding:8px 12px;border:1px solid var(--hair);border-radius:10px;background:#fff;color:var(--ink)}
-.rpill{font-family:var(--display);font-weight:600;font-size:12px;color:var(--muted)}
 .sec-label{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:16px 2px 11px}
-.fixtures{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
-@media(max-width:760px){.fixtures{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){
-  body{padding-bottom:40px}
-  .app{padding:0 11px}
-  .hero{padding:20px 16px 18px;border-radius:0 0 20px 20px}
-  .crest{width:54px;height:54px}
-  .hero-row{gap:13px}
-  .hero h1{font-size:23px}
-  .hero .tag{font-size:10px;letter-spacing:.16em}
-  .hero .host{font-size:11px;margin-top:7px}
-  .bar{gap:7px;margin:14px 0 4px}
-  .tab{padding:7px 13px;font-size:13px}
-  .btn{padding:8px 12px;font-size:12px}
-  .roundbar{gap:6px}
-  .rsel{font-size:12px;padding:7px 9px;max-width:62vw}
-  .rpill{font-size:11px}
-  .sec-label{font-size:11px;margin:14px 2px 9px}
-  /* fixtures: single column, airy and readable */
-  .fixtures{grid-template-columns:1fr;gap:9px}
-  .fx{padding:13px 14px;border-radius:13px}
-  .fx .row{font-size:14px}
-  .fxscore{font-size:20px}
-  .cap{font-size:9px}
-  .flag{width:24px;height:16px}
-  /* STANDINGS: hide extra columns -> Mj | Igrač | UKUPNO only, full width, no scroll */
-  .col-extra{display:none!important}
-  table{min-width:0!important;width:100%!important}
-  .lbl-full{display:none}.lbl-short{display:inline}
-  .col-strel{padding-left:4px!important;padding-right:6px!important}
-  thead th{padding:11px 8px 9px;font-size:11px}
-  tbody td{padding:11px 8px}
-  .rank{width:38px}
-  .player{font-size:15px;gap:9px}
-  .av{width:26px;height:26px;font-size:12px}
-  .tot{font-size:17px}
-  /* champion + scorer as a small line under the name (Ukupno, mobile) */
-  body.tab-ukupno .player{align-items:flex-start}
-  body.tab-ukupno .player-sub{display:flex;align-items:center;gap:4px;margin-top:2px;font-weight:500;font-size:10px;color:var(--muted);white-space:nowrap}
-  body.tab-ukupno .ps-rep{font-family:var(--display);font-weight:700;letter-spacing:.04em;color:#475569}
-  body.tab-ukupno .player-sub .flag{width:15px;height:10px}
-  body.tab-ukupno .ps-dot{opacity:.45}
-  body.tab-ukupno .ps-strel{color:#089b60}
-  body.tab-ukupno .av{width:24px;height:24px}
-  body.tab-ukupno tbody td{padding:9px 5px}
-  body.tab-ukupno .rank{width:34px}
-  /* PO KOLU: keep horizontal scroll but make player column sticky & compact */
-  body.kolo-mobile .scroll{overflow-x:auto}
-  .chip{min-width:40px;font-size:12px;padding:4px 7px}
-  .tipin{width:48px}
-  .pts{font-size:10px;margin-left:3px}
-  .foot{font-size:11px;margin-top:16px}
-  .card{padding:22px}
-  /* sticky player name when scrolling matches in 'Po kolu' */
-  body:not(.tab-ukupno) tbody td:nth-child(2),
-  body:not(.tab-ukupno) thead th:nth-child(2){position:sticky;left:0;background:#fff;z-index:2;box-shadow:2px 0 0 var(--hair)}
-  body:not(.tab-ukupno) thead th:nth-child(2){background:#FBFCFE}
-}
-.fx{background:#fff;border:1px solid var(--hair);border-radius:15px;padding:14px;position:relative;overflow:hidden}
-.fx::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#CBD5E1}
-.fx.done::before{background:var(--pitch)}
-.fx .row{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13px}
-.fx .row+.row{margin-top:7px}
-.fx .nat{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.teamin{flex:1;border:1px solid var(--hair);border-radius:7px;padding:4px 7px;font-size:12px;font-family:var(--body);min-width:0}
-.flag{width:23px;height:15px;border-radius:3px;overflow:hidden;border:1px solid rgba(12,27,42,.12);flex-shrink:0;display:inline-block;background:#fff}
-.flag svg{display:block;width:100%;height:100%}
-.scorebox{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--hair)}
-.fxscore{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:2px}
-.fxtime{font-family:var(--display);font-weight:700;font-size:19px;color:#334155;letter-spacing:1px}
-.cap{position:absolute;top:11px;right:12px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.resin{width:30px;height:32px;text-align:center;font-family:var(--display);font-weight:700;font-size:17px;border:1.5px solid var(--hair);border-radius:8px;background:#FAFBFD}
-.blank{width:28px;height:32px;border:1.5px solid var(--hair);border-radius:8px;background:#FAFBFD;display:flex;align-items:center;justify-content:center;color:#CBD5E1;font-family:var(--display);font-weight:700}
-.board{background:#fff;border:1px solid var(--hair);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(12,27,42,.06);margin-top:6px}
-.scroll{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:680px}
-thead th{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:14px 9px 10px;background:#FBFCFE;border-bottom:1px solid var(--hair);white-space:nowrap}
+
+/* Zona sa zaključanim sadržajem */
+.lockzone{position:relative;margin-top:6px}
+.blurred{filter:blur(7px);pointer-events:none;user-select:none;opacity:.85}
+.board{background:#fff;border:1px solid var(--hair);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(12,27,42,.06)}
+table{width:100%;border-collapse:collapse}
+thead th{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:14px 9px 10px;background:#FBFCFE;border-bottom:1px solid var(--hair)}
 thead th.c{text-align:center}
-tbody td{padding:9px;border-bottom:1px solid var(--hair);font-size:14px;vertical-align:middle}
+tbody td{padding:11px 9px;border-bottom:1px solid var(--hair);font-size:14px}
 tbody tr:last-child td{border-bottom:none}
 .rank{width:44px;text-align:center}.medal{font-size:18px}.rnum{font-family:var(--display);font-weight:600;color:var(--muted)}
-tr.r1 td{background:linear-gradient(90deg,rgba(227,168,27,.16),transparent 60%)}
-tr.r2 td{background:linear-gradient(90deg,rgba(150,160,170,.16),transparent 60%)}
-tr.r3 td{background:linear-gradient(90deg,rgba(200,140,80,.14),transparent 60%)}
-.num{font-family:var(--display);font-weight:600;color:var(--muted);width:28px;text-align:center;font-size:12px}
-.player{display:flex;align-items:center;gap:10px;font-weight:600;white-space:nowrap}
-.pname{display:flex;flex-direction:column;line-height:1.15}
-.player-sub{display:none}
-/* Ukupno: minimal layout on ALL screen sizes (flag + abbr + scorer under name) */
-body.tab-ukupno .player{align-items:flex-start}
-body.tab-ukupno .player-sub{display:flex;align-items:center;gap:5px;margin-top:3px;font-weight:500;font-size:11px;color:var(--muted);white-space:nowrap}
-body.tab-ukupno .player-sub .flag{width:17px;height:11px}
-body.tab-ukupno .ps-rep{font-family:var(--display);font-weight:700;letter-spacing:.04em;color:#475569}
-body.tab-ukupno .ps-dot{opacity:.45}
-body.tab-ukupno .ps-strel{color:#089b60}
-body.tab-ukupno .col-champ{display:none!important}
-body.tab-ukupno .col-extra{display:none!important}
-.av{width:28px;height:28px;border-radius:9px;background:var(--ink);color:#fff;font-family:var(--display);font-weight:600;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.champ{display:flex;align-items:center;gap:8px;color:#334155;white-space:nowrap;font-size:13px}
-.strelac{color:var(--muted);white-space:nowrap;font-size:13px}
-td.tip{text-align:center}
-.chip{font-family:var(--display);font-weight:600;font-size:13px;background:var(--chip);color:var(--ink);padding:5px 9px;border-radius:8px;display:inline-block;min-width:44px}
-.chip.empty{background:transparent;color:#CBD5E1}
+.player{display:flex;align-items:center;gap:10px;font-weight:600}
+.av{width:28px;height:28px;border-radius:9px;background:var(--ink);color:#fff;font-family:var(--display);font-weight:600;font-size:12px;display:flex;align-items:center;justify-content:center}
 .tot{font-family:var(--display);font-weight:700;font-size:16px;text-align:center;color:var(--pitch-d)}
 .sub{font-family:var(--display);font-weight:600;font-size:13px;text-align:center;color:var(--muted)}
-.tipin{width:54px;text-align:center;font-family:var(--display);font-weight:600;font-size:13px;border:1px solid var(--hair);border-radius:7px;padding:5px 4px;background:#FAFBFD}
-.tipwrap{display:inline-flex;align-items:center;gap:4px}
-.tipbox{width:26px;height:30px;text-align:center;font-family:var(--display);font-weight:700;font-size:14px;border:1px solid var(--hair);border-radius:7px;padding:0;background:#FAFBFD}
-.tipbox:focus{outline:2px solid var(--pitch);outline-offset:0;border-color:var(--pitch)}
-.tipdash{font-family:var(--display);font-weight:700;color:#94A3B8}
-.golin{width:42px;text-align:center;font-family:var(--display);font-weight:600;font-size:13px;border:1px solid var(--hair);border-radius:7px;padding:5px;background:#FAFBFD}
-.golview{text-align:center}
-.golnum{font-family:var(--display);font-weight:700;font-size:14px;color:#089b60;background:rgba(0,178,107,.12);padding:3px 9px;border-radius:7px;display:inline-block;min-width:24px}
-.golzero{font-family:var(--display);font-weight:600;color:#CBD5E1}
-.pts{font-family:var(--display);font-weight:700;font-size:11px;color:var(--pitch-d);margin-left:5px}
+
+/* Overlay poruka */
+.gate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:5;padding:20px}
+.gate-card{background:rgba(12,27,42,.86);backdrop-filter:blur(3px);color:#fff;border-radius:20px;padding:34px 30px;text-align:center;max-width:440px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)}
+.lock-emo{font-size:46px;line-height:1;margin-bottom:14px}
+.gate-card h2{font-family:var(--display);font-weight:700;font-size:clamp(20px,5vw,27px);letter-spacing:.04em;line-height:1.15}
+.gate-card .gold{color:var(--gold)}
+.gate-card p{font-size:13.5px;color:#C7D2DE;margin-top:12px;line-height:1.5}
+.gate-card .price{font-family:var(--display);font-weight:700;font-size:15px;color:#7FE3B5;margin-top:16px}
+.gate-card .small{font-size:11px;color:#8a99ab;margin-top:18px;font-style:italic}
+.btn-fake{margin-top:18px;display:inline-block;font-family:var(--display);font-weight:600;font-size:14px;background:var(--gold);color:#3a2a00;padding:11px 22px;border-radius:11px;border:none;cursor:pointer}
+.btn-fake:active{transform:scale(.97)}
 .foot{text-align:center;font-size:12px;color:var(--muted);margin-top:20px}
-.hide{display:none!important}
-.lbl-short{display:none}.lbl-full{display:inline}
-.modal{position:fixed;inset:0;background:rgba(12,27,42,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
-.modal.show{display:flex}
-.card{background:#fff;border-radius:18px;padding:26px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.card h3{font-family:var(--display);font-size:18px;margin-bottom:6px}
-.card p{font-size:13px;color:var(--muted);margin-bottom:16px}
-.card input{width:100%;padding:11px 13px;border:1px solid var(--hair);border-radius:10px;font-size:15px;font-family:var(--body);margin-bottom:14px}
-.card .row2{display:flex;gap:9px}
+@media(max-width:560px){
+  .app{padding:0 11px}
+  .hero{padding:20px 16px 18px;border-radius:0 0 20px 20px}
+  .crest{width:54px;height:54px}.hero h1{font-size:23px}
+  .gate-card{padding:26px 20px}.lock-emo{font-size:38px}
+}
 </style>
 </head>
 <body>
@@ -187,369 +86,64 @@ td.tip{text-align:center}
     </div>
   </div>
 </div>
+
 <div class="app">
   <div class="bar">
     <div class="tabs">
-      <button class="tab active" data-tab="ukupno">Ukupno</button>
-      <button class="tab" data-tab="kolo">Po danu</button>
+      <button class="tab active">Ukupno</button>
+      <button class="tab">Po danu</button>
     </div>
-    <span class="editflag">✎ Režim izmena</span>
-    <div class="spacer"></div>
-    <button class="btn" id="adminBtn">🔒 Uredi</button>
-    <button class="btn hide" id="newRoundBtn">+ Novi dan</button>
-    <button class="btn primary hide" id="copyBtn">📋 Prekopiraj podatke</button>
-    <button class="btn hide" id="exportBtn">⤓ Objavi (fajl)</button>
-    <button class="btn hide" id="backupBtn">Rezerva</button>
-  </div>
-  <div class="hint" id="hint"></div>
-
-  <div class="roundbar">
-    <span class="rpill">Dan:</span>
-    <select class="rsel" id="roundSel"></select>
-    <span class="rpill" id="roundInfo"></span>
   </div>
 
-  <div class="sec-label">Mečevi <span id="editnote" class="hide" style="text-transform:none;letter-spacing:0;color:var(--pitch-d)">· upiši rezultate ovog dana</span></div>
-  <div class="fixtures" id="fixtures"></div>
+  <div class="sec-label">Ukupna rang-lista</div>
 
-  <div class="sec-label" id="tablabel">Ukupna rang-lista</div>
-  <div class="board"><div class="scroll"><table>
-    <thead id="thead"></thead>
-    <tbody id="tbody"></tbody>
-  </table></div></div>
+  <div class="lockzone">
+    <!-- lažna, zamućena tabela u pozadini -->
+    <div class="blurred">
+      <div class="board"><table>
+        <thead><tr>
+          <th class="c">Mj.</th><th>Igrač</th><th class="c">⚽</th><th class="c">UKUPNO</th>
+        </tr></thead>
+        <tbody id="fake"></tbody>
+      </table></div>
+    </div>
+
+    <!-- poruka preko -->
+    <div class="gate">
+      <div class="gate-card">
+        <div class="lock-emo">🔒</div>
+        <h2>SAMO ZA <span class="gold">PREMIUM</span> KORISNIKE</h2>
+        <p>Rang-lista je trenutno zaključana. Tvoj nalog nema aktivnu <b>Premium pretplatu</b> 💎</p>
+        <div class="price">VIP paket: 500 dinara</div>
+        <button class="btn-fake" onclick="alert('Plaćanje nije uspelo: nedovoljno piva na računu. 🍺\n\n(Šalim se — prava tabela se vraća sutra!)')">Aktiviraj Premium</button>
+        <div class="small">* Privremeno. Prava tabela se vraća sutra.</div>
+      </div>
+    </div>
+  </div>
 
   <div class="foot">🥇 vodi · UKUPNO sabira sva kola · računa se uživo</div>
 </div>
 
-<div class="modal" id="pinModal"><div class="card">
-  <h3>Uređivanje</h3>
-  <p>Unesi PIN da otključaš izmene. Ostali vide samo rezultate.</p>
-  <input type="password" id="pinInput" placeholder="PIN" autocomplete="off">
-  <div class="row2"><button class="btn" style="flex:1" onclick="closePin()">Otkaži</button>
-  <button class="btn primary" style="flex:1" onclick="tryPin()">Otključaj</button></div>
-</div></div>
-
 <script>
-const ADMIN_PIN="steva2336951";
-const FLAGS={"fr": "<svg viewBox=\"0 0 3 2\"><rect width=\"1\" height=\"2\" fill=\"#0055A4\"/><rect x=\"1\" width=\"1\" height=\"2\" fill=\"#fff\"/><rect x=\"2\" width=\"1\" height=\"2\" fill=\"#EF4135\"/></svg>", "es": "<svg viewBox=\"0 0 12 8\"><rect width=\"12\" height=\"8\" fill=\"#AA151B\"/><rect y=\"2\" width=\"12\" height=\"4\" fill=\"#F1BF00\"/></svg>", "pt": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#FF0000\"/><rect width=\"12\" height=\"20\" fill=\"#006600\"/><circle cx=\"12\" cy=\"10\" r=\"3.4\" fill=\"#FFD700\" stroke=\"#fff\" stroke-width=\".4\"/></svg>", "de": "<svg viewBox=\"0 0 3 3\"><rect width=\"3\" height=\"1\" fill=\"#000\"/><rect y=\"1\" width=\"3\" height=\"1\" fill=\"#D00\"/><rect y=\"2\" width=\"3\" height=\"1\" fill=\"#FFCE00\"/></svg>", "br": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#009C3B\"/><polygon points=\"15,2.5 27.5,10 15,17.5 2.5,10\" fill=\"#FFDF00\"/><circle cx=\"15\" cy=\"10\" r=\"4.1\" fill=\"#002776\"/></svg>", "eng": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><rect x=\"12.5\" width=\"5\" height=\"20\" fill=\"#CE1124\"/><rect y=\"7.5\" width=\"30\" height=\"5\" fill=\"#CE1124\"/></svg>", "ar": "<svg viewBox=\"0 0 9 6\"><rect width=\"9\" height=\"6\" fill=\"#74ACDF\"/><rect y=\"2\" width=\"9\" height=\"2\" fill=\"#fff\"/><circle cx=\"4.5\" cy=\"3\" r=\".7\" fill=\"#F6B40E\"/></svg>", "nl": "<svg viewBox=\"0 0 3 3\"><rect width=\"3\" height=\"1\" fill=\"#AE1C28\"/><rect y=\"1\" width=\"3\" height=\"1\" fill=\"#fff\"/><rect y=\"2\" width=\"3\" height=\"1\" fill=\"#21468B\"/></svg>", "mx": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><rect width=\"10\" height=\"20\" fill=\"#006847\"/><rect x=\"20\" width=\"10\" height=\"20\" fill=\"#CE1126\"/><circle cx=\"15\" cy=\"10\" r=\"2\" fill=\"#8a5a2b\"/></svg>", "za": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#007749\"/><path d=\"M11,0 H30 V8 H15 Z\" fill=\"#E03C31\"/><path d=\"M11,20 H30 V12 H15 Z\" fill=\"#001489\"/><path d=\"M0,0 L9,10 L0,20 Z\" fill=\"#000\"/></svg>", "kr": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><path d=\"M15,5 a5,5 0 0,1 0,10 a2.5,2.5 0 0,1 0,-5 a2.5,2.5 0 0,0 0,-5 Z\" fill=\"#CD2E3A\"/><path d=\"M15,5 a5,5 0 0,0 0,10 a2.5,2.5 0 0,0 0,-5 a2.5,2.5 0 0,1 0,-5 Z\" fill=\"#0047A0\"/></svg>", "cz": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"10\" fill=\"#fff\"/><rect y=\"10\" width=\"30\" height=\"10\" fill=\"#D7141A\"/><path d=\"M0,0 L15,10 L0,20 Z\" fill=\"#11457E\"/></svg>", "ca": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><rect width=\"7.5\" height=\"20\" fill=\"#D52B1E\"/><rect x=\"22.5\" width=\"7.5\" height=\"20\" fill=\"#D52B1E\"/><path d=\"M15,4.5 l1,2.6 2.7,-1 -1,2.6 2.6,1 -2.6,1.1 1,2.6 -2.7,-1.1 -1,2.1 -1,-2.1 -2.7,1.1 1,-2.6 -2.6,-1.1 2.6,-1 -1,-2.6 2.7,1 Z\" fill=\"#D52B1E\"/></svg>", "ba": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#002395\"/><path d=\"M8,0 H24 L8,20 Z\" fill=\"#FECB00\"/><circle cx=\"11\" cy=\"4\" r=\"1\" fill=\"#fff\"/><circle cx=\"9\" cy=\"10\" r=\"1\" fill=\"#fff\"/><circle cx=\"11\" cy=\"16\" r=\"1\" fill=\"#fff\"/></svg>", "us": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><g fill=\"#B22234\"><rect width=\"30\" height=\"1.54\"/><rect y=\"3.08\" width=\"30\" height=\"1.54\"/><rect y=\"6.15\" width=\"30\" height=\"1.54\"/><rect y=\"9.23\" width=\"30\" height=\"1.54\"/><rect y=\"12.3\" width=\"30\" height=\"1.54\"/><rect y=\"15.38\" width=\"30\" height=\"1.54\"/><rect y=\"18.46\" width=\"30\" height=\"1.54\"/></g><rect width=\"12\" height=\"10.77\" fill=\"#3C3B6E\"/></svg>", "py": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"6.67\" fill=\"#D52B1E\"/><rect y=\"6.67\" width=\"30\" height=\"6.67\" fill=\"#fff\"/><rect y=\"13.33\" width=\"30\" height=\"6.67\" fill=\"#0038A8\"/><circle cx=\"15\" cy=\"10\" r=\"2\" fill=\"#FEDF00\"/></svg>", "qa": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#8A1538\"/><rect width=\"9\" height=\"20\" fill=\"#fff\"/><path d=\"M9,0 l3,2 -3,2 3,2 -3,2 3,2 -3,2 3,2 -3,2 3,2 -3,2 V0Z\" fill=\"#8A1538\"/></svg>", "ch": "<svg viewBox=\"0 0 20 20\"><rect width=\"20\" height=\"20\" fill=\"#D52B1E\"/><rect x=\"8\" y=\"4\" width=\"4\" height=\"12\" fill=\"#fff\"/><rect x=\"4\" y=\"8\" width=\"12\" height=\"4\" fill=\"#fff\"/></svg>", "ma": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#C1272D\"/><path d=\"M15,6 l1.2,3.6 3.8,0 -3,2.3 1.1,3.6 -3.1,-2.2 -3.1,2.2 1.1,-3.6 -3,-2.3 3.8,0 Z\" fill=\"none\" stroke=\"#006233\" stroke-width=\".8\"/></svg>", "ht": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"10\" fill=\"#00209F\"/><rect y=\"10\" width=\"30\" height=\"10\" fill=\"#D21034\"/><rect x=\"11\" y=\"7\" width=\"8\" height=\"6\" fill=\"#fff\"/></svg>", "sct": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#0065BF\"/><path d=\"M0,0 L30,20 M30,0 L0,20\" stroke=\"#fff\" stroke-width=\"3.5\"/></svg>", "au": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#00247D\"/><rect width=\"15\" height=\"10\" fill=\"#00247D\"/><path d=\"M0,0 L15,10 M15,0 L0,10\" stroke=\"#fff\" stroke-width=\"2\"/><path d=\"M7.5,0 V10 M0,5 H15\" stroke=\"#fff\" stroke-width=\"3\"/><path d=\"M7.5,0 V10 M0,5 H15\" stroke=\"#CF142B\" stroke-width=\"1.6\"/><circle cx=\"22\" cy=\"14\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"26\" cy=\"10\" r=\"1\" fill=\"#fff\"/><circle cx=\"24\" cy=\"6\" r=\"1\" fill=\"#fff\"/></svg>", "tr": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#E30A17\"/><circle cx=\"12\" cy=\"10\" r=\"5\" fill=\"#fff\"/><circle cx=\"13.5\" cy=\"10\" r=\"4\" fill=\"#E30A17\"/><path d=\"M17,10 l3.2,-1 -2,2.7 0,-3.4 2,2.7 Z\" fill=\"#fff\"/></svg>", "cw": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#002B7F\"/><rect y=\"13\" width=\"30\" height=\"3\" fill=\"#F9E814\"/><path d=\"M6,5 l.8,2.4 2.5,0 -2,1.5 .8,2.4 -2.1,-1.5 -2.1,1.5 .8,-2.4 -2,-1.5 2.5,0Z\" fill=\"#fff\" transform=\"scale(.6) translate(4,2)\"/></svg>", "ci": "<svg viewBox=\"0 0 3 2\"><rect width=\"1\" height=\"2\" fill=\"#F77F00\"/><rect x=\"1\" width=\"1\" height=\"2\" fill=\"#fff\"/><rect x=\"2\" width=\"1\" height=\"2\" fill=\"#009E60\"/></svg>", "ec": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#FFDD00\"/><rect y=\"10\" width=\"30\" height=\"5\" fill=\"#0072CE\"/><rect y=\"15\" width=\"30\" height=\"5\" fill=\"#EF3340\"/></svg>", "se": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#006AA7\"/><rect x=\"9\" width=\"3\" height=\"20\" fill=\"#FECC00\"/><rect y=\"8.5\" width=\"30\" height=\"3\" fill=\"#FECC00\"/></svg>", "tn": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#E70013\"/><circle cx=\"15\" cy=\"10\" r=\"5\" fill=\"#fff\"/><circle cx=\"16\" cy=\"10\" r=\"3.6\" fill=\"#E70013\"/><circle cx=\"17.2\" cy=\"10\" r=\"2.6\" fill=\"#fff\"/><circle cx=\"18\" cy=\"10\" r=\"2.1\" fill=\"#E70013\"/></svg>", "cv": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><rect y=\"9\" width=\"30\" height=\"3\" fill=\"#003893\"/><rect width=\"30\" height=\"6\" fill=\"#003893\"/><rect y=\"14\" width=\"30\" height=\"6\" fill=\"#003893\"/><rect y=\"6\" width=\"30\" height=\"3\" fill=\"#CF2027\"/></svg>", "be": "<svg viewBox=\"0 0 3 2\"><rect width=\"1\" height=\"2\" fill=\"#000\"/><rect x=\"1\" width=\"1\" height=\"2\" fill=\"#FDDA24\"/><rect x=\"2\" width=\"1\" height=\"2\" fill=\"#EF3340\"/></svg>", "eg": "<svg viewBox=\"0 0 3 3\"><rect width=\"3\" height=\"1\" fill=\"#CE1126\"/><rect y=\"1\" width=\"3\" height=\"1\" fill=\"#fff\"/><rect y=\"2\" width=\"3\" height=\"1\" fill=\"#000\"/></svg>", "uy": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><g fill=\"#0038A8\"><rect y=\"2.2\" width=\"30\" height=\"2.2\"/><rect y=\"6.6\" width=\"30\" height=\"2.2\"/><rect y=\"11\" width=\"30\" height=\"2.2\"/><rect y=\"15.4\" width=\"30\" height=\"2.2\"/></g><rect width=\"12\" height=\"11\" fill=\"#fff\"/><circle cx=\"6\" cy=\"5.5\" r=\"2.4\" fill=\"#FCD116\"/></svg>", "ir": "<svg viewBox=\"0 0 3 3\"><rect width=\"3\" height=\"1\" fill=\"#239F40\"/><rect y=\"1\" width=\"3\" height=\"1\" fill=\"#fff\"/><rect y=\"2\" width=\"3\" height=\"1\" fill=\"#DA0000\"/></svg>", "nz": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#00247D\"/><rect width=\"15\" height=\"10\" fill=\"#00247D\"/><path d=\"M0,0 L15,10 M15,0 L0,10\" stroke=\"#fff\" stroke-width=\"2\"/><path d=\"M7.5,0 V10 M0,5 H15\" stroke=\"#fff\" stroke-width=\"3\"/><path d=\"M7.5,0 V10 M0,5 H15\" stroke=\"#CC142B\" stroke-width=\"1.6\"/><circle cx=\"23\" cy=\"6\" r=\"1\" fill=\"#CC142B\"/><circle cx=\"26\" cy=\"10\" r=\"1\" fill=\"#CC142B\"/><circle cx=\"22\" cy=\"14\" r=\"1\" fill=\"#CC142B\"/><circle cx=\"25\" cy=\"15\" r=\"1\" fill=\"#CC142B\"/></svg>", "sn": "<svg viewBox=\"0 0 3 2\"><rect width=\"1\" height=\"2\" fill=\"#00853F\"/><rect x=\"1\" width=\"1\" height=\"2\" fill=\"#FDEF42\"/><rect x=\"2\" width=\"1\" height=\"2\" fill=\"#E31B23\"/><path d=\"M1.5,0.7 l0.12,0.36 0.38,0 -0.31,0.23 0.12,0.36 -0.31,-0.22 -0.31,0.22 0.12,-0.36 -0.31,-0.23 0.38,0 Z\" fill=\"#00853F\"/></svg>", "iq": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"6.67\" fill=\"#CE1126\"/><rect y=\"6.67\" width=\"30\" height=\"6.67\" fill=\"#fff\"/><rect y=\"13.33\" width=\"30\" height=\"6.67\" fill=\"#000\"/><text x=\"15\" y=\"12\" font-size=\"4\" fill=\"#007A3D\" text-anchor=\"middle\" font-family=\"serif\">الله أكبر</text></svg>", "no": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#BA0C2F\"/><rect x=\"9\" width=\"4\" height=\"20\" fill=\"#fff\"/><rect y=\"8\" width=\"30\" height=\"4\" fill=\"#fff\"/><rect x=\"10\" width=\"2\" height=\"20\" fill=\"#00205B\"/><rect y=\"9\" width=\"30\" height=\"2\" fill=\"#00205B\"/></svg>", "dz": "<svg viewBox=\"0 0 30 20\"><rect width=\"15\" height=\"20\" fill=\"#006233\"/><rect x=\"15\" width=\"15\" height=\"20\" fill=\"#fff\"/><circle cx=\"15\" cy=\"10\" r=\"4\" fill=\"#D21034\"/><circle cx=\"16.5\" cy=\"10\" r=\"3.2\" fill=\"#fff\"/><path d=\"M19,10 l-3,-1 1,3 0,-4 -1,3 3,-1Z\" fill=\"#D21034\"/></svg>", "at": "<svg viewBox=\"0 0 3 3\"><rect width=\"3\" height=\"1\" fill=\"#ED2939\"/><rect y=\"1\" width=\"3\" height=\"1\" fill=\"#fff\"/><rect y=\"2\" width=\"3\" height=\"1\" fill=\"#ED2939\"/></svg>", "jo": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"6.67\" fill=\"#000\"/><rect y=\"6.67\" width=\"30\" height=\"6.67\" fill=\"#fff\"/><rect y=\"13.33\" width=\"30\" height=\"6.67\" fill=\"#007A3D\"/><path d=\"M0,0 L12,10 L0,20 Z\" fill=\"#CE1126\"/></svg>", "cd": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#007FFF\"/><path d=\"M0,17 L27,0 L30,3 L3,20 Z\" fill=\"#F7D618\"/><path d=\"M0,17 L27,0\" stroke=\"#CE1021\" stroke-width=\"1.4\"/></svg>", "hr": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"6.67\" fill=\"#FF0000\"/><rect y=\"6.67\" width=\"30\" height=\"6.67\" fill=\"#fff\"/><rect y=\"13.33\" width=\"30\" height=\"6.67\" fill=\"#171796\"/><rect x=\"13\" y=\"7\" width=\"4\" height=\"4\" fill=\"#FF0000\" stroke=\"#fff\" stroke-width=\".3\"/></svg>", "gh": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"6.67\" fill=\"#CE1126\"/><rect y=\"6.67\" width=\"30\" height=\"6.67\" fill=\"#FCD116\"/><rect y=\"13.33\" width=\"30\" height=\"6.67\" fill=\"#006B3F\"/><path d=\"M15,8 l1,3 3,0 -2.5,2 1,3 -2.5,-2 -2.5,2 1,-3 -2.5,-2 3,0Z\" fill=\"#000\"/></svg>", "pa": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><rect width=\"15\" height=\"10\" fill=\"#fff\"/><rect x=\"15\" width=\"15\" height=\"10\" fill=\"#DA121A\"/><rect y=\"10\" width=\"15\" height=\"10\" fill=\"#072357\"/><path d=\"M7.5,2 l1,3 3,0 -2.5,2 1,3 -2.5,-2 -2.5,2 1,-3 -2.5,-2 3,0Z\" fill=\"#072357\"/><path d=\"M22.5,12 l1,3 3,0 -2.5,2 1,3 -2.5,-2 -2.5,2 1,-3 -2.5,-2 3,0Z\" fill=\"#DA121A\"/></svg>", "uz": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"6.67\" fill=\"#1EB53A\"/><rect y=\"6.67\" width=\"30\" height=\"6.67\" fill=\"#fff\"/><rect y=\"13.33\" width=\"30\" height=\"6.67\" fill=\"#0099B5\"/><rect y=\"6\" width=\"30\" height=\".8\" fill=\"#CE1126\"/><rect y=\"13.2\" width=\"30\" height=\".8\" fill=\"#CE1126\"/></svg>", "co": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#FCD116\"/><rect y=\"10\" width=\"30\" height=\"5\" fill=\"#003893\"/><rect y=\"15\" width=\"30\" height=\"5\" fill=\"#CE1126\"/></svg>", "jp": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><circle cx=\"15\" cy=\"10\" r=\"5\" fill=\"#BC002D\"/></svg>", "sa": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#006C35\"/><rect x=\"4\" y=\"13\" width=\"22\" height=\"2\" fill=\"#fff\"/><text x=\"15\" y=\"9\" font-size=\"5\" fill=\"#fff\" text-anchor=\"middle\" font-family=\"serif\">توحيد</text></svg>"}, TEAM2CODE={"Meksiko": "mx", "Južna Afrika": "za", "Južna Koreja": "kr", "Češka": "cz", "Kanada": "ca", "Bosna": "ba", "Katar": "qa", "Švajcarska": "ch", "Brazil": "br", "Maroko": "ma", "Haiti": "ht", "Škotska": "sct", "USA": "us", "Paragvaj": "py", "Australija": "au", "Turska": "tr", "Nemačka": "de", "Kurasao": "cw", "Holandija": "nl", "Japan": "jp", "Obala Slonovače": "ci", "Ekvador": "ec", "Švedska": "se", "Tunis": "tn", "Španija": "es", "Zelenortska Ostrva": "cv", "Belgija": "be", "Egipat": "eg", "Saudijska Arabija": "sa", "Urugvaj": "uy", "Iran": "ir", "Novi Zeland": "nz", "Francuska": "fr", "Senegal": "sn", "Irak": "iq", "Norveška": "no", "Argentina": "ar", "Alžir": "dz", "Austrija": "at", "Jordan": "jo", "Portugal": "pt", "DR Kongo": "cd", "Engleska": "eng", "Hrvatska": "hr", "Gana": "gh", "Panama": "pa", "Uzbekistan": "uz", "Kolumbija": "co"}, REP2CODE={"Francuska": "fr", "Španija": "es", "Portugal": "pt", "Nemačka": "de", "Brazil": "br", "Engleska": "eng", "Argentina": "ar", "Holandija": "nl"};
-const REP2ABBR={"Francuska":"FRA","Španija":"ESP","Portugal":"POR","Nemačka":"GER","Brazil":"BRA","Engleska":"ENG","Argentina":"ARG","Holandija":"NED"};
-const MODEL={"players": [{"br": 1, "ime": "Lane", "rep": "Francuska", "code": ""}, {"br": 2, "ime": "Bugarin", "rep": "Španija", "code": ""}, {"br": 3, "ime": "Bobi", "rep": "Portugal", "code": ""}, {"br": 4, "ime": "Mika", "rep": "Nemačka", "code": ""}, {"br": 5, "ime": "Steva", "rep": "Brazil", "code": ""}, {"br": 6, "ime": "Filip", "rep": "Portugal", "code": ""}, {"br": 7, "ime": "Šomi", "rep": "Engleska", "code": ""}, {"br": 8, "ime": "Sima", "rep": "Argentina", "code": ""}, {"br": 9, "ime": "Poša", "rep": "Brazil", "code": ""}, {"br": 10, "ime": "Maja", "rep": "Španija", "code": ""}, {"br": 11, "ime": "Deki stanar", "rep": "Španija", "code": ""}, {"br": 12, "ime": "Boris", "rep": "Nemačka", "code": ""}, {"br": 13, "ime": "Džoni ZR", "rep": "Holandija", "code": ""}, {"br": 14, "ime": "Tomaš", "rep": "Španija", "code": ""}, {"br": 15, "ime": "Ćilim", "rep": "Francuska", "code": ""}, {"br": 16, "ime": "Deki šurak", "rep": "Brazil", "code": ""}, {"br": 17, "ime": "Ćino", "rep": "Argentina", "code": ""}, {"br": 18, "ime": "Smudja", "rep": "Francuska", "code": ""}, {"br": 19, "ime": "Bondža", "rep": "Španija", "code": ""}, {"br": 20, "ime": "Džoni LB", "rep": "Francuska", "code": ""}, {"br": 21, "ime": "Uroš", "rep": "Engleska", "code": ""}], "champions": {"1": {"rep": "Francuska", "strelac": "Mbape"}, "2": {"rep": "Španija", "strelac": "Jamal"}, "3": {"rep": "Portugal", "strelac": "Kane"}, "4": {"rep": "Nemačka", "strelac": "Havertz"}, "5": {"rep": "Brazil", "strelac": "Vinicius JR"}, "6": {"rep": "Portugal", "strelac": "Ojarzabal"}, "7": {"rep": "Engleska", "strelac": "Kane"}, "8": {"rep": "Argentina", "strelac": "Mbape"}, "9": {"rep": "Brazil", "strelac": "Mbape"}, "10": {"rep": "Španija", "strelac": "Mbape"}, "11": {"rep": "Španija", "strelac": "Mbape"}, "12": {"rep": "Nemačka", "strelac": "Kane"}, "13": {"rep": "Holandija", "strelac": "Haland"}, "14": {"rep": "Španija", "strelac": "Tores F."}, "15": {"rep": "Francuska", "strelac": "Mbape"}, "16": {"rep": "Brazil", "strelac": "Havertz"}, "17": {"rep": "Argentina", "strelac": "Alvarez J."}, "18": {"rep": "Francuska", "strelac": "Mbape"}, "19": {"rep": "Španija", "strelac": "Jekeres V."}, "20": {"rep": "Francuska", "strelac": "Ojarzabal"}, "21": {"rep": "Engleska", "strelac": "Haland"}}, "rounds": [{"naziv": "11.06. (čet)", "matches": ["Meksiko - Južna Afrika", "Južna Koreja - Češka"], "results": ["2 - 0", "2 - 1"], "entries": {"1": {"tips": ["2 - 0", "1 - 2"], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["2 - 0", "0 - 1"], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["2 - 0", "1 - 1"], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["1 - 0", "1 - 3"], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["2 - 1", "1 - 1"], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["2 - 0", "1 - 1"], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["1 - 0", "0 - 2"], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["3 - 1", "1 - 0"], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["3 - 1", "1 - 2"], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["2 - 0", "1 - 1"], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["2 - 0", "1 - 1"], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["3 - 1", "1 - 3"], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["1 - 0", "0 - 0"], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["2 - 1", "1 - 1"], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["1 - 0", "1 - 0"], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["1 - 0", "0 - 0"], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["3 - 0", "0 - 0"], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["2 - 0", "1 - 1"], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["3 - 1", "0 - 0"], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["3 - 1", "1 - 2"], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["1 - 1", "1 - 1"], "golovi": 0, "strelac": "Haland"}}, "times": ["21:00", "04:00"]}, {"naziv": "12.06. (pet)", "matches": ["Kanada - Bosna", "USA - Paragvaj"], "results": ["1 - 1", ""], "entries": {"1": {"tips": ["1 - 1", "0 - 1"], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["2 - 1", "2 - 0"], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["0 - 0", "1 - 0"], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["2 - 2", "2 - 1"], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["2 - 1", "0 - 0"], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["0 - 1", "2 - 0"], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["0 - 0", "2 - 0"], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["1 - 1", "2 - 0"], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["1 - 1", "0 - 0"], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["1 - 0", "2 - 1"], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["2 - 1", "1 - 0"], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["2 - 1", "3 - 1"], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["1 - 1", "2 - 1"], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["1 - 1", "2 - 2"], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["1 - 0", "1 - 0"], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["2 - 0", "2 - 1"], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["1 - 0", "3 - 0"], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["1 - 1", "1 - 0"], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["2 - 2", "0 - 1"], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["0 - 0", "2 - 2"], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["2 - 1", "1 - 1"], "golovi": 0, "strelac": "Haland"}}, "times": ["21:00", "03:00"]}, {"naziv": "13.06. (sub)", "matches": ["Katar - Švajcarska", "Brazil - Maroko", "Haiti - Škotska", "Australija - Turska"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["21:00", "00:00", "03:00", "06:00"]}, {"naziv": "14.06. (ned)", "matches": ["Nemačka - Kurasao", "Holandija - Japan", "Obala Slonovače - Ekvador", "Švedska - Tunis"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["19:00", "22:00", "01:00", "04:00"]}, {"naziv": "15.06. (pon)", "matches": ["Španija - Zelenortska Ostrva", "Belgija - Egipat", "Saudijska Arabija - Urugvaj", "Iran - Novi Zeland"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["18:00", "21:00", "00:00", "03:00"]}, {"naziv": "16.06. (uto)", "matches": ["Francuska - Senegal", "Irak - Norveška", "Argentina - Alžir", "Austrija - Jordan"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["21:00", "00:00", "03:00", "06:00"]}, {"naziv": "17.06. (sre)", "matches": ["Portugal - DR Kongo", "Engleska - Hrvatska", "Gana - Panama", "Uzbekistan - Kolumbija"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["19:00", "22:00", "01:00", "04:00"]}, {"naziv": "18.06. (čet)", "matches": ["Češka - Južna Afrika", "Švajcarska - Bosna", "Kanada - Katar", "Meksiko - Južna Koreja"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["18:00", "21:00", "00:00", "03:00"]}, {"naziv": "19.06. (pet)", "matches": ["Škotska - Maroko", "USA - Australija", "Brazil - Haiti", "Turska - Paragvaj"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["00:00", "21:00", "02:30", "05:00"]}, {"naziv": "20.06. (sub)", "matches": ["Holandija - Švedska", "Nemačka - Obala Slonovače", "Ekvador - Kurasao", "Tunis - Japan"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["19:00", "22:00", "05:00", "06:00"]}, {"naziv": "21.06. (ned)", "matches": ["Španija - Saudijska Arabija", "Belgija - Iran", "Urugvaj - Zelenortska Ostrva", "Novi Zeland - Egipat"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["18:00", "21:00", "00:00", "03:00"]}, {"naziv": "22.06. (pon)", "matches": ["Argentina - Austrija", "Francuska - Irak", "Norveška - Senegal", "Jordan - Alžir"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["19:00", "23:00", "02:00", "05:00"]}, {"naziv": "23.06. (uto)", "matches": ["Portugal - Uzbekistan", "Engleska - Gana", "Panama - Hrvatska", "Kolumbija - DR Kongo"], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["19:00", "22:00", "01:00", "04:00"]}, {"naziv": "24.06. (sre)", "matches": ["Švajcarska - Kanada", "Bosna - Katar", "Škotska - Brazil", "Maroko - Haiti", "Češka - Meksiko", "Južna Afrika - Južna Koreja"], "results": ["", "", "", "", "", ""], "entries": {"1": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["21:00", "21:00", "00:00", "00:00", "03:00", "03:00"]}, {"naziv": "25.06. (čet)", "matches": ["Ekvador - Nemačka", "Kurasao - Obala Slonovače", "Japan - Švedska", "Tunis - Holandija", "Turska - USA", "Paragvaj - Australija"], "results": ["", "", "", "", "", ""], "entries": {"1": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["22:00", "22:00", "01:00", "01:00", "04:00", "04:00"]}, {"naziv": "26.06. (pet)", "matches": ["Norveška - Francuska", "Senegal - Irak", "Zelenortska Ostrva - Saudijska Arabija", "Urugvaj - Španija", "Egipat - Iran", "Novi Zeland - Belgija"], "results": ["", "", "", "", "", ""], "entries": {"1": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["21:00", "21:00", "02:00", "02:00", "05:00", "05:00"]}, {"naziv": "27.06. (sub)", "matches": ["Panama - Engleska", "Hrvatska - Gana", "Kolumbija - Portugal", "DR Kongo - Uzbekistan", "Alžir - Austrija", "Jordan - Argentina"], "results": ["", "", "", "", "", ""], "entries": {"1": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["23:00", "23:00", "01:30", "01:30", "04:00", "04:00"]}, {"naziv": "28.06.–03.07. — Šesnaestina (1/16)", "matches": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "results": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "entries": {"1": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]}, {"naziv": "04.–07.07. — Osmina (1/8)", "matches": ["", "", "", "", "", "", "", ""], "results": ["", "", "", "", "", "", "", ""], "entries": {"1": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", "", "", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["", "", "", "", "", "", "", ""]}, {"naziv": "09.–11.07. — Četvrtfinale", "matches": ["", "", "", ""], "results": ["", "", "", ""], "entries": {"1": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", "", "", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["", "", "", ""]}, {"naziv": "14.–15.07. — Polufinale", "matches": ["", ""], "results": ["", ""], "entries": {"1": {"tips": ["", ""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": ["", ""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": ["", ""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": ["", ""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": ["", ""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": ["", ""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": ["", ""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": ["", ""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": ["", ""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": ["", ""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": ["", ""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": ["", ""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": ["", ""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": ["", ""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": ["", ""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": ["", ""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": ["", ""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": ["", ""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": ["", ""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": ["", ""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": ["", ""], "golovi": 0, "strelac": "Haland"}}, "times": ["", ""]}, {"naziv": "18.07. — Za 3. mesto", "matches": [""], "results": [""], "entries": {"1": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": [""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": [""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": [""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": [""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": [""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": [""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": [""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": [""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": [""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": [""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": [""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": [""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": [""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": [""], "golovi": 0, "strelac": "Haland"}}, "times": [""]}, {"naziv": "19.07. — Finale", "matches": [""], "results": [""], "entries": {"1": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "2": {"tips": [""], "golovi": 0, "strelac": "Jamal"}, "3": {"tips": [""], "golovi": 0, "strelac": "Kane"}, "4": {"tips": [""], "golovi": 0, "strelac": "Havertz"}, "5": {"tips": [""], "golovi": 0, "strelac": "Vinicius JR"}, "6": {"tips": [""], "golovi": 0, "strelac": "Ojarzabal"}, "7": {"tips": [""], "golovi": 0, "strelac": "Kane"}, "8": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "9": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "10": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "11": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "12": {"tips": [""], "golovi": 0, "strelac": "Kane"}, "13": {"tips": [""], "golovi": 0, "strelac": "Haland"}, "14": {"tips": [""], "golovi": 0, "strelac": "Tores F."}, "15": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "16": {"tips": [""], "golovi": 0, "strelac": "Havertz"}, "17": {"tips": [""], "golovi": 0, "strelac": "Alvarez J."}, "18": {"tips": [""], "golovi": 0, "strelac": "Mbape"}, "19": {"tips": [""], "golovi": 0, "strelac": "Jekeres V."}, "20": {"tips": [""], "golovi": 0, "strelac": "Ojarzabal"}, "21": {"tips": [""], "golovi": 0, "strelac": "Haland"}}, "times": [""]}]};
-let data=null, editMode=false, curTab="ukupno", curRound=0;
+const FLAGS={ca:'<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="7.5" height="20" fill="#D52B1E"/><rect x="22.5" width="7.5" height="20" fill="#D52B1E"/><path d="M15,4.5 l1,2.6 2.7,-1 -1,2.6 2.6,1 -2.6,1.1 1,2.6 -2.7,-1.1 -1,2.1 -1,-2.1 -2.7,1.1 1,-2.6 -2.6,-1.1 2.6,-1 -1,-2.6 2.7,1 Z" fill="#D52B1E"/></svg>',
+mx:'<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="10" height="20" fill="#006847"/><rect x="20" width="10" height="20" fill="#CE1126"/><circle cx="15" cy="10" r="2" fill="#8a5a2b"/></svg>',
+us:'<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><g fill="#B22234"><rect width="30" height="1.54"/><rect y="3.08" width="30" height="1.54"/><rect y="6.15" width="30" height="1.54"/><rect y="9.23" width="30" height="1.54"/><rect y="12.3" width="30" height="1.54"/><rect y="15.38" width="30" height="1.54"/><rect y="18.46" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/></svg>'};
+document.getElementById("hca").innerHTML=FLAGS.ca;
+document.getElementById("hmx").innerHTML=FLAGS.mx;
+document.getElementById("hus").innerHTML=FLAGS.us;
 
-function flag(c){return '<span class="flag">'+(FLAGS[c]||"")+'</span>';}
-function teamCode(n){ if(!n) return ""; n=n.trim(); return TEAM2CODE[n]||TEAM2CODE[n.replace("Južna","J.")]||""; }
-function parse(s){ if(!s) return null; const m=String(s).replace(/[–—]/g,"-").match(/(\d+)\s*-\s*(\d+)/); return m?[+m[1],+m[2]]:null; }
-function outcome(p){ return !p?null:(p[0]>p[1]?1:(p[0]===p[1]?0:2)); }
-function matchPts(tip,res){ const p=parse(tip),r=parse(res); if(!p||!r) return 0; if(p[0]===r[0]&&p[1]===r[1]) return 5; if(outcome(p)===outcome(r)) return 2; return 0; }
-function splitMatch(n){ if(!n) return ["",""]; const p=n.split(/\s[-–]\s/); return [p[0]||"",p[1]||""]; }
-function shortName(n){ const [a,b]=splitMatch(n); const ab=s=>(s.replace(/^(J\.|Južna|Severna|S\.)\s*/,'')||s).slice(0,3).toUpperCase(); return n?ab(a)+"–"+ab(b):"—"; }
-
-// points for one player in one round
-function roundPoints(pid, rIdx){
-  const rd=data.rounds[rIdx]; const e=rd.entries[pid]||{tips:[],golovi:0};
-  let m=0; const n=rd.matches.length;
-  for(let i=0;i<n;i++) m+=matchPts((e.tips||[])[i], rd.results[i]);
-  const s=(+e.golovi||0)*3;
-  return {mec:m, strel:s, uk:m+s};
-}
-function grand(pid){
-  let mec=0,str=0;
-  data.rounds.forEach((rd,i)=>{ const r=roundPoints(pid,i); mec+=r.mec; str+=r.strel; });
-  return {mec, strel:str, uk:mec+str};
-}
-function computeStandings(){
-  const rows=data.players.map(p=>{ const g=grand(String(p.br)); return {...p, _mec:g.mec,_strel:g.strel,_uk:g.uk}; });
-  rows.sort((a,b)=> b._uk-a._uk || b._strel-a._strel || a.br-b.br);
-  rows.forEach((p,i)=>{ p._rank=(i>0&&p._uk===rows[i-1]._uk&&p._strel===rows[i-1]._strel)?rows[i-1]._rank:i+1; });
-  return rows;
-}
-function champ(pid){ const c=data.champions[pid]||{}; return c; }
-
-function renderFixtures(){
-  const rd=data.rounds[curRound]; const wrap=document.getElementById("fixtures"); wrap.innerHTML="";
-  rd.matches.forEach((mname,i)=>{
-    const [a,b]=splitMatch(mname); const res=rd.results[i]||"";
-    const tm = (rd.times && rd.times[i]) ? rd.times[i] : "";
-    let score;
-    if(editMode){ const r=parse(res); score='<input class="resin" data-res="'+i+'" data-side="h" value="'+(r?r[0]:"")+'" inputmode="numeric"> <span style="font-weight:700;color:#94A3B8">:</span> <input class="resin" data-res="'+i+'" data-side="a" value="'+(r?r[1]:"")+'" inputmode="numeric">'; }
-    else if(res){ score='<span class="fxscore">'+res.replace(" - "," : ")+'</span>'; }
-    else if(tm){ score='<span class="fxtime">'+tm+'</span>'; }
-    else { score='<span class="blank">·</span><span style="font-weight:700;color:#94A3B8">:</span><span class="blank">·</span>'; }
-    let teamRows;
-    if(editMode){
-      teamRows='<div class="row">'+flag(teamCode(a))+'<input class="teamin" data-mt="'+i+'" data-pos="a" value="'+(a||"")+'" placeholder="Domaćin"></div>'+
-               '<div class="row">'+flag(teamCode(b))+'<input class="teamin" data-mt="'+i+'" data-pos="b" value="'+(b||"")+'" placeholder="Gost"></div>';
-    } else {
-      teamRows='<div class="row">'+flag(teamCode(a))+'<span class="nat">'+(a||"—")+'</span></div>'+
-               '<div class="row">'+flag(teamCode(b))+'<span class="nat">'+(b||"—")+'</span></div>';
-    }
-    const capText = res ? "rezultat" : (tm ? "⏱ "+tm : "uskoro");
-    const el=document.createElement("div"); el.className="fx"+(res?" done":"");
-    el.innerHTML='<div class="cap">'+capText+'</div>'+teamRows+'<div class="scorebox">'+score+'</div>';
-    wrap.appendChild(el);
-  });
-  if(editMode){
-    wrap.querySelectorAll(".resin").forEach(inp=>{
-      inp.addEventListener("focus",()=>inp.select());
-      inp.addEventListener("input",()=>{
-      inp.value=inp.value.replace(/[^0-9]/g,"").slice(0,2);
-      const i=+inp.dataset.res;
-      const h=wrap.querySelector('.resin[data-res="'+i+'"][data-side="h"]').value.trim();
-      const a=wrap.querySelector('.resin[data-res="'+i+'"][data-side="a"]').value.trim();
-      data.rounds[curRound].results[i]=(h!==""&&a!=="")?(h+" - "+a):""; save(); renderBoard();
-      if(inp.dataset.side==="h" && inp.value.length>=1){
-        const away=wrap.querySelector('.resin[data-res="'+i+'"][data-side="a"]');
-        if(away) away.focus();
-      }
-      });
-    });
-    wrap.querySelectorAll(".teamin").forEach(inp=>inp.addEventListener("change",()=>{
-      const i=+inp.dataset.mt; const rd=data.rounds[curRound];
-      const cur=splitMatch(rd.matches[i]); const a=wrap.querySelector('.teamin[data-mt="'+i+'"][data-pos="a"]').value.trim();
-      const b=wrap.querySelector('.teamin[data-mt="'+i+'"][data-pos="b"]').value.trim();
-      rd.matches[i]=(a||b)?(a+" - "+b):""; save(); renderFixtures(); renderBoard();
-    }));
-  }
-}
-
-function thead(){
-  if(curTab==="ukupno"){
-    return '<tr><th class="c">Mj.</th><th class="c col-extra">#</th><th>Igrač</th><th class="col-champ">Šampion</th><th class="col-champ">Strelac</th>'+
-      '<th class="c col-extra">Mečevi Σ</th><th class="c col-strel"><span class="lbl-full">Strelac Σ</span><span class="lbl-short">⚽</span></th><th class="c">UKUPNO</th></tr>';
-  } else {
-    const rd=data.rounds[curRound]; const sm=rd.matches.map(shortName);
-    return '<tr><th class="c">#</th><th>Igrač</th><th class="c">⚽ Gol</th>'+
-      sm.map(s=>'<th class="c">'+s+'</th>').join('')+'<th class="c">Kolo bodova</th></tr>';
-  }
-}
-
-function renderBoard(){
-  document.getElementById("thead").innerHTML=thead();
-  const tb=document.getElementById("tbody"); tb.innerHTML="";
-  if(curTab==="ukupno"){
-    const rows=computeStandings();
-    rows.forEach(p=>{
-      const medal={1:"🥇",2:"🥈",3:"🥉"}[p._rank]||""; const c=champ(String(p.br));
-      const code=REP2CODE[c.rep]||"";
-      const tr=document.createElement("tr"); if(p._rank<=3) tr.className="r"+p._rank;
-      tr.innerHTML='<td class="rank">'+(medal?'<span class="medal">'+medal+'</span>':'<span class="rnum">'+p._rank+'</span>')+'</td>'+
-        '<td class="num col-extra">'+p.br+'</td>'+
-        '<td><div class="player"><span class="av">'+(p.ime||"?")[0]+'</span><span class="pname">'+p.ime+'<span class="player-sub">'+flag(code)+'<span class="ps-rep">'+(REP2ABBR[c.rep]||c.rep||"")+'</span>'+(c.strelac?'<span class="ps-dot">·</span><span class="ps-strel">'+c.strelac+'</span>':'')+'</span></span></div></td>'+
-        '<td class="col-champ"><div class="champ">'+flag(code)+(c.rep||"")+'</div></td>'+
-        '<td class="strelac col-champ">'+(c.strelac||"")+'</td>'+
-        '<td class="sub col-extra">'+p._mec+'</td><td class="sub col-strel">'+p._strel+'</td><td class="tot">'+p._uk+'</td>';
-      tb.appendChild(tr);
-    });
-  } else {
-    const rd=data.rounds[curRound];
-    const list=[...data.players].sort((a,b)=>a.br-b.br);
-    list.forEach(p=>{
-      const pid=String(p.br); const e=rd.entries[pid]||(rd.entries[pid]={tips:[],golovi:0});
-      const rp=roundPoints(pid,curRound);
-      let cells="";
-      for(let i=0;i<rd.matches.length;i++){
-        if(editMode){ const tp=parse((e.tips||[])[i]); const th=tp?tp[0]:""; const ta=tp?tp[1]:"";
-          cells+='<td class="tip"><span class="tipwrap"><input class="tipbox" data-pl="'+pid+'" data-mi="'+i+'" data-side="h" value="'+th+'" inputmode="numeric" maxlength="2"><span class="tipdash">–</span><input class="tipbox" data-pl="'+pid+'" data-mi="'+i+'" data-side="a" value="'+ta+'" inputmode="numeric" maxlength="2"></span></td>'; }
-        else { const v=(e.tips||[])[i]; const pts=matchPts(v,rd.results[i]); cells+='<td class="tip">'+(v?'<span class="chip">'+v.replace(" - ","–")+'</span>'+(pts?'<span class="pts">+'+pts+'</span>':''):'<span class="chip empty">—</span>')+'</td>'; }
-      }
-      const gol=editMode
-        ? '<td class="c"><input class="golin" data-pl="'+pid+'" data-gol="1" value="'+(e.golovi||0)+'" inputmode="numeric"></td>'
-        : '<td class="c golview">'+((+e.golovi||0)>0?'<span class="golnum">'+(+e.golovi)+'</span>':'<span class="golzero">0</span>')+'</td>';
-      const tr=document.createElement("tr");
-      tr.innerHTML='<td class="num">'+p.br+'</td>'+
-        '<td><div class="player"><span class="av">'+(p.ime||"?")[0]+'</span>'+p.ime+'</div></td>'+
-        gol+cells+'<td class="tot" data-tot="'+pid+'">'+rp.uk+'</td>';
-      tb.appendChild(tr);
-    });
-    if(editMode){
-      tb.querySelectorAll(".tipbox").forEach(inp=>{
-        inp.addEventListener("focus",()=>inp.select());
-        inp.addEventListener("input",()=>{
-        inp.value=inp.value.replace(/[^0-9]/g,"").slice(0,2);
-        const pl=inp.dataset.pl, mi=inp.dataset.mi;
-        const h=tb.querySelector('.tipbox[data-pl="'+pl+'"][data-mi="'+mi+'"][data-side="h"]').value.trim();
-        const a=tb.querySelector('.tipbox[data-pl="'+pl+'"][data-mi="'+mi+'"][data-side="a"]').value.trim();
-        const e=data.rounds[curRound].entries[pl]; if(!e.tips)e.tips=[];
-        e.tips[+mi]=(h!==""||a!=="")?(h+" - "+a):"";
-        save();
-        if(inp.dataset.side==="h" && inp.value.length>=1){
-          const away=tb.querySelector('.tipbox[data-pl="'+pl+'"][data-mi="'+mi+'"][data-side="a"]');
-          if(away){ away.focus(); }
-        }
-        updateTotalsOnly();
-        });
-      });
-      tb.querySelectorAll(".golin").forEach(inp=>inp.addEventListener("input",()=>{
-        inp.value=inp.value.replace(/[^0-9]/g,"").slice(0,2);
-        data.rounds[curRound].entries[inp.dataset.pl].golovi=+inp.value||0; save(); updateTotalsOnly();
-      }));
-    }
-  }
-}
-function refreshTotals(){ renderBoard(); }
-// Light update: refresh only the per-day total cells (keeps input focus while typing)
-function updateTotalsOnly(){
-  if(curTab!=="kolo") { renderBoard(); return; }
-  document.querySelectorAll('#tbody .tot[data-tot]').forEach(td=>{
-    const pid=td.getAttribute('data-tot');
-    td.textContent = roundPoints(pid, curRound).uk;
-  });
-}
-
-function renderRoundSel(){
-  const sel=document.getElementById("roundSel"); sel.innerHTML="";
-  data.rounds.forEach((r,i)=>{ const o=document.createElement("option"); o.value=i; o.textContent=r.naziv||("Kolo "+(i+1)); sel.appendChild(o); });
-  sel.value=curRound;
-  // info: points scored this round (sum of all players' round uk) and played matches
-  const rd=data.rounds[curRound]; const played=rd.results.filter(x=>x).length;
-  document.getElementById("roundInfo").textContent="("+played+"/"+rd.matches.length+" mečeva odigrano)";
-}
-
-const LS_KEY="sp2026_rounds";
-function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(data)); }catch(e){} }
-function migrate(d){ if(!d.rounds){ /* old flat format -> wrap */ } if(!d.champions) d.champions={}; return d; }
-function load(){
-  return fetch("data.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null).then(pub=>{
-    const draft=(()=>{try{return JSON.parse(localStorage.getItem(LS_KEY));}catch(e){return null;}})();
-    data = (pub&&pub.rounds)?pub : (draft&&draft.rounds)?draft : JSON.parse(JSON.stringify(MODEL));
-    data=migrate(data);
-  });
-}
-
-document.getElementById("adminBtn").onclick=()=>{
-  if(editMode){ editMode=false; document.body.classList.remove("edit");
-    document.getElementById("adminBtn").textContent="🔒 Uredi";
-    ["exportBtn","backupBtn","newRoundBtn","copyBtn"].forEach(id=>document.getElementById(id).classList.add("hide"));
-    document.getElementById("editnote").classList.add("hide"); document.getElementById("hint").textContent="";
-    renderAll();
-  } else { document.getElementById("pinModal").classList.add("show"); document.getElementById("pinInput").focus(); }
-};
-function tryPin(){ if(document.getElementById("pinInput").value===ADMIN_PIN){
-    editMode=true; document.body.classList.add("edit");
-    document.getElementById("adminBtn").textContent="✓ Završi izmene";
-    ["exportBtn","backupBtn","newRoundBtn","copyBtn"].forEach(id=>document.getElementById(id).classList.remove("hide"));
-    document.getElementById("editnote").classList.remove("hide");
-    document.getElementById("hint").textContent="Biraš dan gore, pa upisuješ mečeve, rezultate, tipove i golove. UKUPNO sabira sva kola. Na kraju klikni Objavi i postavi data.json na GitHub.";
-    closePin(); curTab="kolo"; setTab(); renderAll();
-  } else alert("Pogrešan PIN."); }
-function closePin(){ document.getElementById("pinModal").classList.remove("show"); document.getElementById("pinInput").value=""; }
-document.getElementById("pinInput").addEventListener("keydown",e=>{if(e.key==="Enter")tryPin();});
-
-document.getElementById("newRoundBtn").onclick=()=>{
-  const n=data.rounds.length+1;
-  const tmpl=data.rounds[0].matches.length||4;
-  const entries={}; data.players.forEach(p=>entries[String(p.br)]={tips:Array(tmpl).fill(""),golovi:0});
-  data.rounds.push({naziv:"Kolo "+n, matches:Array(tmpl).fill(""), results:Array(tmpl).fill(""), entries});
-  curRound=data.rounds.length-1; save(); renderRoundSel(); renderAll();
-};
-document.getElementById("exportBtn").onclick=()=>{ dl(JSON.stringify(data,null,2),"data.json"); };
-document.getElementById("copyBtn").onclick=async ()=>{
-  const txt=JSON.stringify(data,null,2);
-  const btn=document.getElementById("copyBtn"); const old=btn.textContent;
-  function done(ok){ btn.textContent= ok? "✓ Kopirano!" : "✗ Nije uspelo — drži pa Copy";
-    document.getElementById("hint").textContent= ok
-      ? "Podaci su u memoriji. Na GitHubu otvori sp2026/data.json → olovka (Edit) → obriši sve → Nalepi (Paste) → Commit."
-      : "Kopiranje nije prošlo automatski. Koristi dugme „Objavi (fajl)“ umesto toga.";
-    setTimeout(()=>{btn.textContent=old;},2500);
-  }
-  try{
-    if(navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(txt); done(true); }
-    else { throw new Error("no clipboard api"); }
-  }catch(e){
-    // fallback: temp textarea + execCommand
-    try{
-      const ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0";
-      document.body.appendChild(ta); ta.focus(); ta.select();
-      const ok=document.execCommand("copy"); document.body.removeChild(ta); done(ok);
-    }catch(e2){ done(false); }
-  }
-};
-document.getElementById("backupBtn").onclick=()=>{ dl(JSON.stringify(data,null,2),"rezerva_"+new Date().toISOString().slice(0,10)+".json"); };
-function dl(txt,name){ const b=new Blob([txt],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=name; a.click(); }
-
-document.getElementById("roundSel").onchange=e=>{ curRound=+e.target.value; renderRoundSel(); renderAll(); };
-document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{ curTab=t.dataset.tab; setTab(); renderBoard(); });
-function setTab(){ document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab===curTab));
-  document.body.classList.toggle("tab-ukupno", curTab==="ukupno");
-  document.getElementById("tablabel").textContent = curTab==="ukupno"?"Ukupna rang-lista":("Bodovi — "+(data.rounds[curRound].naziv||"")); }
-
-function setHost(){ document.getElementById("hca").innerHTML=FLAGS.ca; document.getElementById("hmx").innerHTML=FLAGS.mx; document.getElementById("hus").innerHTML=FLAGS.us; }
-function renderAll(){ renderRoundSel(); setTab(); renderFixtures(); renderBoard(); }
-load().then(()=>{ setHost(); renderAll(); });
+// lažni redovi (samo dekoracija ispod blura — nisu pravi podaci)
+const fakeNames=["████","███████","█████","████","██████","█████","███","████████","█████","██████","████","███████"];
+const medals={0:"🥇",1:"🥈",2:"🥉"};
+const tb=document.getElementById("fake");
+fakeNames.forEach((nm,i)=>{
+  const tr=document.createElement("tr");
+  tr.innerHTML='<td class="rank">'+(medals[i]?'<span class="medal">'+medals[i]+'</span>':'<span class="rnum">'+(i+1)+'</span>')+'</td>'+
+    '<td><div class="player"><span class="av">?</span>'+nm+'</div></td>'+
+    '<td class="sub">█</td>'+
+    '<td class="tot">██</td>';
+  tb.appendChild(tr);
+});
 </script>
 </body>
-<!-- ===== DODATAK: kolona „Uplata" u Ukupno tabeli =====
-     Zalepiti TAČNO IZNAD </body>, posle glavnog <script>...</script> bloka.
-     Ne dira postojeći kod. Sve se snima sa ostalim podacima (Prekopiraj/Objavi). -->
-<style>
-.col-pay{width:34px;text-align:center}
-.pay-dot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;font-family:var(--display);font-weight:700;font-size:13px;line-height:1}
-.pay-yes{background:rgba(0,178,107,.15);color:var(--pitch-d)}
-.pay-no{background:transparent;color:#CBD5E1}
-body.edit .pay-dot{cursor:pointer;border:1px solid var(--hair)}
-body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
-@media(max-width:560px){
-  .col-pay{width:30px}
-  .pay-dot{width:20px;height:20px;font-size:12px}
-  body.tab-ukupno .col-pay{padding-left:4px!important;padding-right:6px!important}
-}
-</style>
-<script>
-(function(){
-  function ensurePaid(){ if(typeof data!=="undefined" && data && !data.paid) data.paid={}; }
-
-  window.payCell=function(pid){
-    var ok = data.paid && data.paid[pid];
-    return '<span class="pay-dot '+(ok?'pay-yes':'pay-no')+'" data-pay="'+pid+'">'+(ok?'\u2713':'\u2014')+'</span>';
-  };
-
-  // Obmotaj postojeći renderBoard tako da po crtanju doda kolonu Uplata.
-  var _renderBoard = renderBoard;
-  function patchedRenderBoard(){
-    ensurePaid();
-    _renderBoard();
-    if(curTab!=="ukupno") return;
-
-    var headRow = document.querySelector('#thead tr');
-    if(headRow && !headRow.querySelector('.col-pay')){
-      var ths = headRow.querySelectorAll('th');
-      var lastTh = ths[ths.length-1];            // UKUPNO
-      var payTh = document.createElement('th');
-      payTh.className = 'c col-pay';
-      payTh.title = 'Uplata';
-      payTh.textContent = '\uD83D\uDCB6'; // 💶
-      headRow.insertBefore(payTh, lastTh);
-    }
-
-    var rows = computeStandings();
-    var trs = document.querySelectorAll('#tbody tr');
-    trs.forEach(function(tr, idx){
-      if(tr.querySelector('.col-pay')) return;
-      var totTd = tr.querySelector('.tot');
-      if(!totTd || !rows[idx]) return;
-      var pid = String(rows[idx].br);
-      var td = document.createElement('td');
-      td.className = 'col-pay';
-      td.innerHTML = payCell(pid);
-      tr.insertBefore(td, totTd);
-    });
-
-    if(editMode){
-      document.querySelectorAll('#tbody .pay-dot').forEach(function(d){
-        d.addEventListener('click', function(){
-          var pid=d.dataset.pay;
-          if(!data.paid) data.paid={};
-          data.paid[pid]=!data.paid[pid];
-          save();
-          renderBoard();
-        });
-      });
-    }
-  }
-  renderBoard = patchedRenderBoard;   // zameni globalno (renderAll poziva ovu verziju)
-
-  // Ako je prvi render već prošao pre ovog patcha, prerenderuj odmah.
-  if(typeof data!=="undefined" && data){ renderBoard(); }
-})();
-</script>
 </html>
