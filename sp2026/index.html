@@ -478,4 +478,78 @@ function renderAll(){ renderRoundSel(); setTab(); renderFixtures(); renderBoard(
 load().then(()=>{ setHost(); renderAll(); });
 </script>
 </body>
+<!-- ===== DODATAK: kolona „Uplata" u Ukupno tabeli =====
+     Zalepiti TAČNO IZNAD </body>, posle glavnog <script>...</script> bloka.
+     Ne dira postojeći kod. Sve se snima sa ostalim podacima (Prekopiraj/Objavi). -->
+<style>
+.col-pay{width:34px;text-align:center}
+.pay-dot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;font-family:var(--display);font-weight:700;font-size:13px;line-height:1}
+.pay-yes{background:rgba(0,178,107,.15);color:var(--pitch-d)}
+.pay-no{background:transparent;color:#CBD5E1}
+body.edit .pay-dot{cursor:pointer;border:1px solid var(--hair)}
+body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
+@media(max-width:560px){
+  .col-pay{width:30px}
+  .pay-dot{width:20px;height:20px;font-size:12px}
+  body.tab-ukupno .col-pay{padding-left:4px!important;padding-right:6px!important}
+}
+</style>
+<script>
+(function(){
+  function ensurePaid(){ if(typeof data!=="undefined" && data && !data.paid) data.paid={}; }
+
+  window.payCell=function(pid){
+    var ok = data.paid && data.paid[pid];
+    return '<span class="pay-dot '+(ok?'pay-yes':'pay-no')+'" data-pay="'+pid+'">'+(ok?'\u2713':'\u2014')+'</span>';
+  };
+
+  // Obmotaj postojeći renderBoard tako da po crtanju doda kolonu Uplata.
+  var _renderBoard = renderBoard;
+  function patchedRenderBoard(){
+    ensurePaid();
+    _renderBoard();
+    if(curTab!=="ukupno") return;
+
+    var headRow = document.querySelector('#thead tr');
+    if(headRow && !headRow.querySelector('.col-pay')){
+      var ths = headRow.querySelectorAll('th');
+      var lastTh = ths[ths.length-1];            // UKUPNO
+      var payTh = document.createElement('th');
+      payTh.className = 'c col-pay';
+      payTh.title = 'Uplata';
+      payTh.textContent = '\uD83D\uDCB6'; // 💶
+      headRow.insertBefore(payTh, lastTh);
+    }
+
+    var rows = computeStandings();
+    var trs = document.querySelectorAll('#tbody tr');
+    trs.forEach(function(tr, idx){
+      if(tr.querySelector('.col-pay')) return;
+      var totTd = tr.querySelector('.tot');
+      if(!totTd || !rows[idx]) return;
+      var pid = String(rows[idx].br);
+      var td = document.createElement('td');
+      td.className = 'col-pay';
+      td.innerHTML = payCell(pid);
+      tr.insertBefore(td, totTd);
+    });
+
+    if(editMode){
+      document.querySelectorAll('#tbody .pay-dot').forEach(function(d){
+        d.addEventListener('click', function(){
+          var pid=d.dataset.pay;
+          if(!data.paid) data.paid={};
+          data.paid[pid]=!data.paid[pid];
+          save();
+          renderBoard();
+        });
+      });
+    }
+  }
+  renderBoard = patchedRenderBoard;   // zameni globalno (renderAll poziva ovu verziju)
+
+  // Ako je prvi render već prošao pre ovog patcha, prerenderuj odmah.
+  if(typeof data!=="undefined" && data){ renderBoard(); }
+})();
+</script>
 </html>
