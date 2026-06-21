@@ -2401,8 +2401,8 @@
         "Novi Zeland - Egipat"
       ],
       "results": [
-        "",
-        "",
+        "4 - 0",
+        "0 - 0",
         "",
         ""
       ],
@@ -2424,7 +2424,7 @@
             "2 - 0",
             "1 - 2"
           ],
-          "golovi": 0,
+          "golovi": 1,
           "strelac": "Jamal"
         },
         "3": {
@@ -2464,7 +2464,7 @@
             "1 - 0",
             "0 - 2"
           ],
-          "golovi": 0,
+          "golovi": 2,
           "strelac": "Ojarzabal"
         },
         "7": {
@@ -2604,7 +2604,7 @@
             "1 - 0",
             "0 - 2"
           ],
-          "golovi": 0,
+          "golovi": 2,
           "strelac": "Ojarzabal"
         },
         "21": {
