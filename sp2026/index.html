@@ -553,35 +553,51 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
 })();
 </script>
 
-<!-- ===== POPUP REKLAMA StevaBet (iskače na svaki refresh, gasi se na ✕) ===== -->
+<!-- ===== POPUP REKLAME StevaBet (dve u nizu: prva -> ugasiš -> druga) ===== -->
 <style>
-#adOverlay{position:fixed;inset:0;background:rgba(12,27,42,.62);display:flex;
+.adOverlay{position:fixed;inset:0;background:rgba(12,27,42,.62);display:none;
   align-items:center;justify-content:center;z-index:300;padding:20px}
-#adBox{position:relative;max-width:420px;width:100%;animation:adPop .25s ease}
+.adOverlay.show{display:flex}
+.adBox{position:relative;max-width:420px;width:100%;animation:adPop .25s ease}
 @keyframes adPop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
-#adBox img{width:100%;height:auto;display:block;border-radius:16px;
+.adBox img{width:100%;height:auto;display:block;border-radius:16px;
   box-shadow:0 20px 60px rgba(0,0,0,.5)}
-#adClose{position:absolute;top:-12px;right:-12px;width:38px;height:38px;border:none;
+.adClose{position:absolute;top:-12px;right:-12px;width:38px;height:38px;border:none;
   background:#fff;border-radius:50%;font-size:20px;font-weight:700;color:#0C1B2A;
   cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 14px rgba(0,0,0,.35)}
-#adClose:hover{background:#E2E8F0}
-@media(max-width:560px){#adBox{max-width:92vw}#adClose{top:-8px;right:-8px;width:34px;height:34px;font-size:18px}}
+.adClose:hover{background:#E2E8F0}
+@media(max-width:560px){.adBox{max-width:92vw}.adClose{top:-8px;right:-8px;width:34px;height:34px;font-size:18px}}
 </style>
-<div id="adOverlay">
-  <div id="adBox">
-    <button id="adClose" aria-label="Zatvori">✕</button>
+<div class="adOverlay show" id="adOverlay1">
+  <div class="adBox">
+    <button class="adClose" data-ad="1" aria-label="Zatvori">✕</button>
     <img src="stevabet_reklama.png" alt="StevaBet reklama">
+  </div>
+</div>
+<div class="adOverlay" id="adOverlay2">
+  <div class="adBox">
+    <button class="adClose" data-ad="2" aria-label="Zatvori">✕</button>
+    <img src="stevabet_reklama2.png" alt="StevaBet reklama 2">
   </div>
 </div>
 <script>
 (function(){
-  var ov=document.getElementById('adOverlay');
-  if(!ov) return;
-  function zatvori(){ ov.style.display='none'; }
-  document.getElementById('adClose').onclick=zatvori;
-  ov.onclick=function(e){ if(e.target===ov) zatvori(); };
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape') zatvori(); });
+  var ov1=document.getElementById('adOverlay1');
+  var ov2=document.getElementById('adOverlay2');
+  function zatvori(ov,sledeci){
+    ov.classList.remove('show');
+    if(sledeci) sledeci.classList.add('show');
+  }
+  ov1.querySelector('.adClose').onclick=function(){ zatvori(ov1,ov2); };
+  ov2.querySelector('.adClose').onclick=function(){ zatvori(ov2,null); };
+  ov1.onclick=function(e){ if(e.target===ov1) zatvori(ov1,ov2); };
+  ov2.onclick=function(e){ if(e.target===ov2) zatvori(ov2,null); };
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    if(ov1.classList.contains('show')) zatvori(ov1,ov2);
+    else if(ov2.classList.contains('show')) zatvori(ov2,null);
+  });
 })();
 </script>
 </html>
