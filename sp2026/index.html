@@ -556,9 +556,10 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
 <!-- ===== POPUP REKLAMA StevaBet x MegaSun (profesionalna verzija) ===== -->
 <style>
 .adOverlay{position:fixed;inset:0;background:rgba(12,27,42,.62);display:none;
-  align-items:center;justify-content:center;z-index:300;padding:20px}
+  align-items:flex-start;justify-content:center;z-index:300;padding:20px;
+  overflow-y:auto}
 .adOverlay.show{display:flex}
-.adBox{position:relative;max-width:640px;width:100%;animation:adPop .25s ease}
+.adBox{position:relative;max-width:640px;width:100%;margin:auto 0;animation:adPop .25s ease}
 @keyframes adPop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
 .adClose{position:absolute;top:-12px;right:-12px;width:38px;height:38px;border:none;
   background:#fff;border-radius:50%;font-size:20px;font-weight:700;color:#0C1B2A;
@@ -691,17 +692,20 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
 
   .sbad-photo-panel {
     position: relative;
+    min-height: 430px;
     background: linear-gradient(160deg, #1a1a1a 0%, #0a0a0a 100%);
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+    padding-top: 70px;
     overflow: hidden;
   }
   .sbad-photo-panel img {
     width: 78%;
+    max-height: calc(100% - 70px);
+    object-fit: contain;
     border-radius: 8px 8px 0 0;
     display: block;
-    margin-top: 62px;
     filter: saturate(1.05) contrast(1.03);
   }
   .sbad-flag-strip {
