@@ -569,15 +569,8 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
 @media(max-width:680px){.adBox{max-width:92vw}.adClose{top:-8px;right:-8px;width:34px;height:34px;font-size:18px}}
 </style>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #e9e9e9;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-  }
+  .sbad-ad, .sbad-ad * { box-sizing: border-box; margin: 0; padding: 0; }
+  .sbad-ad { font-family: 'Helvetica Neue', Arial, sans-serif; }
 
   .sbad-ad {
     width: 640px;
@@ -614,7 +607,7 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
     grid-template-columns: 1.15fr 0.85fr;
   }
 
-  .content {
+  .sbad-content {
     padding: 34px 32px 30px;
   }
 
@@ -627,7 +620,7 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
     margin-bottom: 10px;
   }
 
-  h1 {
+  .sbad-title {
     font-size: 26px;
     line-height: 1.28;
     color: #111;
@@ -635,7 +628,7 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
     margin-bottom: 14px;
     letter-spacing: -.2px;
   }
-  h1 .sbad-hl { color: #b8912f; }
+  .sbad-title .sbad-hl { color: #b8912f; }
 
   .sbad-desc {
     font-size: 14.5px;
@@ -764,9 +757,9 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
   </div>
 
   <div class="sbad-ad-body">
-    <div class="content">
+    <div class="sbad-content">
       <div class="sbad-eyebrow">MegaSun Premium × StevaBet</div>
-      <h1>Sunčajte se na okretnici i imajte <span class="sbad-hl">premium</span> boju kao <span class="sbad-hl">Marokanci</span>!</h1>
+      <div class="sbad-title">Sunčajte se na okretnici i imajte <span class="sbad-hl">premium</span> boju kao <span class="sbad-hl">Marokanci</span>!</div>
       <p class="sbad-desc">
         Uz <b>StevaBet Premium paket</b> dobijaš <b>-15%</b> na sve tretmane u MegaSun studiju.
         Prvo se opališ na okretnici, pa opališ i kvotu.
