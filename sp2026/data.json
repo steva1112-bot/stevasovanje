@@ -6117,14 +6117,14 @@
         "Francuska - Maroko"
       ],
       "results": [
-        ""
+        "2 - 0"
       ],
       "entries": {
         "1": {
           "tips": [
             "3 - 0"
           ],
-          "golovi": 0,
+          "golovi": 1,
           "strelac": "Mbape"
         },
         "2": {
@@ -6173,28 +6173,28 @@
           "tips": [
             "0 - 0"
           ],
-          "golovi": 0,
+          "golovi": 1,
           "strelac": "Mbape"
         },
         "9": {
           "tips": [
             "4 - 1"
           ],
-          "golovi": 0,
+          "golovi": 1,
           "strelac": "Mbape"
         },
         "10": {
           "tips": [
             "3 - 1"
           ],
-          "golovi": 0,
+          "golovi": 1,
           "strelac": "Mbape"
         },
         "11": {
           "tips": [
             "2 - 0"
           ],
-          "golovi": 0,
+          "golovi": 1,
           "strelac": "Mbape"
         },
         "12": {
@@ -6222,7 +6222,7 @@
           "tips": [
             "1 - 0"
           ],
-          "golovi": 0,
+          "golovi": 1,
           "strelac": "Mbape"
         },
         "16": {
@@ -6243,7 +6243,7 @@
           "tips": [
             "2 - 1"
           ],
-          "golovi": 0,
+          "golovi": 1,
           "strelac": "Mbape"
         },
         "19": {
@@ -7278,6 +7278,7 @@
     "14": true,
     "16": true,
     "18": true,
-    "19": true
+    "19": true,
+    "21": true
   }
 }
