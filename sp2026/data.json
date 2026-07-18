@@ -6943,7 +6943,7 @@
     {
       "naziv": "18.07. (sub) — Za 3. mesto",
       "matches": [
-        ""
+        "Francuska - Engleska"
       ],
       "results": [
         ""
@@ -7104,7 +7104,7 @@
     {
       "naziv": "19.07. (ned) — FINALE",
       "matches": [
-        ""
+        "Španija - Argentina"
       ],
       "results": [
         ""
@@ -7277,6 +7277,7 @@
     "12": true,
     "13": true,
     "14": true,
+    "15": true,
     "16": true,
     "18": true,
     "19": true,
