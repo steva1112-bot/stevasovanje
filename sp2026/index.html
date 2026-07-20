@@ -557,4 +557,88 @@ body.edit .pay-yes{border-color:rgba(0,178,107,.4)}
 })();
 </script>
 
+<!-- ===== DODATAK: bonus +10 za tip "Španija pobednik finala" =====
+     Zalepiti ISPOD prethodnog dodatka (Uplata), iznad </html>.
+     Radi kao čekirano polje: klik u edit modu = +10 u UKUPNO, automatski,
+     bez diranja postojećeg koda za bodovanje mečeva. -->
+<style>
+.col-esp{width:38px;text-align:center}
+.esp-dot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;font-family:var(--display);font-weight:700;font-size:12px;line-height:1}
+.esp-yes{background:rgba(170,21,27,.15);color:#AA151B}
+.esp-no{background:transparent;color:#CBD5E1}
+body.edit .esp-dot{cursor:pointer;border:1px solid var(--hair)}
+body.edit .esp-yes{border-color:rgba(170,21,27,.4)}
+@media(max-width:560px){
+  .col-esp{width:32px}
+  .esp-dot{width:20px;height:20px;font-size:11px}
+  body.tab-ukupno .col-esp{padding-left:4px!important;padding-right:6px!important}
+}
+</style>
+<script>
+(function(){
+  var ESP_BONUS = 10;
+  function ensureSpanci(){ if(typeof data!=="undefined" && data && !data.spanci) data.spanci={}; }
+
+  // Ubaci bonus direktno u grand() da uđe u UKUPNO kolonu i u sortiranje rang-liste.
+  var _grand = grand;
+  grand = function(pid){
+    ensureSpanci();
+    var g = _grand(pid);
+    var bonus = (data.spanci && data.spanci[pid]) ? ESP_BONUS : 0;
+    return {mec:g.mec, strel:g.strel, uk:g.uk+bonus};
+  };
+
+  window.espCell = function(pid){
+    var ok = data.spanci && data.spanci[pid];
+    return '<span class="esp-dot '+(ok?'esp-yes':'esp-no')+'" data-esp="'+pid+'">'+(ok?'\u2713':'\u2014')+'</span>';
+  };
+
+  var _renderBoard2 = renderBoard;
+  function patchedRenderBoard2(){
+    ensureSpanci();
+    _renderBoard2();
+    if(curTab!=="ukupno") return;
+
+    var headRow = document.querySelector('#thead tr');
+    if(headRow && !headRow.querySelector('.col-esp')){
+      var ths = headRow.querySelectorAll('th');
+      var lastTh = ths[ths.length-1]; // UKUPNO
+      var espTh = document.createElement('th');
+      espTh.className = 'c col-esp';
+      espTh.title = 'Bonus +10 (tip: Španija pobednik finala)';
+      espTh.textContent = '\uD83C\uDDEA\uD83C\uDDF8+10';
+      headRow.insertBefore(espTh, lastTh);
+    }
+
+    var rows = computeStandings();
+    var trs = document.querySelectorAll('#tbody tr');
+    trs.forEach(function(tr, idx){
+      if(tr.querySelector('.col-esp')) return;
+      var totTd = tr.querySelector('.tot');
+      if(!totTd || !rows[idx]) return;
+      var pid = String(rows[idx].br);
+      var td = document.createElement('td');
+      td.className = 'col-esp';
+      td.innerHTML = espCell(pid);
+      tr.insertBefore(td, totTd);
+    });
+
+    if(editMode){
+      document.querySelectorAll('#tbody .esp-dot').forEach(function(d){
+        d.addEventListener('click', function(){
+          var pid=d.dataset.esp;
+          if(!data.spanci) data.spanci={};
+          data.spanci[pid]=!data.spanci[pid];
+          save();
+          renderBoard();
+        });
+      });
+    }
+  }
+  renderBoard = patchedRenderBoard2;
+
+  if(typeof data!=="undefined" && data){ renderBoard(); }
+})();
+</script>
+
 </html>
