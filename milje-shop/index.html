@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2C2C2C">
-    <meta name="description" content="Milje — Domaći proizvod satkan sa puno ljubavi. Majice ukrašene tradicionalnom vezom, rađene u duhu porodičnog zanata.">
+    <meta name="description" content="Milje — Domaći proizvod satkan sa puno ljubavi. Muške i ženske majice ukrašene tradicionalnom vezom, rađene u duhu porodičnog zanata.">
     <title>Milje — Satkano sa ljubavlju</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -28,6 +28,7 @@
                 <a href="#prica" class="nav-link">Priča</a>
                 <a href="#proizvod" class="nav-link">Majica</a>
                 <a href="#zasto" class="nav-link">Zašto Milje</a>
+                <a href="#pitanja" class="nav-link">Pitanja</a>
                 <a href="#poruci" class="nav-link nav-cta">Poruči</a>
             </div>
         </div>
@@ -60,14 +61,14 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-photo-frame">
-                    <img src="assets/baka.png" alt="Baka Stana hekla Milje uzorke" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+                    <img src="assets/baka.png" alt="Baka Milosija hekla Milje uzorke" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
                     <div class="photo-frame-ornament top-left">❦</div>
                     <div class="photo-frame-ornament top-right">❦</div>
                     <div class="photo-frame-ornament bottom-left">❦</div>
                     <div class="photo-frame-ornament bottom-right">❦</div>
                 </div>
                 <div class="hero-caption">
-                    <span class="caption-name">Baka Stana</span>
+                    <span class="caption-name">Baka Milosija</span>
                     <span class="caption-title">Majstor heklač</span>
                 </div>
             </div>
@@ -92,7 +93,7 @@
                         sada obučen u modernu formu.
                     </p>
                     <p>
-                        Baka Stana hekla već šezdeset godina. Njene ruke, oštećene od vremena i rada, 
+                        Baka Milosija hekla već šezdeset godina. Njene ruke, oštećene od vremena i rada, 
                         još uvek stvaraju čuda — svaki pokret je precizan, svaki čvor pun pažnje. 
                         Kao dete, sedeo sam pored nje i gledao kako iz ništa nastaje nešto prelepo. 
                         Nisam tada znao da učim jednu od najvažnijih lekcija života: 
@@ -113,7 +114,7 @@
                 </div>
                 <div class="story-visual">
                     <div class="story-image-wrapper">
-                        <img src="assets/majica.jpg" alt="Milje majica — crna sa zlatnom vezom" class="story-image">
+                        <img src="assets/product-model.jpg" alt="Milje majica — crna sa zlatnom vezom" class="story-image">
                         <div class="story-image-caption">
                             <span>Milje Classic</span>
                             <span>Crna / Zlatna vez</span>
@@ -127,18 +128,42 @@
     <!-- Product Section -->
     <section class="product" id="proizvod">
         <div class="product-container">
+            <div class="category-tabs">
+                <button class="cat-tab active" data-cat="majice" type="button">Majice</button>
+                <button class="cat-tab is-soon" data-cat="duksevi" type="button" disabled>
+                    Duksevi <span class="soon-badge">Uskoro</span>
+                </button>
+                <button class="cat-tab is-soon" data-cat="kacketi" type="button" disabled>
+                    Kačketi <span class="soon-badge">Uskoro</span>
+                </button>
+            </div>
+
+            <div class="gender-toggle" id="gender-toggle" role="tablist" aria-label="Muška ili ženska kolekcija">
+                <button class="gender-btn active" data-gender="musko" type="button" role="tab" aria-selected="true">Muške</button>
+                <button class="gender-btn" data-gender="zensko" type="button" role="tab" aria-selected="false">Ženske</button>
+            </div>
+
             <div class="product-showcase">
                 <div class="product-gallery">
                     <div class="product-main-image">
-                        <img src="assets/majica.jpg" alt="Milje majica" id="main-product-img">
+                        <img src="assets/product-model.jpg" alt="Milje majica" id="main-product-img">
                     </div>
+                    <div class="gallery-thumbs" id="gallery-thumbs"></div>
                 </div>
                 <div class="product-details">
                     <span class="product-label">Domaći proizvod</span>
-                    <h2 class="product-name">Milje Classic</h2>
-                    <p class="product-price">4.500 RSD</p>
-                    <p class="product-desc">
-                        Crna majica kratkih rukava sa autentičnom vezom inspirisanom tradicionalnim 
+                    <h2 class="product-name" id="product-name">Milje Classic</h2>
+
+                    <div class="color-picker">
+                        <span class="color-picker-label">Boja:</span>
+                        <button class="swatch swatch-crna active" data-color="crna" type="button" aria-label="Crna" aria-pressed="true"></button>
+                        <button class="swatch swatch-bela" data-color="bela" type="button" aria-label="Bela" aria-pressed="false"></button>
+                        <span class="color-name" id="product-color">Crna / Zlatna vez</span>
+                    </div>
+
+                    <p class="product-price" id="product-price">4.500 RSD</p>
+                    <p class="product-desc" id="product-desc">
+                        Crna majica kratkih rukava sa autentičnom vezom inspirisanom tradicionalnim
                         heklanim uzorcima. Rukav ukrašen rukom pisanim natpisom "Milje".
                     </p>
 
@@ -238,6 +263,33 @@
         </div>
     </section>
 
+    <!-- Order Steps Section -->
+    <section class="steps" id="kako-poruciti">
+        <div class="steps-container">
+            <div class="steps-header">
+                <span class="section-label">Porudžbina u 3 koraka</span>
+                <h2 class="section-title">Jednostavno, <em>bez muke</em></h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Poruči</h3>
+                    <p>Popuniš formu ispod — model, veličina i adresa. Traje manje od minuta.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Potvrdimo</h3>
+                    <p>Javljamo se telefonom ili mejlom da potvrdimo detalje porudžbine.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Šaljemo</h3>
+                    <p>Brza pošta na tvoju adresu za 2-3 radna dana, plaćanje pouzećem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Quote Banner -->
     <section class="quote-banner">
         <div class="quote-banner-content">
@@ -246,7 +298,7 @@
                 Nije važno koliko brzo napredujemo.<br>
                 Važno je da svaki korak nosi <em>smisao</em>.
             </p>
-            <span class="quote-banner-author">— Baka Stana</span>
+            <span class="quote-banner-author">— Baka Milosija</span>
         </div>
     </section>
 
@@ -254,7 +306,7 @@
     <section class="order" id="poruci">
         <div class="order-container">
             <div class="order-visual">
-                <img src="assets/majica.jpg" alt="Milje majica">
+                <img src="assets/product-model.jpg" alt="Milje majica">
             </div>
             <div class="order-form-wrapper">
                 <span class="section-label">Porudžbina</span>
@@ -278,6 +330,15 @@
                             <label>Telefon</label>
                             <input type="tel" name="telefon" placeholder="06x xxx xxxx" required>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Model</label>
+                        <select name="model" id="order-model" required>
+                            <option value="Milje Classic — Muška (Crna)">Milje Classic — Muška (Crna)</option>
+                            <option value="Milje Classic — Muška (Bela)">Milje Classic — Muška (Bela)</option>
+                            <option value="Milje Classic — Ženska (Crna)">Milje Classic — Ženska (Crna)</option>
+                            <option value="Milje Classic — Ženska (Bela)">Milje Classic — Ženska (Bela)</option>
+                        </select>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
@@ -311,6 +372,54 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq" id="pitanja">
+        <div class="faq-container">
+            <div class="faq-header">
+                <span class="section-label">Pitanja</span>
+                <h2 class="section-title">Često <em>postavljana pitanja</em></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Koliko traje dostava?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Šaljemo brzom poštom širom Srbije, dostava traje 2-3 radna dana od potvrde porudžbine. Za porudžbine preko 3.000 RSD dostava je besplatna.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Kako da izaberem pravu veličinu?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Majice su rađene u standardnom (regular) kroju. Ako si između dve veličine, preporučujemo da izabereš veću za opušteniji kroj. Nisi siguran/na — javi nam se pre porudžbine i pomažemo da izabereš.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Kako se plaća porudžbina?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Plaćanje je pouzećem — platiš kuriru prilikom preuzimanja pošiljke. Nema potrebe za unapred uplatom.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Da li planirate duksove i kačkete?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Da! Kolekcija dukseva i kačketa sa istim autentičnim vezom stiže uskoro — prati nas na Instagramu (@milje.brand) da ne propustiš.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
@@ -324,6 +433,7 @@
                     <a href="#prica">Priča</a>
                     <a href="#proizvod">Majica</a>
                     <a href="#zasto">Zašto Milje</a>
+                    <a href="#pitanja">Pitanja</a>
                     <a href="#poruci">Poruči</a>
                 </div>
                 <div class="footer-col">
