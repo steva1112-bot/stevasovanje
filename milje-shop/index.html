@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2C2C2C">
+    <meta name="description" content="Milje — Domaći proizvod satkan sa puno ljubavi. Majice ukrašene tradicionalnom vezom, rađene u duhu porodičnog zanata.">
+    <title>Milje — Satkano sa ljubavlju</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text">Milje</span>
+            </a>
+            <button class="nav-toggle" onclick="toggleMenu()" aria-label="Meni">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#prica" class="nav-link">Priča</a>
+                <a href="#proizvod" class="nav-link">Majica</a>
+                <a href="#zasto" class="nav-link">Zašto Milje</a>
+                <a href="#poruci" class="nav-link nav-cta">Poruči</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-line"></span>
+                    <span class="badge-text">Domaći proizvod</span>
+                    <span class="badge-line"></span>
+                </div>
+                <h1 class="hero-title">
+                    Satkano<br>
+                    <em>sa ljubavlju</em>
+                </h1>
+                <p class="hero-subtitle">
+                    Svaka majica počinje u rukama naše bake. Dok hekla, ona ne pravi samo odeću — 
+                    ona plete toplinu, uspomene i ljubav koju nosimo sa sobom.
+                </p>
+                <div class="hero-actions">
+                    <a href="#proizvod" class="btn-primary">Pogledaj majicu</a>
+                    <a href="#prica" class="btn-secondary">Pročitaj priču</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-photo-frame">
+                    <img src="assets/baka.png" alt="Baka Stana hekla Milje uzorke" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+                    <div class="photo-frame-ornament top-left">❦</div>
+                    <div class="photo-frame-ornament top-right">❦</div>
+                    <div class="photo-frame-ornament bottom-left">❦</div>
+                    <div class="photo-frame-ornament bottom-right">❦</div>
+                </div>
+                <div class="hero-caption">
+                    <span class="caption-name">Baka Stana</span>
+                    <span class="caption-title">Majstor heklač</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Skroluj</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story" id="prica">
+        <div class="story-container">
+            <div class="story-header">
+                <span class="section-label">Naša priča</span>
+                <h2 class="section-title">Od porodične tradicije<br>do <em>vaše garderobe</em></h2>
+            </div>
+            <div class="story-body">
+                <div class="story-text">
+                    <p class="story-lead">
+                        Milje nije samo brend. To je deo naše porodične priče, prenet sa kolena na koleno, 
+                        sada obučen u modernu formu.
+                    </p>
+                    <p>
+                        Baka Stana hekla već šezdeset godina. Njene ruke, oštećene od vremena i rada, 
+                        još uvek stvaraju čuda — svaki pokret je precizan, svaki čvor pun pažnje. 
+                        Kao dete, sedeo sam pored nje i gledao kako iz ništa nastaje nešto prelepo. 
+                        Nisam tada znao da učim jednu od najvažnijih lekcija života: 
+                        <strong>da prava lepota traži vreme, strpljenje i srce.</strong>
+                    </p>
+                    <p>
+                        Danas, svaka majica <strong>Milje</strong> nosi taj duh. Vez na grudima nije 
+                        mašinski otisak — to je digitalizovani uzorak bakeinog hekla, pažljivo prenet 
+                        na platno kako bi svako od vas moglo da nosi komad te tradicije. 
+                        100% pamuk, premium kroj, a na rukavu — rukom pisano ime koje nas podseća 
+                        odakle smo krenuli.
+                    </p>
+                    <blockquote class="story-quote">
+                        <span class="quote-mark">"</span>
+                        Kada nosite Milje, ne nosite samo majicu. Nosite toplinu doma, 
+                        miris kafe sa balkona i zvuk kukičica koje klikću u tišini popodneva.
+                    </blockquote>
+                </div>
+                <div class="story-visual">
+                    <div class="story-image-wrapper">
+                        <img src="assets/majica.jpg" alt="Milje majica — crna sa zlatnom vezom" class="story-image">
+                        <div class="story-image-caption">
+                            <span>Milje Classic</span>
+                            <span>Crna / Zlatna vez</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product" id="proizvod">
+        <div class="product-container">
+            <div class="product-showcase">
+                <div class="product-gallery">
+                    <div class="product-main-image">
+                        <img src="assets/majica.jpg" alt="Milje majica" id="main-product-img">
+                    </div>
+                </div>
+                <div class="product-details">
+                    <span class="product-label">Domaći proizvod</span>
+                    <h2 class="product-name">Milje Classic</h2>
+                    <p class="product-price">4.500 RSD</p>
+                    <p class="product-desc">
+                        Crna majica kratkih rukava sa autentičnom vezom inspirisanom tradicionalnim 
+                        heklanim uzorcima. Rukav ukrašen rukom pisanim natpisom "Milje".
+                    </p>
+
+                    <div class="product-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20.2 17.6l-2.8-2.8a2 2 0 0 0-2.8 0l-1.4 1.4a2 2 0 0 0 0 2.8l2.8 2.8a2 2 0 0 0 2.8 0l1.4-1.4a2 2 0 0 0 0-2.8z"/>
+                                    <path d="M7.8 10.4l2.8 2.8a2 2 0 0 0 2.8 0l1.4-1.4a2 2 0 0 0 0-2.8L12 6.2a2 2 0 0 0-2.8 0L7.8 7.6a2 2 0 0 0 0 2.8z"/>
+                                    <path d="M11 13l-3-3"/>
+                                </svg>
+                            </div>
+                            <span>100% Premium pamuk</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                    <path d="M2 12h20"/>
+                                </svg>
+                            </div>
+                            <span>Autentična vez</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                            </div>
+                            <span>Pažljivo rađeno</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <span>Domaći proizvod</span>
+                        </div>
+                    </div>
+
+                    <div class="product-sizes">
+                        <label>Izaberi veličinu:</label>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="S">S</button>
+                            <button class="size-btn active" data-size="M">M</button>
+                            <button class="size-btn" data-size="L">L</button>
+                            <button class="size-btn" data-size="XL">XL</button>
+                            <button class="size-btn" data-size="XXL">XXL</button>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <a href="#poruci" class="btn-buy">Poruči odmah</a>
+                        <p class="product-note">Besplatna dostava za porudžbine preko 3.000 RSD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Milje Section -->
+    <section class="why" id="zasto">
+        <div class="why-container">
+            <div class="why-header">
+                <span class="section-label">Zašto baš mi</span>
+                <h2 class="section-title">Vrednosti koje <em>nosimo</em></h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-number">01</div>
+                    <h3>Tradicija</h3>
+                    <p>Uzorci na našim majicama potiču direktno iz bakeinog hekla — 
+                    geometrija koja se prenosi kroz generacije.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">02</div>
+                    <h3>Kvalitet</h3>
+                    <p>Samo premium pamuk i pažljivo izrađena vez. 
+                    Majica koja traje godinama, a ne sezone.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">03</div>
+                    <h3>Ljubav</h3>
+                    <p>Svaki komad proizvoda se pravi sa namerom i pažnjom. 
+                    Ovo nije masovna proizvodnja — ovo je rad srca.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">04</div>
+                    <h3>Domaće</h3>
+                    <p>Od dizajna do šivanja — sve je rađeno ovde, u Srbiji. 
+                    Podržavamo domaće zanatlije i porodične radionice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Banner -->
+    <section class="quote-banner">
+        <div class="quote-banner-content">
+            <span class="quote-banner-mark">❝</span>
+            <p class="quote-banner-text">
+                Nije važno koliko brzo napredujemo.<br>
+                Važno je da svaki korak nosi <em>smisao</em>.
+            </p>
+            <span class="quote-banner-author">— Baka Stana</span>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="order" id="poruci">
+        <div class="order-container">
+            <div class="order-visual">
+                <img src="assets/majica.jpg" alt="Milje majica">
+            </div>
+            <div class="order-form-wrapper">
+                <span class="section-label">Porudžbina</span>
+                <h2 class="section-title">Poruči svoju <em>Milje</em></h2>
+                <p class="order-subtitle">
+                    Popuni formu ispod i javićemo ti se u najkraćem roku. 
+                    Dostavu šaljemo brzom poštom širom Srbije.
+                </p>
+
+                <form class="order-form" onsubmit="handleOrder(event)">
+                    <div class="form-group">
+                        <label>Ime i prezime</label>
+                        <input type="text" name="ime" placeholder="npr. Ana Petrović" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="ana@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="tel" name="telefon" placeholder="06x xxx xxxx" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Veličina</label>
+                            <select name="velicina" required>
+                                <option value="">Izaberi...</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Količina</label>
+                            <input type="number" name="kolicina" value="1" min="1" max="10" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Adresa za dostavu</label>
+                        <textarea name="adresa" rows="2" placeholder="Ulica, broj, grad, poštanski broj..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Napomena (opciono)</label>
+                        <textarea name="napomena" rows="2" placeholder="Posebne želje, poklon pakovanje..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Pošalji porudžbinu</button>
+                    <p class="form-note">Plaćanje pouzećem prilikom preuzimanja. Dostava 2-3 radna dana.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">Milje</span>
+                <p class="footer-tagline">Satkano sa ljubavlju, od naše porodice za vašu.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Meni</h4>
+                    <a href="#prica">Priča</a>
+                    <a href="#proizvod">Majica</a>
+                    <a href="#zasto">Zašto Milje</a>
+                    <a href="#poruci">Poruči</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <a href="mailto:porudzbine@milje.rs">porudzbine@milje.rs</a>
+                    <a href="tel:+381641234567">+381 64 123 4567</a>
+                    <span>Instagram: @milje.brand</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Milje. Sva prava zadržana. Domaći proizvod, rađen sa puno ljubavi.</p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-icon">✦</div>
+            <h3>Hvala na poverenju!</h3>
+            <p>Vaša porudžbina je primljena. Javićemo vam se uskoro na telefon ili email kako bismo potvrdili detalje.</p>
+            <button class="btn-primary" onclick="closeModal()">Zatvori</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
