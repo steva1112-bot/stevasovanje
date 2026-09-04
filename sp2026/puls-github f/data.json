@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "version": 1,
+    "orgName": "Trening Centar Puls"
+  },
+  "auth": {
+    "rodja": {
+      "id": "rodja",
+      "name": "Rodja",
+      "passwordHash": "c90a806bad23fbc0bc28a93db3d61cebb94d75d755888e44a701a8f79eedcc83"
+    },
+    "boki": {
+      "id": "boki",
+      "name": "Boki",
+      "passwordHash": "4d2d37a37b90a1d30bb0e4812859c10a5413d51e375e36746976f430f1e0dcb4"
+    }
+  },
+  "clients": [],
+  "trainings": []
+}
